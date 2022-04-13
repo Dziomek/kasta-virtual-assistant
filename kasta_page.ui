@@ -43,8 +43,8 @@ background-color: rgb(48, 193, 255);
   <widget class="QPushButton" name="endButton">
    <property name="geometry">
     <rect>
-     <x>890</x>
-     <y>120</y>
+     <x>870</x>
+     <y>630</y>
      <width>211</width>
      <height>61</height>
     </rect>
@@ -87,6 +87,63 @@ border: 2px solid rgb(51, 129, 255);
    </property>
    <property name="text">
     <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>860</x>
+     <y>200</y>
+     <width>251</width>
+     <height>391</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>icons/virtual-assistant-icon-11.jpg</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="listeningLabel">
+   <property name="geometry">
+    <rect>
+     <x>720</x>
+     <y>330</y>
+     <width>151</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: white;
+font: 22pt &quot;Kristen ITC&quot;;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="stopButton">
+   <property name="geometry">
+    <rect>
+     <x>860</x>
+     <y>120</y>
+     <width>261</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+background-color:rgb(125, 203, 255);
+color: white;
+border-radius: 30px;
+font: 22pt &quot;Kristen ITC&quot;;
+}
+QPushButton:hover {
+background-color: rgb(48, 193, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string>Stop listening</string>
    </property>
   </widget>
  </widget>

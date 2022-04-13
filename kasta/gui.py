@@ -25,24 +25,42 @@ class KastaPage(QDialog):
         super(KastaPage, self).__init__()
         loadUi("kasta_page.ui", self)
         self.startButton.clicked.connect(self.begin)
-
+        self.stopButton.clicked.connect(self.stop)
         self.endButton.clicked.connect(self.end)
         self.worker = WorkerThread()  # to run Kasta in background
         self.is_running = False  # to prevent clicking start button when Kasta in already running
         self.isEndClicked = False
-        t1 = threading.Thread(target=self.change_text)  # changing text live
-        t1.start()
+
+        self.t1 = threading.Thread(target=self.change_text)  # changing text live
+        self.t1.start()
 
     def end(self):
-        self.isEndClicked = True
-        self.worker.kasta.speak('Goodbye')
-        time.sleep(0.5)
-        sys.exit()
+        # TODO!
+
+        '''if not self.is_running:
+            del self.worker.kasta
+                exit(0)
+
+        else:
+            self.worker.terminate()
+            self.t1.join()
+            self.worker.kasta.stop_listening()
+            self.listeningLabel.setText('')
+            time.sleep(0.5)
+            sys.exit()'''
 
     def begin(self):
         if not self.is_running:
             self.is_running = True
             self.worker.start()
+            self.listeningLabel.setText('listening...')
+
+    def stop(self):
+        if self.is_running:
+            self.is_running = False
+            self.worker.terminate()
+            self.worker.kasta.stop_listening()
+            self.listeningLabel.setText('')
 
     def change_text(self):
         while True:
@@ -74,6 +92,8 @@ class WorkerThread(QThread):
 
     def run(self):
         self.kasta.listen()
+
+
 
 
 

@@ -25,7 +25,6 @@ class Kasta:
     def listen(self):
         print('listening...')
         self.stream.start_stream()
-        self.speak("Hi. I am Kasta. How can i help you?")
         while True:
             data = self.stream.read(4000, exception_on_overflow=False)
             if len(data) == 0:
@@ -43,6 +42,17 @@ class Kasta:
                     print(self.text)
 
         ##print(self.rec.FinalResult())
+
+    def stop_listening(self):
+        self.stream.stop_stream()
+        self.text = ""
+
+    def terminate_kasta(self):
+        self.engine.stop()
+        self.stream.close()
+        self.p.terminate()
+
+
 
 
 
