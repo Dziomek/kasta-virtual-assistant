@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 178, 241);</string>
+  </property>
+  <widget class="QPushButton" name="startButton">
+   <property name="geometry">
+    <rect>
+     <x>860</x>
+     <y>30</y>
+     <width>261</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+background-color:rgb(125, 203, 255);
+color: white;
+border-radius: 30px;
+font: 22pt &quot;Kristen ITC&quot;;
+}
+QPushButton:hover {
+background-color: rgb(48, 193, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string>Start listening</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="endButton">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>120</y>
+     <width>211</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+background-color:rgb(125, 203, 255);
+color: white;
+border-radius: 30px;
+font: 22pt &quot;Kristen ITC&quot;;
+}
+QPushButton:hover {
+background-color: rgb(48, 193, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string>Leave</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>30</y>
+     <width>751</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+background: rgb(170, 255, 255);
+border: 2px solid rgb(125, 203, 255);
+border-radius: 20px;
+color: black;
+font: 16pt &quot;Kristen ITC&quot;;
+}
+QLineEdit:hover {
+border: 2px solid rgb(51, 129, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

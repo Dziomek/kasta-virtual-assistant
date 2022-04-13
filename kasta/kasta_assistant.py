@@ -16,7 +16,7 @@ class Kasta:
         self.rec = KaldiRecognizer(self.model, 16000)
         self.p = pyaudio.PyAudio()
         self.stream = self.p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=8000)
-        self.text = "xddxdx"
+        self.text = ""
 
     def speak(self, text):
         self.engine.say(text)

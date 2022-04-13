@@ -10,14 +10,19 @@ from keras import utils
 ## Reading a data
 
 data = yaml.safe_load(open('train.yml').read())
-inputs, outputs = [], []
+inputs, entities, actions = [], [], []
 
 
 for command in data['commands']:
     inputs.append(str(command['input'].lower()))
-    outputs.append('{}\{}'.format(command['entity'], command['action']))
+    entities.append(str(command['entity'].lower()))
+    actions.append(str(command['action'].lower()))
 
-## Creating a data set
+print(inputs)
+print(entities)
+print(actions)
+print(inputs[5], entities[5], actions[5])
+''''## Creating a data set
 
 chars = set()
 
@@ -54,5 +59,6 @@ for i, input in enumerate(inputs):
 
 print(input_data.shape)
 
-'''input_data = np.zeros((len(inputs), max_sent, len(chars)), dtype='int32')
-print(input_data.shape)'''
+input_data = np.zeros((len(inputs), max_sent, len(chars)), dtype='int32')
+print(input_data.shape)
+'''
