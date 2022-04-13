@@ -1,0 +1,8 @@
+keras==2.8.0
+numpy==1.22.3
+PyAudio==0.2.11
+PyQt5==5.15.6
+pyttsx3==2.90
+PyYAML==6.0
+tensorflow==2.8.0
+vosk==0.3.32
