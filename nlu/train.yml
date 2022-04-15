@@ -4,6 +4,7 @@ commands:
     input: What time is?
     entity: time
     action: getTime
+
   - command:
     input: Tell me the time
     entity: time

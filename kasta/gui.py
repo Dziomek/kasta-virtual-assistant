@@ -20,6 +20,12 @@ class WelcomePage(QDialog):
         self.widget.setCurrentIndex(1)
 
 
+class LoginPage(QDialog):
+    def __init__(self):
+        super(LoginPage, self).__init__()
+        loadUi("register_page.ui", self)
+
+
 class KastaPage(QDialog):
     def __init__(self):
         super(KastaPage, self).__init__()
@@ -73,16 +79,26 @@ class CreateWidgets:  # implements widget managing
     def __init__(self):
         self.welcome_page = WelcomePage()
         self.kasta_page = KastaPage()
+        self.login_page = LoginPage()
         self.widget = QtWidgets.QStackedWidget()
         self.widget.addWidget(self.welcome_page)
         self.widget.addWidget(self.kasta_page)
+        self.widget.addWidget(self.login_page)
         self.widget.setFixedHeight(800)
         self.widget.setFixedWidth(1200)
         self.widget.show()
         self.welcome_page.getStartedButton.clicked.connect(self.go_to_kasta)
+        self.welcome_page.registerButton.clicked.connect(self.go_to_registration)
+        self.login_page.backButton.clicked.connect(self.go_to_welcome)
 
     def go_to_kasta(self):
         self.widget.setCurrentIndex(1)
+
+    def go_to_welcome(self):
+        self.widget.setCurrentIndex(0)
+
+    def go_to_registration(self):
+        self.widget.setCurrentIndex(2)
 
 
 class WorkerThread(QThread):

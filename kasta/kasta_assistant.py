@@ -32,10 +32,10 @@ class Kasta:
             if self.rec.AcceptWaveform(data):
                 self.text = self.rec.Result()[12:-1]  # od 12 po to, żeby wypisać samą komendę (bez 'text' itp)
                 self.text = self.text.replace('"', '')
-                if "what time is it" in self.text:
+                if "time today" in self.text:
                     print(self.text)
                     self.speak(SystemInfo.get_time())
-                elif "how are you today" in self.text:
+                elif "today" in self.text:
                     self.speak("Thanks, I'm fine.")
                 else:
                     self.speak(self.text)

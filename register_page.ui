@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLineEdit" name="lineEdit">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>60</y>
+     <width>751</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+background: rgb(170, 255, 255);
+border: 2px solid rgb(125, 203, 255);
+border-radius: 20px;
+color: black;
+font: 16pt &quot;Kristen ITC&quot;;
+}
+QLineEdit:hover {
+border: 2px solid rgb(51, 129, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_2">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>150</y>
+     <width>751</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+background: rgb(170, 255, 255);
+border: 2px solid rgb(125, 203, 255);
+border-radius: 20px;
+color: black;
+font: 16pt &quot;Kristen ITC&quot;;
+}
+QLineEdit:hover {
+border: 2px solid rgb(51, 129, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_3">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>250</y>
+     <width>751</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+background: rgb(170, 255, 255);
+border: 2px solid rgb(125, 203, 255);
+border-radius: 20px;
+color: black;
+font: 16pt &quot;Kristen ITC&quot;;
+}
+QLineEdit:hover {
+border: 2px solid rgb(51, 129, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_4">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>360</y>
+     <width>751</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+background: rgb(170, 255, 255);
+border: 2px solid rgb(125, 203, 255);
+border-radius: 20px;
+color: black;
+font: 16pt &quot;Kristen ITC&quot;;
+}
+QLineEdit:hover {
+border: 2px solid rgb(51, 129, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_5">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>480</y>
+     <width>751</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+background: rgb(170, 255, 255);
+border: 2px solid rgb(125, 203, 255);
+border-radius: 20px;
+color: black;
+font: 16pt &quot;Kristen ITC&quot;;
+}
+QLineEdit:hover {
+border: 2px solid rgb(51, 129, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="backButton">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>610</y>
+     <width>211</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+background-color:rgb(125, 203, 255);
+color: white;
+border-radius: 30px;
+font: 22pt &quot;Kristen ITC&quot;;
+}
+QPushButton:hover {
+background-color: rgb(48, 193, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string>Back</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

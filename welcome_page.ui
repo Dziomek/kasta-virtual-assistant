@@ -245,6 +245,31 @@ font: 75 18pt &quot;Kristen ITC&quot;;
      </size>
     </property>
    </widget>
+   <widget class="QPushButton" name="registerButton">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>490</y>
+      <width>450</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+background-color:rgb(125, 203, 255);
+color: white;
+border-radius: 30px;
+	font: 50pt &quot;Arial&quot;;
+font: 45pt &quot;Kristen ITC&quot;;
+}
+QPushButton:hover {
+background-color: rgb(48, 193, 255);
+}</string>
+    </property>
+    <property name="text">
+     <string>Register</string>
+    </property>
+   </widget>
    <zorder>filling1</zorder>
    <zorder>filling2</zorder>
    <zorder>label</zorder>
@@ -255,6 +280,7 @@ font: 75 18pt &quot;Kristen ITC&quot;;
    <zorder>pushButton_2</zorder>
    <zorder>pushButton_3</zorder>
    <zorder>pushButton_4</zorder>
+   <zorder>registerButton</zorder>
   </widget>
  </widget>
  <resources/>
