@@ -3,6 +3,7 @@ from PySide2.QtGui import (QColor)
 from PySide2.QtWidgets import *
 from GUI.ui_implementation.main_page import MainWindow
 from GUI.ui_python_files.ui_splash import Ui_SplashScreen
+from GUI.ui_implementation.login_page import LoginWindow
 
 
 class SplashScreen(QMainWindow):
@@ -57,7 +58,7 @@ class SplashScreen(QMainWindow):
             self.timer.stop()
 
             # SHOW MAIN WINDOW
-            self.main = MainWindow()
+            self.main = LoginWindow()
             self.main.show()
 
             # CLOSE SPLASH SCREEN

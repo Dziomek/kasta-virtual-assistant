@@ -157,16 +157,17 @@ background-color:  rgb(212, 192, 169);
 color: #20242a;
 border-radius: 10px;
 }
-QPushButton#pushButton:hover{
-background-color: #837c73
+QPushButton:hover{
+background-color: #837c73;
 }
 
-QPushButton#pushButton:pressed{
+QPushButton:pressed{
 padding-left: 5px;
 padding-right: 5px;
 background-position: calc(100% - 10px)center;
-background-color: red;
-}</string>
+background-color: #ff662b;;
+}
+</string>
     </property>
     <property name="text">
      <string>Register Now</string>
