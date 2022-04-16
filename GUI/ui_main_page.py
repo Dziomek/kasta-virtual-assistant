@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_pagenyXKAw.ui'
+## Form generated from reading UI file 'main_pageylYWMw.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -25,11 +25,20 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.label = QLabel(self.centralwidget)
-        self.label.setObjectName(u"label")
-        self.label.setAlignment(Qt.AlignCenter)
+        self.startButton = QPushButton(self.centralwidget)
+        self.startButton.setObjectName(u"startButton")
 
-        self.verticalLayout.addWidget(self.label)
+        self.verticalLayout.addWidget(self.startButton)
+
+        self.lineEdit = QLineEdit(self.centralwidget)
+        self.lineEdit.setObjectName(u"lineEdit")
+
+        self.verticalLayout.addWidget(self.lineEdit)
+
+        self.stopButton = QPushButton(self.centralwidget)
+        self.stopButton.setObjectName(u"stopButton")
+
+        self.verticalLayout.addWidget(self.stopButton)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QStatusBar(MainWindow)
@@ -43,6 +52,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"My app", None))
+        self.startButton.setText(QCoreApplication.translate("MainWindow", u"Start", None))
+        self.stopButton.setText(QCoreApplication.translate("MainWindow", u"Stop", None))
     # retranslateUi
 
