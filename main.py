@@ -3,6 +3,18 @@ from PySide2 import QtCore
 from PySide2.QtGui import (QColor)
 from PySide2.QtWidgets import *
 
+from PyQt5.QtCore import QProcess
+from vosk import Model, KaldiRecognizer
+import os
+import pyaudio
+import pyttsx3
+
+from kasta.current_time import SystemInfo
+from kasta.kasta_assistant import Kasta
+from kasta.gui import KastaPage, WelcomePage, CreateWidgets
+from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import QWidget, QDialog, QApplication
+
 
 ## ==> SPLASH SCREEN
 from GUI.ui_splash import Ui_SplashScreen
@@ -21,8 +33,8 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
 
         # MAIN WINDOW LABEL
-        QtCore.QTimer.singleShot(1500, lambda: self.ui.label.setText("<strong>Działa</strong> elegancko"))
-        QtCore.QTimer.singleShot(1500, lambda: self.setStyleSheet("background-color: #222; color: #FFF"))
+        #QtCore.QTimer.singleShot(1500, lambda: self.ui.label.setText("<strong>Działa</strong> elegancko"))
+        #QtCore.QTimer.singleShot(1500, lambda: self.setStyleSheet("background-color: #222; color: #FFF"))
 
 # SPLASH SCREEN
 class SplashScreen(QMainWindow):
