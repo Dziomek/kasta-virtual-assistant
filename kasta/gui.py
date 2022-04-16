@@ -16,6 +16,7 @@ class WelcomePage(QDialog):
         super(WelcomePage, self).__init__()
         loadUi("welcome_page.ui", self)
 
+
     def go_to_kasta(self):
         self.widget.setCurrentIndex(1)
 

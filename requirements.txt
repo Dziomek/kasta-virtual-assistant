@@ -6,3 +6,5 @@ pyttsx3==2.90
 PyYAML==6.0
 tensorflow==2.8.0
 vosk==0.3.32
+
+PySide2~=5.15.2.1
