@@ -5,7 +5,7 @@ from PySide2.QtWidgets import *
 from GUI.ui_python_files.ui_main_page import Ui_MainWindow
 
 
-class MainWindow(QMainWindow):
+class MainPage(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()

@@ -1,14 +1,15 @@
 from PySide2 import QtCore
 from PySide2.QtGui import (QColor)
 from PySide2.QtWidgets import *
-from GUI.ui_implementation.main_page import MainWindow
+from GUI.ui_implementation.main_page import MainPage
 from GUI.ui_python_files.ui_splash import Ui_SplashScreen
-from GUI.ui_implementation.login_page import LoginWindow
+from GUI.ui_implementation.login_page import LoginPage
 
 
 class SplashScreen(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
+        self.login_page = LoginPage()
         self.ui = Ui_SplashScreen()
         self.ui.setupUi(self)
 
@@ -58,8 +59,7 @@ class SplashScreen(QMainWindow):
             self.timer.stop()
 
             # SHOW MAIN WINDOW
-            self.main = LoginWindow()
-            self.main.show()
+            self.login_page.show()
 
             # CLOSE SPLASH SCREEN
             self.close()

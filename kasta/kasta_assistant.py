@@ -2,9 +2,6 @@ from vosk import Model, KaldiRecognizer
 import pyaudio
 import pyttsx3
 from kasta.current_time import SystemInfo
-from PyQt5.QtCore import QThread
-
-## Speech Synthesis
 
 
 class Kasta:
@@ -46,14 +43,9 @@ class Kasta:
     def stop_listening(self):
         self.stream.stop_stream()
         self.text = ""
+        print('listening stopped')
 
     def terminate_kasta(self):
         self.engine.stop()
         self.stream.close()
         self.p.terminate()
-
-
-
-
-
-
