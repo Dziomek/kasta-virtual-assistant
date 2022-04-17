@@ -8,3 +8,6 @@ tensorflow==2.8.0
 vosk==0.3.32
 
 PySide2~=5.15.2.1
+
+mysql~=0.0.3
+mysql-connector-python~=8.0.28

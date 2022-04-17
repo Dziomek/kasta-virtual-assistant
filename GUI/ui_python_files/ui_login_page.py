@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'login_pageoXSNWZ.ui'
+## Form generated from reading UI file 'login_pageCVxlXG.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -14,10 +14,6 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
     QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
     QRadialGradient)
 from PySide2.QtWidgets import *
-from PyQt5 import QtCore, QtGui, QtWidgets
-
-
-
 
 
 
@@ -117,12 +113,15 @@ class Ui_Form(object):
         self.label_4.setFont(font)
         self.label_4.setStyleSheet(u"color: rgb(212, 192, 169);")
         self.label_4.setAlignment(Qt.AlignCenter)
+        self.errorLabel = QLabel(self.widget)
+        self.errorLabel.setObjectName(u"errorLabel")
+        self.errorLabel.setGeometry(QRect(360, 190, 401, 20))
+        self.errorLabel.setStyleSheet(u"color: red;")
+        self.errorLabel.setAlignment(Qt.AlignCenter)
 
         self.retranslateUi(Form)
 
         QMetaObject.connectSlotsByName(Form)
-
-
     # setupUi
 
     def retranslateUi(self, Form):
@@ -135,5 +134,8 @@ class Ui_Form(object):
         self.loginButton.setText(QCoreApplication.translate("Form", u"Log In", None))
         self.registerButton.setText(QCoreApplication.translate("Form", u"Register Now", None))
         self.label_4.setText(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-size:9pt;\">You don't have an account ?</span></p></body></html>", None))
+        self.errorLabel.setText(QCoreApplication.translate("Form", u"<html><head/><body><p><br/></p></body></html>", None))
     # retranslateUi
+
+
 

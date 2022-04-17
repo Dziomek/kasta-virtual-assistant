@@ -13,14 +13,14 @@ class CreateGui:
         self.kasta_page = KastaPage()
         self.main_page.login_page.ui.registerButton.clicked.connect(self.switch_to_registration_page)
         self.main_page.login_page.ui.loginButton.clicked.connect(self.switch_to_kasta_page)
-        print(threading.active_count())
 
     def switch_to_registration_page(self):
         self.main_page.login_page.close()
         self.register_page.show()
 
     def switch_to_kasta_page(self):
-        self.main_page.login_page.close()
-        self.kasta_page.show()
-        print(threading.active_count())
+        if self.main_page.login_page.logged_in:
+            self.main_page.login_page.close()
+            self.kasta_page.show()
+
 
