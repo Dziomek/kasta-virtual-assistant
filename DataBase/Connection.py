@@ -15,8 +15,6 @@ class ConnectDatabase:
                                                       host=HOST,
                                                       database=DATABASE)
             self.cursor = self.connection.cursor()
-
-
         except Error as e:
             print("Error while connecting to MySQL", e)
 
@@ -29,7 +27,6 @@ class ConnectDatabase:
             # get all records
             records = cursor.fetchall()
             return records
-
 
 
 """def connectToDatabaseLogin():
