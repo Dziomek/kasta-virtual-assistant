@@ -30,39 +30,24 @@ class ConnectDatabase:
             records = cursor.fetchall()
             return records
 
-
-
-"""def connectToDatabaseLogin():
-    try:
-        connection = mysql.connector.connect(user=USER,
-                                             password=PASSWORD,
-                                             host=HOST,
-                                             database=DATABASE)
-        if connection.is_connected():
-            db_Info = connection.get_server_info()
-            print("Connected to MySQL Server version ", db_Info)
-            cursor = connection.cursor()
-            cursor.execute("select database();")
-            record = cursor.fetchone()
-            print("You're connected to database: ", record)
-
-            sql_select_Query = "select * from Users"
-            cursor = connection.cursor()
+    def checkUserExists(self,email):
+        if self.connection.is_connected():
+            sql_select_Query = "select * from Users where email='" + email + "'"
+            cursor = self.connection.cursor()
             cursor.execute(sql_select_Query)
-            # get all records
-            records = cursor.fetchall()
-            print("Total number of rows in table: ", cursor.rowcount)
-            print(records)
-            passwordUser = ''
-            for row in records:
-                passwordUser = row[4]
 
-            print('Wyciagniete haslo:', passwordUser)
+            #check the existence
+            if cursor.rowcount == 0:
+                return False
+            else:
+                return True
 
-    except Error as e:
-        print("Error while connecting to MySQL", e)
-    finally:
-        if connection.is_connected():
-            cursor.close()
-            connection.close()
-            print("MySQL connection is closed")"""
+    def insertRegisterData(self, firstName, lastName, email, password, date, token, validAccount):
+        if self.connection.is_connected():
+            sql_select_Query = "INSERT INTO Users(firstName, lastName, email, password, birthday, token, validAccount) " \
+                               " VALUES('"+firstName+"','" + lastName + "','" + email + "','" + password + "','" + date + "','" + token + "','" + validAccount + "') "
+            cursor = self.connection.cursor()
+            cursor.execute(sql_select_Query)
+            self.connection.commit()
+        else:
+            print('Error while inserting data to DB')
