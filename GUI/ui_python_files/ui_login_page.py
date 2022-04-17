@@ -18,6 +18,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 
+
+
+
 class Ui_Form(object):
     def setupUi(self, Form):
         if Form.objectName():
@@ -118,6 +121,8 @@ class Ui_Form(object):
         self.retranslateUi(Form)
 
         QMetaObject.connectSlotsByName(Form)
+
+
     # setupUi
 
     def retranslateUi(self, Form):
