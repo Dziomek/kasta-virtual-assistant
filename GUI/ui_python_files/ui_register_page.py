@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'register_pageLPeejg.ui'
+## Form generated from reading UI file 'register_pageuMcRGl.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -26,7 +26,7 @@ class Ui_Form(object):
         self.widget.setGeometry(QRect(60, 20, 831, 761))
         self.label = QLabel(self.widget)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(40, 30, 751, 721))
+        self.label.setGeometry(QRect(30, 30, 751, 721))
         self.label.setStyleSheet(u"background-color: #2b3038;\n"
 "border-radius: 30px;")
         self.label_2 = QLabel(self.widget)
@@ -124,6 +124,31 @@ class Ui_Form(object):
 "border-bottom-color: #ff662b;\n"
 "color: rgb(212, 192, 169);\n"
 "paddinf-bottom: 7px;")
+        self.errorLabel = QLabel(self.widget)
+        self.errorLabel.setObjectName(u"errorLabel")
+        self.errorLabel.setGeometry(QRect(170, 190, 491, 20))
+        self.errorLabel.setStyleSheet(u"color: red;")
+        self.errorLabel.setAlignment(Qt.AlignCenter)
+        self.backButton = QPushButton(self.widget)
+        self.backButton.setObjectName(u"backButton")
+        self.backButton.setGeometry(QRect(560, 640, 51, 41))
+        self.backButton.setFont(font2)
+        self.backButton.setStyleSheet(u"QPushButton{\n"
+"background-color:  rgb(212, 192, 169);\n"
+"color: #20242a;\n"
+"border-radius: 10px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: #837c73;\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"padding-left: 5px;\n"
+"padding-right: 5px;\n"
+"background-position: calc(100% - 10px)center;\n"
+"background-color: #ff662b;;\n"
+"}\n"
+"")
 
         self.retranslateUi(Form)
 
@@ -141,5 +166,7 @@ class Ui_Form(object):
         self.firstNameLabel.setPlaceholderText(QCoreApplication.translate("Form", u"Frist Name", None))
         self.emailLabel.setPlaceholderText(QCoreApplication.translate("Form", u"email", None))
         self.password2Label.setPlaceholderText(QCoreApplication.translate("Form", u"Confirm Password", None))
+        self.errorLabel.setText("")
+        self.backButton.setText(QCoreApplication.translate("Form", u"Back", None))
     # retranslateUi
 

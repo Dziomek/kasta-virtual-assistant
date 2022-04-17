@@ -30,17 +30,20 @@ class ConnectDatabase:
             records = cursor.fetchall()
             return records
 
-    def checkUserExists(self,email):
+    def checkUserExists(self, email):
         if self.connection.is_connected():
+            print('connected')
             sql_select_Query = "select * from Users where email='" + email + "'"
             cursor = self.connection.cursor()
             cursor.execute(sql_select_Query)
+            cursor.fetchall()
 
             #check the existence
             if cursor.rowcount == 0:
                 return False
             else:
                 return True
+
 
     def insertRegisterData(self, firstName, lastName, email, password, date, token, validAccount):
         if self.connection.is_connected():

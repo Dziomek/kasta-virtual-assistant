@@ -25,7 +25,7 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>30</x>
       <y>30</y>
       <width>751</width>
       <height>721</height>
@@ -269,6 +269,62 @@ border: 2px solid rgba(0,0,0,0);
 border-bottom-color: #ff662b;
 color: rgb(212, 192, 169);
 paddinf-bottom: 7px;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="errorLabel">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>190</y>
+      <width>491</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: red;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="backButton">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>640</y>
+      <width>51</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>13</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+background-color:  rgb(212, 192, 169);
+color: #20242a;
+border-radius: 10px;
+}
+QPushButton:hover{
+background-color: #837c73;
+}
+
+QPushButton:pressed{
+padding-left: 5px;
+padding-right: 5px;
+background-position: calc(100% - 10px)center;
+background-color: #ff662b;;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Back</string>
     </property>
    </widget>
   </widget>
