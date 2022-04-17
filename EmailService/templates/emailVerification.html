@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <style>
+        p{
+            font-family: Courier New, courier;
+            color: black;
+            text-align: center;
+        }
+
+        h1,h3{
+            font-family: Courier New, courier;
+            text-align: center;
+            color: black;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Verify your new Kasta VA account </h1>
+    <p>Hey, {{ username }} !</p>
+    <p><span>To verify your email address ( {{ email }} ), please use following One Time Password:</span></p>
+    <h3>{{ token }}</h3>
+    <p>
+        Do not share this OTP with anyone.
+        Kasta VA takes your account security very seriously.
+
+        Thank you!
+    </p>
+
+
+
+</body>
+</html>

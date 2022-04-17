@@ -20,9 +20,9 @@ class ConnectDatabase:
         except Error as e:
             print("Error while connecting to MySQL", e)
 
-    def loginAuthentication(self, email, password):
+    def loginAuthentication(self, email,  hashedPassword):
         if self.connection.is_connected():
-            sql_select_Query = "select * from Users where email='" + email + "' and password='" + password + "'"
+            sql_select_Query = "select * from Users where email='" + email + "' and password='" + hashedPassword + "'"
             cursor = self.connection.cursor()
             cursor.execute(sql_select_Query)
 

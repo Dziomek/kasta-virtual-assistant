@@ -1,19 +1,38 @@
-from emailConfig import EMAIL_ADDRESS
-from emailConfig import EMAIL_PASSWORD
+from EmailService.emailConfig import EMAIL_ADDRESS
+from EmailService.emailConfig import EMAIL_PASSWORD
 import smtplib
 from email.message import EmailMessage
 import codecs
 
-msg = EmailMessage()
-msg['Subject'] = 'Grab dinner'
-msg['From'] = EMAIL_ADDRESS
-msg['To'] = 'niecko.jakub@gmail.com'
+from jinja2 import  Environment, FileSystemLoader
 
-htmlFile = codecs.open('hello.html', 'r', 'utf-8')
-text = htmlFile.read()
-msg.add_alternative(text, subtype='html')
 
-with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-    smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
 
-    smtp.send_message(msg)
+
+class MailService:
+    def __init__(self):
+        #with smtplib.SMTP_SSL('smtp.gmail.com', 465) as self.smtp:
+         #   self.smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+        self.smtpObj = smtplib.SMTP("smtp.gmail.com",587)
+        self.smtpObj.ehlo()
+        self.smtpObj.starttls()
+        self.smtpObj.login(EMAIL_ADDRESS,EMAIL_PASSWORD)
+
+    def emailVerification(self, firstName, lastName, emailUser, token):
+        msg = EmailMessage()
+        msg['Subject'] = 'Kasta VA: Account verification'
+        msg['From'] = EMAIL_ADDRESS
+        msg['To'] = emailUser
+
+        username = firstName
+        email = emailUser
+        token = token
+
+        file_loader = FileSystemLoader('EmailService/templates')
+        env = Environment(loader=file_loader)
+        template = env.get_template('emailVerification.html')
+        output = template.render(email=email, username=username, token=token)
+        msg.add_alternative(output, subtype='html')
+
+        self.smtpObj.send_message(msg)
+

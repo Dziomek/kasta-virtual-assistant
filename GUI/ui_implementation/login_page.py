@@ -4,6 +4,10 @@ from PySide2.QtWidgets import *
 from GUI.ui_python_files.ui_login_page import Ui_Form
 from DataBase.Connection import ConnectDatabase
 
+import bcrypt
+from GUI.ui_implementation.register_page import RegisterPage
+
+
 
 class LoginPage(QDialog):
     def __init__(self):
@@ -37,7 +41,11 @@ class LoginPage(QDialog):
         else:
             # DATABASE CONNECTION
             connection = ConnectDatabase()
-            records = connection.loginAuthentication(email, password)
+
+            # TO DO: DOSTAĆ SIĘ DO HASHEDPASSWORD ZNAJUDJĄCYM SIĘ W REGISTER_PAGE
+            hashedPassword = ''
+
+            records = connection.loginAuthentication(email, hashedPassword)
 
             if records:
                 self.logged_in = True

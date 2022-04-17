@@ -4,6 +4,12 @@ from PySide2.QtWidgets import *
 from GUI.ui_python_files.ui_register_page import Ui_Form
 
 from DataBase.Connection import ConnectDatabase
+from EmailService.emailService import MailService
+
+from EmailService.token import generateToken
+
+import bcrypt
+
 
 
 class RegisterPage(QMainWindow):
@@ -19,6 +25,8 @@ class RegisterPage(QMainWindow):
         # Buttons event
         self.ui.registerButton.clicked.connect(self.register)
 
+        self.hashedPassword = ''
+
     def register(self):
         firstName = self.ui.firstNameLabel.text()
         lastName = self.ui.lastNameLabel.text()
@@ -26,8 +34,12 @@ class RegisterPage(QMainWindow):
         password = self.ui.passwordLabel.text()
         password2 = self.ui.password2Label.text()
         date = self.ui.dateEdit.text()
-        token = '123-test'
-        validAccount = 'not'
+
+
+        # GENERATE TOKEN
+
+        token = generateToken()
+        validAccount = 'False'
 
         valid_email = False
 
@@ -49,15 +61,26 @@ class RegisterPage(QMainWindow):
                     else:
                         if password == password2:
 
+                            #GENERATE HASHED PASSWORD
+                            self.hashedPassword = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
+
                             # DATABASE CONNECTION
                             connection = ConnectDatabase()
                             if not connection.checkUserExists(email):
 
                                 connection = ConnectDatabase()  # tu powtarzam połączenie ponieważ ono się wcześniej zamyka i trzeba znów otworzyć więc
                                 # to do optymalizacji
-                                connection.insertRegisterData(firstName, lastName, email, password, date, token,
+                                connection.insertRegisterData(firstName, lastName, email, self.hashedPassword.decode("utf-8") , date, token,
                                                               validAccount)
                                 self.ui.errorLabel.setText('Registered.')
+
+                                #SEND VERIFY EMAIL TO USER
+                                sendEmail = MailService()
+                                sendEmail.emailVerification(firstName, lastName, email, token)
+
+                                #USER ENTER OTP
+
+
                             else:
                                 self.ui.errorLabel.setText('User with this email already exists.')
 
