@@ -54,3 +54,7 @@ class ConnectDatabase:
             self.connection.commit()
         else:
             print('Error while inserting data to DB')
+
+    def check_token(self):
+        if self.connection.is_connected():
+            pass

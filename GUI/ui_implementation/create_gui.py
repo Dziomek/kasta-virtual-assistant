@@ -17,7 +17,10 @@ class CreateGui:
         self.main_page.login_page.ui.registerButton.clicked.connect(self.switch_to_registration_page)
         self.main_page.login_page.ui.loginButton.clicked.connect(self.switch_to_kasta_page)
         self.register_page.ui.backButton.clicked.connect(self.switch_back_to_login_page)
+        self.register_page.ui.registerButton.clicked.connect(self.switch_to_otp_page)
         #metoda do zmiany okienka z register na otpPage
+        self.otp_page.ui.loginButton.clicked.connect(self.otp_page.confirm_account)
+        self.otp_page.ui.loginButton.clicked.connect(self.switch_from_otp_to_login)
 
     def switch_to_registration_page(self):
         self.main_page.login_page.close()
@@ -35,5 +38,12 @@ class CreateGui:
         self.main_page.login_page.show()
 
     def switch_to_otp_page(self):
-        self.register_page.close()
-        self.otp_page.show()
+        if self.register_page.successfully_registered:
+            self.register_page.close()
+            self.otp_page.email_in_otp = self.register_page.email
+            self.otp_page.show()
+
+    def switch_from_otp_to_login(self):
+        if self.otp_page.is_confirmed:
+            self.otp_page.close()
+            self.main_page.login_page.show()

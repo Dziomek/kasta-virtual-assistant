@@ -11,7 +11,6 @@ from EmailService.token import generateToken
 import bcrypt
 
 
-
 class RegisterPage(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -26,15 +25,16 @@ class RegisterPage(QMainWindow):
         self.ui.registerButton.clicked.connect(self.register)
 
         self.hashedPassword = ''
+        self.successfully_registered = False
+        self.email = ""
 
     def register(self):
         firstName = self.ui.firstNameLabel.text()
         lastName = self.ui.lastNameLabel.text()
-        email = self.ui.emailLabel.text()
+        self.email = self.ui.emailLabel.text()
         password = self.ui.passwordLabel.text()
         password2 = self.ui.password2Label.text()
         date = self.ui.dateEdit.text()
-
 
         # GENERATE TOKEN
 
@@ -43,13 +43,14 @@ class RegisterPage(QMainWindow):
 
         valid_email = False
 
-        if not (firstName and lastName and email and password and password2 and date):
+
+        if not (firstName and lastName and self.email and password and password2 and date):
             self.ui.errorLabel.setText('Missing fields. Please try again.')
         else:
-            if '@' not in email:
+            if '@' not in self.email:
                 self.ui.errorLabel.setText('Invalid email. Please try again.')
             else:
-                parts = email.split('@', 2)
+                parts = self.email.split('@', 2)
                 if '.' in parts[1] and parts[1].index('.') != 0:
                     valid_email = True
                 else:
@@ -61,25 +62,24 @@ class RegisterPage(QMainWindow):
                     else:
                         if password == password2:
 
-                            #GENERATE HASHED PASSWORD
+                            # GENERATE HASHED PASSWORD
                             self.hashedPassword = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
 
                             # DATABASE CONNECTION
                             connection = ConnectDatabase()
-                            if not connection.checkUserExists(email):
+                            if not connection.checkUserExists(self.email):
 
                                 connection = ConnectDatabase()  # tu powtarzam połączenie ponieważ ono się wcześniej zamyka i trzeba znów otworzyć więc
                                 # to do optymalizacji
-                                connection.insertRegisterData(firstName, lastName, email, self.hashedPassword.decode("utf-8") , date, token,
+                                connection.insertRegisterData(firstName, lastName, self.email,
+                                                              self.hashedPassword.decode("utf-8"), date, token,
                                                               validAccount)
                                 self.ui.errorLabel.setText('Registered.')
+                                self.successfully_registered = True
 
-                                #SEND VERIFY EMAIL TO USER
+                                # SEND VERIFY EMAIL TO USER
                                 sendEmail = MailService()
-                                sendEmail.emailVerification(firstName, lastName, email, token)
-
-                                #USER ENTER OTP
-
+                                sendEmail.emailVerification(firstName, lastName, self.email, token)
 
                             else:
                                 self.ui.errorLabel.setText('User with this email already exists.')
