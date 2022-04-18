@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="images">
-    <file>mailicon.jpg</file>
+    <file>kastalogo.png</file>
+  </qresource>
+  <qresource>
+    <file>res.qrc</file>
   </qresource>
 </RCC>
