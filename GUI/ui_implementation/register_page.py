@@ -8,7 +8,7 @@ from EmailService.emailService import MailService
 
 from EmailService.token import generateToken
 
-import bcrypt
+import hashlib
 
 
 
@@ -64,7 +64,7 @@ class RegisterPage(QMainWindow):
                         if password == password2:
 
                             #GENERATE HASHED PASSWORD
-                            self.hashedPassword = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
+                            self.hashedPassword = hashlib.sha256(password.encode('utf-8')).hexdigest()
 
                             # DATABASE CONNECTION
                             connection = ConnectDatabase()
@@ -72,16 +72,13 @@ class RegisterPage(QMainWindow):
 
                                 connection = ConnectDatabase()  # tu powtarzam połączenie ponieważ ono się wcześniej zamyka i trzeba znów otworzyć więc
                                 # to do optymalizacji
-                                connection.insertRegisterData(firstName, lastName, self.email, self.hashedPassword.decode("utf-8") , date, token,
+                                connection.insertRegisterData(firstName, lastName, self.email, self.hashedPassword , date, token,
                                                               validAccount)
                                 self.ui.errorLabel.setText('Registered.')
                                 self.successfully_registered = True
                                 #SEND VERIFY EMAIL TO USER
                                 sendEmail = MailService()
                                 sendEmail.emailVerification(firstName, lastName, self.email, token)
-
-                                #USER ENTER OTP
-
 
                             else:
                                 self.ui.errorLabel.setText('User with this email already exists.')
