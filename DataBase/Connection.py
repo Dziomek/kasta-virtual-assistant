@@ -54,3 +54,11 @@ class ConnectDatabase:
             self.connection.commit()
         else:
             print('Error while inserting data to DB')
+
+    def updateValidationAccount(self,email):
+        if self.connection.is_connected():
+            sql_select_Query = "UPDATE Users SET validAccount = 'True' WHERE email= '" + email + "'"
+            cursor = self.connection.cursor()
+            cursor.execute(sql_select_Query)
+            self.connection.commit()
+

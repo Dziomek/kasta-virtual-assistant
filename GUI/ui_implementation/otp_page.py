@@ -40,5 +40,5 @@ class OtpPage(QMainWindow):
         if result == self.ui.otpLabel.text():
             self.is_confirmed = True
             print('confirmed')
-            ###sql_select_query = "UPDATE Users SET validAccount='True' WHERE email='" + self.email_in_otp + "'"
-            ###cursor.execute(sql_select_query)
+            connection = ConnectDatabase()
+            connection.updateValidationAccount(self.email_in_otp)
