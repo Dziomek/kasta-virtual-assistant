@@ -113,8 +113,8 @@ paddinf-bottom: 7px;</string>
    <widget class="QPushButton" name="loginButton">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>410</y>
+      <x>350</x>
+      <y>380</y>
       <width>191</width>
       <height>41</height>
      </rect>
@@ -166,6 +166,67 @@ background-color: #ff662b;;
     </property>
     <property name="text">
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Check your email, there is a unique code, enter it below&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="sendAgainButton">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>450</y>
+      <width>291</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;
+color: rgb(212, 192, 169);
+
+QPushButton{
+background-color:  transparent;
+color: rgb(212, 192, 169);
+border-radius: 10px;
+}
+QPushButton:hover{
+background-color: #c40808;
+}
+
+QPushButton:pressed{
+padding-left: 5px;
+padding-right: 5px;
+background-position: calc(100% - 10px)center;
+background-color: #ff662b;;
+}</string>
+    </property>
+    <property name="text">
+     <string>Did you get the code? Click here to send again.</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="infoLabel">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>250</y>
+      <width>301</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: red;</string>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>

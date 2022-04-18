@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'login_pageYixOCo.ui'
+## Form generated from reading UI file 'login_pageuRzFJf.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -14,6 +14,7 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
     QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
     QRadialGradient)
 from PySide2.QtWidgets import *
+
 
 
 class Ui_Form(object):
@@ -67,7 +68,7 @@ class Ui_Form(object):
         self.passwordLabel.setEchoMode(QLineEdit.PasswordEchoOnEdit)
         self.loginButton = QPushButton(self.widget)
         self.loginButton.setObjectName(u"loginButton")
-        self.loginButton.setGeometry(QRect(450, 360, 191, 41))
+        self.loginButton.setGeometry(QRect(450, 380, 191, 41))
         font2 = QFont()
         font2.setFamily(u"Segoe UI")
         font2.setPointSize(13)
@@ -138,6 +139,32 @@ class Ui_Form(object):
 "background-position: calc(100% - 10px)center;\n"
 "background-color: #ff662b;;\n"
 "}")
+        self.forgotPasswordButton = QPushButton(self.widget)
+        self.forgotPasswordButton.setObjectName(u"forgotPasswordButton")
+        self.forgotPasswordButton.setGeometry(QRect(420, 330, 121, 28))
+        font3 = QFont()
+        font3.setFamily(u"Segoe UI")
+        font3.setPointSize(8)
+        self.forgotPasswordButton.setFont(font3)
+        self.forgotPasswordButton.setLayoutDirection(Qt.RightToLeft)
+        self.forgotPasswordButton.setStyleSheet(u"background-color: transparent;\n"
+"color: rgb(212, 192, 169);\n"
+"\n"
+"QPushButton{\n"
+"background-color:  transparent;\n"
+"color: rgb(212, 192, 169);\n"
+"border-radius: 10px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: #c40808;\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"padding-left: 5px;\n"
+"padding-right: 5px;\n"
+"background-position: calc(100% - 10px)center;\n"
+"background-color: #ff662b;;\n"
+"}")
 
         self.retranslateUi(Form)
 
@@ -156,5 +183,6 @@ class Ui_Form(object):
         self.label_4.setText(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-size:9pt;\">You don't have an account ?</span></p></body></html>", None))
         self.errorLabel.setText(QCoreApplication.translate("Form", u"<html><head/><body><p><br/></p></body></html>", None))
         self.verifyButton.setText("")
+        self.forgotPasswordButton.setText(QCoreApplication.translate("Form", u"Forgot password?", None))
     # retranslateUi
 

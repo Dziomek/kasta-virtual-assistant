@@ -3,9 +3,11 @@ from PySide2.QtGui import (QColor)
 from PySide2.QtWidgets import *
 
 from DataBase.Connection import ConnectDatabase
+from EmailService.emailService import MailService
 from GUI.ui_implementation.main_page import MainPage
 from GUI.ui_python_files.ui_otp import Ui_Otp
 from GUI.ui_implementation.login_page import LoginPage
+from EmailService.token import generateToken
 
 
 class OtpPage(QMainWindow):
@@ -17,6 +19,9 @@ class OtpPage(QMainWindow):
         ## REMOVE TITLE BAR
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+
+        # Button on action
+        self.ui.sendAgainButton.clicked.connect(self.sendAgain)
 
         self.email_in_otp = ""
         self.result = ""
@@ -47,3 +52,17 @@ class OtpPage(QMainWindow):
             print('confirmed')
             connection = ConnectDatabase()
             connection.updateValidationAccount(self.email_in_otp)
+
+    def sendAgain(self):
+        self.ui.infoLabel.setText('We have sent the new code again!')
+        token = generateToken()
+        # DATABASE CONNECTION
+        connection = ConnectDatabase()
+        connection.newOtpCode(self.email_in_otp, token)
+
+        # SEND VERIFY EMAIL TO USER
+        sendEmail = MailService()
+        firstName = 'User'
+        lastName = ''
+        sendEmail.emailVerification(firstName, lastName, self.email_in_otp, token)
+

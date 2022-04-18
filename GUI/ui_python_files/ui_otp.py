@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'otpwusRiD.ui'
+## Form generated from reading UI file 'otpGVCIBo.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -58,7 +58,7 @@ class Ui_Otp(object):
         self.otpLabel.setAlignment(Qt.AlignCenter)
         self.loginButton = QPushButton(self.widget)
         self.loginButton.setObjectName(u"loginButton")
-        self.loginButton.setGeometry(QRect(360, 410, 191, 41))
+        self.loginButton.setGeometry(QRect(350, 380, 191, 41))
         font2 = QFont()
         font2.setFamily(u"Segoe UI")
         font2.setPointSize(13)
@@ -84,6 +84,37 @@ class Ui_Otp(object):
         self.label_4.setFont(font)
         self.label_4.setStyleSheet(u"color: rgb(212, 192, 169);")
         self.label_4.setAlignment(Qt.AlignCenter)
+        self.sendAgainButton = QPushButton(self.widget)
+        self.sendAgainButton.setObjectName(u"sendAgainButton")
+        self.sendAgainButton.setGeometry(QRect(310, 450, 291, 28))
+        font3 = QFont()
+        font3.setFamily(u"Segoe UI")
+        font3.setPointSize(8)
+        self.sendAgainButton.setFont(font3)
+        self.sendAgainButton.setLayoutDirection(Qt.RightToLeft)
+        self.sendAgainButton.setStyleSheet(u"background-color: transparent;\n"
+"color: rgb(212, 192, 169);\n"
+"\n"
+"QPushButton{\n"
+"background-color:  transparent;\n"
+"color: rgb(212, 192, 169);\n"
+"border-radius: 10px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: #c40808;\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"padding-left: 5px;\n"
+"padding-right: 5px;\n"
+"background-position: calc(100% - 10px)center;\n"
+"background-color: #ff662b;;\n"
+"}")
+        self.infoLabel = QLabel(self.widget)
+        self.infoLabel.setObjectName(u"infoLabel")
+        self.infoLabel.setGeometry(QRect(300, 250, 301, 20))
+        self.infoLabel.setStyleSheet(u"color: red;")
+        self.infoLabel.setAlignment(Qt.AlignCenter)
 
         self.retranslateUi(Form)
 
@@ -98,5 +129,7 @@ class Ui_Otp(object):
         self.otpLabel.setPlaceholderText(QCoreApplication.translate("Form", u"Unique six-digits code", None))
         self.loginButton.setText(QCoreApplication.translate("Form", u"Go to Log In", None))
         self.label_4.setText(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-size:8pt;\">Check your email, there is a unique code, enter it below</span></p></body></html>", None))
+        self.sendAgainButton.setText(QCoreApplication.translate("Form", u"Did you get the code? Click here to send again.", None))
+        self.infoLabel.setText(QCoreApplication.translate("Form", u"<html><head/><body><p><br/></p></body></html>", None))
     # retranslateUi
 

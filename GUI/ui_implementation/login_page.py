@@ -55,8 +55,6 @@ class LoginPage(QDialog):
                 self.ui.errorLabel.setText("Wrong email or password. Please try again")
 
 
-
-
     '''def showRegisterForm(self):
         pass
     '''

@@ -7,6 +7,7 @@ from DataBase.databaseConfig import HOST
 from DataBase.databaseConfig import DATABASE
 
 
+
 class ConnectDatabase:
     def __init__(self):
         try:
@@ -62,3 +63,9 @@ class ConnectDatabase:
             cursor.execute(sql_select_Query)
             self.connection.commit()
 
+    def newOtpCode(self, email, token):
+        if self.connection.is_connected():
+            sql_select_Query = "UPDATE Users SET token = '" + token +"' WHERE email= '" + email + "'"
+            cursor = self.connection.cursor()
+            cursor.execute(sql_select_Query)
+            self.connection.commit()
