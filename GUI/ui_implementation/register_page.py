@@ -25,12 +25,14 @@ class RegisterPage(QMainWindow):
         # Buttons event
         self.ui.registerButton.clicked.connect(self.register)
 
+        self.email = ''
         self.hashedPassword = ''
+        self.successfully_registered = False
 
     def register(self):
         firstName = self.ui.firstNameLabel.text()
         lastName = self.ui.lastNameLabel.text()
-        email = self.ui.emailLabel.text()
+        self.email = self.ui.emailLabel.text()
         password = self.ui.passwordLabel.text()
         password2 = self.ui.password2Label.text()
         date = self.ui.dateEdit.text()
@@ -43,13 +45,13 @@ class RegisterPage(QMainWindow):
 
         valid_email = False
 
-        if not (firstName and lastName and email and password and password2 and date):
+        if not (firstName and lastName and self.email and password and password2 and date):
             self.ui.errorLabel.setText('Missing fields. Please try again.')
         else:
-            if '@' not in email:
+            if '@' not in self.email:
                 self.ui.errorLabel.setText('Invalid email. Please try again.')
             else:
-                parts = email.split('@', 2)
+                parts = self.email.split('@', 2)
                 if '.' in parts[1] and parts[1].index('.') != 0:
                     valid_email = True
                 else:
@@ -66,17 +68,17 @@ class RegisterPage(QMainWindow):
 
                             # DATABASE CONNECTION
                             connection = ConnectDatabase()
-                            if not connection.checkUserExists(email):
+                            if not connection.checkUserExists(self.email):
 
                                 connection = ConnectDatabase()  # tu powtarzam połączenie ponieważ ono się wcześniej zamyka i trzeba znów otworzyć więc
                                 # to do optymalizacji
-                                connection.insertRegisterData(firstName, lastName, email, self.hashedPassword.decode("utf-8") , date, token,
+                                connection.insertRegisterData(firstName, lastName, self.email, self.hashedPassword.decode("utf-8") , date, token,
                                                               validAccount)
                                 self.ui.errorLabel.setText('Registered.')
-
+                                self.successfully_registered = True
                                 #SEND VERIFY EMAIL TO USER
                                 sendEmail = MailService()
-                                sendEmail.emailVerification(firstName, lastName, email, token)
+                                sendEmail.emailVerification(firstName, lastName, self.email, token)
 
                                 #USER ENTER OTP
 
