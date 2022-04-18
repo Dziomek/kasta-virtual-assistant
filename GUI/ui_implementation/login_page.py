@@ -26,14 +26,17 @@ class LoginPage(QDialog):
 
         ######
         self.logged_in = False
+        self.validAccount = False
+        self.email = ''
 
     def login(self):
+
         # get fields
-        email = self.ui.emailLabel.text()
+        self.email = self.ui.emailLabel.text()
         password = self.ui.passwordLabel.text()
 
         # if że puste pola
-        if not email or not password:
+        if not self.email or not password:
             self.ui.errorLabel.setText('Missing fields. Please try again')
         else:
             # DATABASE CONNECTION
@@ -42,18 +45,16 @@ class LoginPage(QDialog):
             # CHECKED HASH PASSWORD
             hashedPassword = hashlib.sha256(password.encode('utf-8')).hexdigest()
 
-            records = connection.loginAuthentication(email, hashedPassword)
+            records = connection.loginAuthentication(self.email, hashedPassword)
 
-            validAccount =''
             if records:
+                self.logged_in = True
                 for record in records:
-                    validAccount = record[7]
-                if validAccount == 'True':
-                    self.logged_in = True
-                else:
-                    self.ui.verifyButton.setText("You have to verify your account. Clik here!")
+                    self.validAccount = record[7]
             else:
                 self.ui.errorLabel.setText("Wrong email or password. Please try again")
+
+
 
 
     '''def showRegisterForm(self):

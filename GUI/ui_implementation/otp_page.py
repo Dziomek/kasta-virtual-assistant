@@ -28,11 +28,16 @@ class OtpPage(QMainWindow):
         # dodać w loginie, nadrzędny if który sprawdza czy konto jest valid
 
     def confirm_account(self):
+        self.is_confirmed = False
         connection = ConnectDatabase()
         sql_select_query = "select token from Users where email='" + self.email_in_otp + "'"
         cursor = connection.cursor
         cursor.execute(sql_select_query)
-        result = cursor.fetchall()[0][0]
+
+        result = cursor.fetchall()
+        if result:
+            for record in result:
+                result = record[0]
 
         print(result)
         print(self.ui.otpLabel.text())
