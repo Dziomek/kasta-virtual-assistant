@@ -7,8 +7,6 @@ import codecs
 from jinja2 import  Environment, FileSystemLoader
 
 
-
-
 class MailService:
     def __init__(self):
         #with smtplib.SMTP_SSL('smtp.gmail.com', 465) as self.smtp:
@@ -16,9 +14,13 @@ class MailService:
         self.smtpObj = smtplib.SMTP("smtp.gmail.com",587)
         self.smtpObj.ehlo()
         self.smtpObj.starttls()
-        self.smtpObj.login(EMAIL_ADDRESS,EMAIL_PASSWORD)
+        self.smtpObj.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
 
-    def emailVerification(self, firstName, lastName, emailUser, token):
+    def emailVerification(self,
+                          firstName,
+                          lastName,
+                          emailUser,
+                          token):
         msg = EmailMessage()
         msg['Subject'] = 'Kasta VA: Account verification'
         msg['From'] = EMAIL_ADDRESS

@@ -43,14 +43,17 @@ class LoginPage(QDialog):
             connection = ConnectDatabase()
 
             # TO DO: DOSTAĆ SIĘ DO HASHEDPASSWORD ZNAJUDJĄCYM SIĘ W REGISTER_PAGE
-            hashedPassword = ''
+            hashedPassword = '$12$EehkN6hwyCdzLrGjnId5qOOlItxGbzpUQR5H9wQoRqWduPo099TvW'
 
-            records = connection.loginAuthentication(email, hashedPassword)
-
+            records = connection.loginAuthentication(email, password)
+            validAccount =''
             if records:
-                self.logged_in = True
                 for record in records:
-                    print(record)
+                    validAccount = record[7]
+                if validAccount == 'True':
+                    self.logged_in = True
+                else:
+                    self.ui.verifyButton.setText("You have to verify your account. Clik here!")
             else:
                 self.ui.errorLabel.setText("Wrong email or password. Please try again")
 
