@@ -1,36 +1,88 @@
+<!-- inspired by https://webdesign.tutsplus.com/articles/build-an-html-email-template-from-scratch--webdesign-12770 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="x-apple-disable-message-reformatting">
+  <title></title>
+  <!--[if mso]>
+  <noscript>
+    <xml>
+      <o:OfficeDocumentSettings>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+  </noscript>
+  <![endif]-->
+  <style>
+    table, td, div, h1, p {font-family: Arial, sans-serif;color:rgb(212, 192, 169);}
 
-    <style>
-        p{
-            font-family: Courier New, courier;
-            color: black;
-            text-align: center;
-        }
-
-        h1,h3{
-            font-family: Courier New, courier;
-            text-align: center;
-            color: black;
-        }
-    </style>
-
+  </style>
 </head>
-<body>
-    <h1>Verify your new Kasta VA account </h1>
-    <p>Hey, {{ username }} !</p>
-    <p><span>To verify your email address ( {{ email }} ), please use following One Time Password:</span></p>
-    <h3>{{ token }}</h3>
-    <p>
-        Do not share this OTP with anyone.
-        Kasta VA takes your account security very seriously.
+<body style="margin:0;padding:0;">
+  <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;background:#2b3038;">
+    <tr>
+      <td align="center" style="padding:0;">
+        <table role="presentation" style="width:602px;border-collapse:collapse;border:1px solid #ff662b;border-spacing:0;text-align:left;">
+          <tr>
+            <td align="center" style="padding:40px 0 30px 0;background:#20242a;">
+              <img src="https://toppng.com/uploads/preview/eagle-symbol-png-eagle-head-logo-11562917856khsmpqwfym.png" alt="" width="300" style="height:auto;display:block;" />
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:36px 30px 42px 30px;">
+              <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;">
+                <tr>
+                  <td style="padding:0 0 36px 0;color:rgb(212, 192, 169);">
+                    <h1 style="font-size:24px;margin:0 0 20px 0;font-family:Arial,sans-serif;">Verify your new Kasta VA account</h1>
+                    <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">Hey, {{ username }}</p>
+                    <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">To verify your email address ( {{ email }} ), please use following One Time Password:</p>
+                </tr>
+                <tr>
+                  </td>
+                  <td style="padding:0 0 10px 0;color:#ff662b;text-align:left;" >
+                    <p align='center' style="margin:0;font-size:60px;line-height:24px;font-family:Arial,sans-serif, color:#ff662b; text-decoration:underline;" >{{ token }}</p>
+                  </td>
+                </tr>
+                <br>
+                <tr>
+                  <td style="padding:0 0 36px 0;color:rgb(212, 192, 169);">
+                    <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;padding:36px 30px 42px 30px;">Do not share this OTP with anyone. Kasta VA takes your account security very seriously. Thank you!</p>
+                </tr>
 
-        Thank you!
-    </p>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:30px;background:#20242a;">
+              <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;font-size:9px;font-family:Arial,sans-serif;">
+                <tr>
+                  <td style="padding:0;width:50%;" align="left">
+                    <p style="margin:0;font-size:14px;line-height:16px;font-family:Arial,sans-serif;color:#ff662b;">
+                      &reg; Kasta VA account 2022
+                    </p>
+                  </td>
+                  <td style="padding:0;width:50%;" align="right">
+                    <table role="presentation" style="border-collapse:collapse;border:0;border-spacing:0;">
+                      <tr>
+                        <td style="padding:0 0 0 10px;width:38px;">
+                          <a href="http://www.twitter.com/" style="color:#ff662b;"><img src="https://assets.codepen.io/210284/tw_1.png" alt="Twitter" width="38" style="height:auto;display:block;border:0;" /></a>
+                        </td>
+                        <td style="padding:0 0 0 10px;width:38px;">
+                          <a href="http://www.facebook.com/" style="color:#ff662bf;"><img src="https://assets.codepen.io/210284/fb_1.png" alt="Facebook" width="38" style="height:auto;display:block;border:0;" /></a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
 
-
-
+    </tr>
+  </table>
 </body>
 </html>
