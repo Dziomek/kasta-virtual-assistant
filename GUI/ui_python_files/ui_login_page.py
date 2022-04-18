@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'login_pageuRzFJf.ui'
+## Form generated from reading UI file 'login_pagehhnJom.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -21,7 +21,7 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(846, 667)
+        Form.resize(882, 667)
         self.widget = QWidget(Form)
         self.widget.setObjectName(u"widget")
         self.widget.setGeometry(QRect(30, 30, 871, 611))
@@ -165,6 +165,27 @@ class Ui_Form(object):
 "background-position: calc(100% - 10px)center;\n"
 "background-color: #ff662b;;\n"
 "}")
+        self.label_5 = QLabel(self.widget)
+        self.label_5.setObjectName(u"label_5")
+        self.label_5.setEnabled(True)
+        self.label_5.setGeometry(QRect(50, 310, 301, 71))
+        self.label_5.setFont(font)
+        self.label_5.setStyleSheet(u"color: #272c34;")
+        self.label_5.setAlignment(Qt.AlignCenter)
+        self.label_6 = QLabel(self.widget)
+        self.label_6.setObjectName(u"label_6")
+        self.label_6.setEnabled(True)
+        self.label_6.setGeometry(QRect(50, 380, 301, 41))
+        font4 = QFont()
+        font4.setFamily(u"Segoe UI")
+        font4.setPointSize(21)
+        self.label_6.setFont(font4)
+        self.label_6.setStyleSheet(u"color: #272c34;")
+        self.label_6.setAlignment(Qt.AlignCenter)
+        self.label_7 = QLabel(self.widget)
+        self.label_7.setObjectName(u"label_7")
+        self.label_7.setGeometry(QRect(120, 110, 141, 181))
+        self.label_7.setStyleSheet(u"background-image: url(:/images/kastalogo.png);")
 
         self.retranslateUi(Form)
 
@@ -184,5 +205,8 @@ class Ui_Form(object):
         self.errorLabel.setText(QCoreApplication.translate("Form", u"<html><head/><body><p><br/></p></body></html>", None))
         self.verifyButton.setText("")
         self.forgotPasswordButton.setText(QCoreApplication.translate("Form", u"Forgot password?", None))
+        self.label_5.setText(QCoreApplication.translate("Form", u"<strong>KASTA </strong>VA", None))
+        self.label_6.setText(QCoreApplication.translate("Form", u"<html><head/><body><p>Virtual Assistant</p></body></html>", None))
+        self.label_7.setText("")
     # retranslateUi
 
