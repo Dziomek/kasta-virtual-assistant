@@ -7,6 +7,7 @@ from kasta.current_time import SystemInfo
 class Kasta:
     def __init__(self):
         self.engine = pyttsx3.init()
+        #self.engine.connect('finished-utterance', self.stop_listening)
         self.voices = self.engine.getProperty('voices')
         self.engine.setProperty('voice', self.voices[1].id)
         self.model = Model("model")
@@ -18,6 +19,13 @@ class Kasta:
     def speak(self, text):
         self.engine.say(text)
         self.engine.runAndWait()
+        '''else:
+            self.engine.endLoop()
+            self.engine.stop()
+            self.engine = pyttsx3.init()
+            self.engine.say(text)
+            self.engine.runAndWait()
+        '''
 
     def listen(self):
         print('listening...')
@@ -38,7 +46,12 @@ class Kasta:
                     self.speak(self.text)
                     print(self.text)
 
-        ##print(self.rec.FinalResult())
+    ##print(self.rec.FinalResult())
+
+    def onWord(self, name, location, length):
+        print ('word', name, location, length)
+        if location > 10:
+            self.engine.stop()
 
     def stop_listening(self):
         self.stream.stop_stream()
