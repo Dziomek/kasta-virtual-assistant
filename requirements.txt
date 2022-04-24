@@ -13,3 +13,4 @@ mysql~=0.0.3
 mysql-connector-python~=8.0.28
 Jinja2~=3.1.1
 bcrypt~=3.2.0
+wikipedia~=1.4.0

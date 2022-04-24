@@ -1,0 +1,14 @@
+{
+  "commands": [{
+    "name": "wikipedia",
+    "action": "wiki_search"
+  },
+    {
+      "name": "weather",
+      "action": "tell_weather"
+    },
+    {
+      "name": "time",
+      "action": "get_time"
+    }]
+}
