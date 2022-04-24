@@ -1,3 +1,6 @@
 {
-  "TODO": "TODO"
+  "commands":{
+    "name": ["thanks","thank you"],
+    "action": "say_thank_you"
+  }
 }

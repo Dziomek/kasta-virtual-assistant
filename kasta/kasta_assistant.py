@@ -33,11 +33,10 @@ class Kasta:
         self.json_list.append(load_json('kasta/greetings/greetings_data.json'))
         self.json_list.append(load_json('kasta/general_response/general_response_data.json'))
         self.json_list.append(load_json('kasta/date/date_data.json'))
-        self.json_list.append(load_json('kasta/date/date_data.json'))
         self.json_list.append(load_json('kasta/openApp/openApp_data.json'))
         self.json_list.append(load_json('kasta/jokes/jokes_data.json'))
         self.json_list.append(load_json('kasta/news/news_data.json'))
-        #self.json_list.append(load_json('kasta/acknowledgement/acknowledgement_data.json'))
+        self.json_list.append(load_json('kasta/acknowledgement/acknowledgement_data.json'))
 
 
     def decision_making_process(self, i):
@@ -80,6 +79,7 @@ class Kasta:
                 playsound('kasta/sound2.wav')
                 tell_news = kasta.news.news.tell_news()
                 print(tell_news), self.speak(tell_news)
+
 
     def speak(self, text):
         self.engine.say(text)
