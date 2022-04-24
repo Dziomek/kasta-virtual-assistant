@@ -1,14 +1,95 @@
 {
   "commands": [{
+
     "name": "wikipedia",
     "action": "wiki_search"
   },
     {
-      "name": "weather",
-      "action": "tell_weather"
+      "name": "who is",
+      "action": "wiki_search"
     },
     {
-      "name": "time",
-      "action": "get_time"
+      "name": "tell me about",
+      "action": "wiki_search"
+    },
+    {
+      "name": "hi",
+      "action": "say_hello"
+    },
+    {
+      "name": "assistant",
+      "action": "say_hello"
+    },
+    {
+      "name": "hello my friend",
+      "action": "say_hello"
+    },
+    {
+      "name": "what month",
+      "action": "say_time"
+    },
+    {
+      "name": "clock time",
+      "action": "say_time"
+    },
+    {
+      "name": "weekday",
+      "action": "say_time"
+    },
+    {
+      "name": "day of the year",
+      "action": "say_time"
+    },
+    {
+      "name": "what time is it",
+      "action": "say_time"
+    },
+    {
+      "name": "time please",
+      "action": "say_time"
+    },
+    {
+      "name": "tell me the time",
+      "action": "say_time"
+    },
+    {
+      "name": "calendar",
+      "action": "say_time"
+    },
+    {
+      "name": "thank you",
+      "action": "say_thank_you"
+    },
+    {
+      "name": "thanks",
+      "action": "say_thank_you"
+    },
+    {
+      "name": "who are you",
+      "action": "general_response"
+    },
+    {
+      "name": "your name",
+      "action": "general_response"
+    },
+    {
+      "name": "who i am",
+      "action": "general_response"
+    },
+    {
+      "name": "are you a robot",
+      "action": "general_response"
+    },
+    {
+      "name": "how are you",
+      "action": "general_response"
+    },
+    {
+      "name": "i am fine",
+      "action": "general_response"
+    },
+    {
+      "name": "i am good",
+      "action": "general_response"
     }]
 }

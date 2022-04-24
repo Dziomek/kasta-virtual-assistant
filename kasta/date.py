@@ -33,4 +33,21 @@ def weekDay():
 def dayOfTheYear():
     return f'The day of the year is {now.strftime("%j")}'
 
+class Date:
 
+    @staticmethod
+    def say_time(text):
+        if 'clock time' in text:
+            return clockTime()
+        elif 'what time is it' in text:
+            return clockTime()
+        elif 'tell me the time' in text:
+            return clockTime()
+        elif 'what month' in text:
+            return whatMonth()
+        elif 'weekday' in text:
+            return weekDay()
+        elif 'day of the year' in text:
+            return dayOfTheYear()
+        elif 'calendar' in text:
+            return fullDate()
