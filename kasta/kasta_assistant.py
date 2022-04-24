@@ -1,7 +1,10 @@
+import wikipedia
 from vosk import Model, KaldiRecognizer
 import pyaudio
 import pyttsx3
 from kasta.current_time import SystemInfo
+from .wikipedia_search import WikiSearch
+import json
 
 
 class Kasta:
@@ -15,6 +18,22 @@ class Kasta:
         self.p = pyaudio.PyAudio()
         self.stream = self.p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=8000)
         self.text = ""
+        self.data = None
+        self.load_json()
+
+    def load_json(self):
+        with open('kasta/data.json') as f:
+            self.data = json.load(f)
+            for command in self.data['commands']:
+                print(command)
+
+    def decision_making_process(self, i):
+        print(self.data['commands'][i]['action'])
+        match self.data['commands'][i]['action']:
+            case "wiki_search":
+                person = WikiSearch.wiki_person(self.text)
+                wiki = wikipedia.summary(person, sentences=2)
+                print(wiki), self.speak(wiki)
 
     def speak(self, text):
         self.engine.say(text)
@@ -37,21 +56,24 @@ class Kasta:
             if self.rec.AcceptWaveform(data):
                 self.text = self.rec.Result()[12:-1]  # od 12 po to, żeby wypisać samą komendę (bez 'text' itp)
                 self.text = self.text.replace('"', '')
-                if "time today" in self.text:
-                    print(self.text)
-                    self.speak(SystemInfo.get_time())
-                elif "today" in self.text:
-                    self.speak("Thanks, I'm fine.")
-                else:
-                    self.speak(self.text)
-                    print(self.text)
+
+                for i in range(len(self.data['commands'])):
+                    print(f'wywolanie {i}, current text: {self.text}')
+                    if self.data['commands'][i]['name'] in self.text:
+                        try:
+                            self.decision_making_process(i)
+                            break
+                        except Exception:
+                            self.speak('Something went wrong. Please try again')
+
 
     ##print(self.rec.FinalResult())
 
-    def onWord(self, name, location, length):
+    '''def onWord(self, name, location, length):
         print ('word', name, location, length)
         if location > 10:
             self.engine.stop()
+    '''
 
     def stop_listening(self):
         self.stream.stop_stream()
