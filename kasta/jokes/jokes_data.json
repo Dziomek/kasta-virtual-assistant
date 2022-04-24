@@ -1,0 +1,6 @@
+{
+  "commands":{
+    "name": ["tell me a joke","joke please","make me laugh","i am sad", "i'm sad"],
+    "action": "tell_jokes"
+  }
+}

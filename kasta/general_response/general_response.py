@@ -1,7 +1,7 @@
 import random
 
 response = [
-    'Hello, I am your assistant. I am here to make your life easier. You can command me to perform various tasks.'
+    'Hello, I am your assistant. I am here to make your life easier. You can command me to perform various tasks. '
     'If you do not know what i can do just say - help me assistant.']
 
 response_robot = [
@@ -27,3 +27,7 @@ class GeneralResponse:
             return 'It is good to know that you are fine.'
         if 'i am good' in text:
             return 'It is good to know that you are doing well.'
+        if "i'm good" in text:
+            return 'It is good to know that you are doing well.'
+        if "i'm fine" in text:
+            return 'It is good to know that you are fine.'

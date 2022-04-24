@@ -1,0 +1,6 @@
+client_id=a695640508154c118d601cd3221fe70c
+client_secret=c836c79df2e04d54aada1caf368e6dcc
+device_name=DESKTOP-T35AE2C
+redirect_uri=https://example.com/callback/
+username=11133499002
+scope=user-read-private user-read-playback-state user-modify-playback-state

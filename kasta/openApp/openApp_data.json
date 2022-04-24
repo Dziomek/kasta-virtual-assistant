@@ -1,0 +1,6 @@
+{
+  "commands":{
+    "name": ["open chrome","open google chrome","open word","open spotify", "open youtube"],
+    "action": "open_app"
+  }
+}

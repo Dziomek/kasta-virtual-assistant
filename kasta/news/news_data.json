@@ -1,0 +1,6 @@
+{
+  "commands":{
+    "name": ["tell me a news","latest news","what happened in the word", "news"],
+    "action": "tell_news"
+  }
+}

@@ -9,7 +9,11 @@ import kasta.greetings.greetings
 import kasta.date.date
 import kasta.acknowledgement.acknowledgment
 import kasta.general_response.general_response
-
+import kasta.openApp.open_applications
+import kasta.jokes.jokes_app
+import kasta.news.news
+import time
+from playsound import playsound
 
 class Kasta:
     def __init__(self):
@@ -30,6 +34,9 @@ class Kasta:
         self.json_list.append(load_json('kasta/general_response/general_response_data.json'))
         self.json_list.append(load_json('kasta/date/date_data.json'))
         self.json_list.append(load_json('kasta/date/date_data.json'))
+        self.json_list.append(load_json('kasta/openApp/openApp_data.json'))
+        self.json_list.append(load_json('kasta/jokes/jokes_data.json'))
+        self.json_list.append(load_json('kasta/news/news_data.json'))
         #self.json_list.append(load_json('kasta/acknowledgement/acknowledgement_data.json'))
 
 
@@ -37,6 +44,7 @@ class Kasta:
         print(self.json_list[i]['commands']['action'])
         match self.json_list[i]['commands']['action']:
             case "wiki_search":
+                playsound('kasta/sound2.wav')
                 try:
                     person = WikiSearch.wiki_person(self.text)
                     wiki = wikipedia.summary(person, sentences=2)
@@ -44,18 +52,34 @@ class Kasta:
                 except Exception:
                     print('Unfortunately I did not find this page. Please try again')
             case "say_hello":
+                playsound('kasta/sound2.wav')
                 say_hello_response = kasta.greetings.greetings.sayHello()
                 print(say_hello_response), self.speak(say_hello_response)
             case "say_time":
+                playsound('kasta/sound2.wav')
                 say_time_response = kasta.date.date.Date.say_time(self.text)
                 print(say_time_response), self.speak(say_time_response)
             case "say_thank_you":
+                playsound('kasta/sound2.wav')
                 say_acknowledgment = kasta.acknowledgement.acknowledgment.thank_you()
                 print(say_acknowledgment), self.speak(say_acknowledgment)
             case "general_response":
+                playsound('kasta/sound2.wav')
                 say_general_response = kasta.general_response.general_response.GeneralResponse.general_response(
                     self.text)
                 print(say_general_response), self.speak(say_general_response)
+            case "open_app":
+                playsound('kasta/sound2.wav')
+                say_open_app = kasta.openApp.open_applications.OpenApp.OpenAplication(self.text)
+                print(say_open_app), self.speak(say_open_app)
+            case "tell_jokes":
+                playsound('kasta/sound2.wav')
+                tell_jokes= kasta.jokes.jokes_app.tell_joke()
+                print(tell_jokes), self.speak(tell_jokes)
+            case "tell_news":
+                playsound('kasta/sound2.wav')
+                tell_news = kasta.news.news.tell_news()
+                print(tell_news), self.speak(tell_news)
 
     def speak(self, text):
         self.engine.say(text)
@@ -78,11 +102,17 @@ class Kasta:
             if self.rec.AcceptWaveform(data):
                 self.text = self.rec.Result()[12:-1]  # od 12 po to, żeby wypisać samą komendę (bez 'text' itp)
                 self.text = self.text.replace('"', '')
+                try:
+                    for i in range(len(self.json_list)):
+                        for j in range(len(self.json_list[i]['commands']['name'])):
+                            if self.json_list[i]['commands']['name'][j] in self.text:
+                                self.decision_making_process(i)
+                                print(self.text)
+                                break
 
-                for i in range(len(self.json_list)):
-                    for j in range(len(self.json_list[i]['commands']['name'])):
-                        if self.json_list[i]['commands']['name'][j] in self.text:
-                            self.decision_making_process(i)
+                except KeyError:
+                    print('JSON file error')
+
 
 
 
