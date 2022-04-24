@@ -23,20 +23,20 @@ class Kasta:
         print('listening...')
         self.stream.start_stream()
         while True:
-            data = self.stream.read(4000, exception_on_overflow=False)
-            if len(data) == 0:
-                break
-            if self.rec.AcceptWaveform(data):
-                self.text = self.rec.Result()[12:-1]  # od 12 po to, żeby wypisać samą komendę (bez 'text' itp)
-                self.text = self.text.replace('"', '')
-                if "time today" in self.text:
-                    print(self.text)
-                    self.speak(SystemInfo.get_time())
-                elif "today" in self.text:
-                    self.speak("Thanks, I'm fine.")
-                else:
-                    self.speak(self.text)
-                    print(self.text)
+                data = self.stream.read(4000, exception_on_overflow=False)
+                if len(data) == 0:
+                    break
+                if self.rec.AcceptWaveform(data):
+                    self.text = self.rec.Result()[12:-1]  # od 12 po to, żeby wypisać samą komendę (bez 'text' itp)
+                    self.text = self.text.replace('"', '')
+                    if "time today" in self.text:
+                        print(self.text)
+                        self.speak(SystemInfo.get_time())
+                    elif "today" in self.text:
+                        self.speak("Thanks, I'm fine.")
+                    else:
+                        self.speak(self.text)
+                        print(self.text)
 
         ##print(self.rec.FinalResult())
 
