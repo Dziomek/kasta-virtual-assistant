@@ -2,17 +2,19 @@ import wikipedia
 from vosk import Model, KaldiRecognizer
 import pyaudio
 import pyttsx3
-from .wikipedia_search import WikiSearch
+from kasta.wiki.wikipedia_search import WikiSearch
 import json
-import kasta.greetings
-import kasta.date
-import kasta.acknowledgment
-import kasta.general_response
+from .json_loader import load_json
+import kasta.greetings.greetings
+import kasta.date.date
+import kasta.acknowledgement.acknowledgment
+import kasta.general_response.general_response
+
 
 class Kasta:
     def __init__(self):
         self.engine = pyttsx3.init()
-        #self.engine.connect('finished-utterance', self.stop_listening)
+        # self.engine.connect('finished-utterance', self.stop_listening)
         self.voices = self.engine.getProperty('voices')
         self.engine.setProperty('voice', self.voices[1].id)
         self.model = Model("model")
@@ -21,39 +23,39 @@ class Kasta:
         self.stream = self.p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=8000)
         self.text = ""
         self.data = None
-        self.load_json()
+        #########
+        self.json_list = []
+        self.json_list.append(load_json('kasta/wiki/wikipedia_data.json'))
+        self.json_list.append(load_json('kasta/greetings/greetings_data.json'))
+        self.json_list.append(load_json('kasta/general_response/general_response_data.json'))
+        self.json_list.append(load_json('kasta/date/date_data.json'))
+        self.json_list.append(load_json('kasta/date/date_data.json'))
+        #self.json_list.append(load_json('kasta/acknowledgement/acknowledgement_data.json'))
 
-    def load_json(self):
-        with open('kasta/data.json') as f:
-            self.data = json.load(f)
-            for command in self.data['commands']:
-                print(command)
 
     def decision_making_process(self, i):
-        print(self.data['commands'][i]['action'])
-        match self.data['commands'][i]['action']:
+        print(self.json_list[i]['commands']['action'])
+        match self.json_list[i]['commands']['action']:
             case "wiki_search":
                 try:
                     person = WikiSearch.wiki_person(self.text)
                     wiki = wikipedia.summary(person, sentences=2)
                     print(wiki), self.speak(wiki)
-                except KeyboardInterrupt:
-                    print('dziwne')
+                except Exception:
+                    print('Unfortunately I did not find this page. Please try again')
             case "say_hello":
-                say_hello_response = kasta.greetings.sayHello()
+                say_hello_response = kasta.greetings.greetings.sayHello()
                 print(say_hello_response), self.speak(say_hello_response)
             case "say_time":
-                say_time_response = kasta.date.Date.say_time(self.text)
+                say_time_response = kasta.date.date.Date.say_time(self.text)
                 print(say_time_response), self.speak(say_time_response)
             case "say_thank_you":
-                say_acknowledgment = kasta.acknowledgment.thank_you()
+                say_acknowledgment = kasta.acknowledgement.acknowledgment.thank_you()
                 print(say_acknowledgment), self.speak(say_acknowledgment)
             case "general_response":
-                say_general_response = kasta.general_response.GeneralResponse.general_response(self.text)
+                say_general_response = kasta.general_response.general_response.GeneralResponse.general_response(
+                    self.text)
                 print(say_general_response), self.speak(say_general_response)
-
-
-
 
     def speak(self, text):
         self.engine.say(text)
@@ -77,14 +79,12 @@ class Kasta:
                 self.text = self.rec.Result()[12:-1]  # od 12 po to, żeby wypisać samą komendę (bez 'text' itp)
                 self.text = self.text.replace('"', '')
 
-                for i in range(len(self.data['commands'])):
-                    print(f'wywolanie {i}, current text: {self.text}')
-                    if self.data['commands'][i]['name'] in self.text  :
-                        try:
+                for i in range(len(self.json_list)):
+                    for j in range(len(self.json_list[i]['commands']['name'])):
+                        if self.json_list[i]['commands']['name'][j] in self.text:
                             self.decision_making_process(i)
-                            break
-                        except Exception:
-                            self.speak('Something went wrong. Please try again')
+
+
 
 
 

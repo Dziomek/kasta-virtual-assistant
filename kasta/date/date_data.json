@@ -1,0 +1,7 @@
+{
+  "commands":{
+    "name": ["what month", "clock time", "weekday", "day of the year", "what time is it",
+    "time please", "tell me the time", "calendar"],
+    "action": "say_time"
+  }
+}

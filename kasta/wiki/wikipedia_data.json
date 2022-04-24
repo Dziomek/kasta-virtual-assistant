@@ -1,0 +1,7 @@
+{
+  "commands":
+    {
+      "name": ["wikipedia", "who is", "tell me about"],
+      "action": "wiki_search"
+    }
+}

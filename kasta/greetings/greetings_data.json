@@ -1,0 +1,6 @@
+{
+  "commands":{
+    "name": ["thank you", "thanks"],
+    "action": "say_thank_you"
+  }
+}
