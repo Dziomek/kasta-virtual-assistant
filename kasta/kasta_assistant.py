@@ -16,6 +16,7 @@ from kasta.openApp.open_applications import OpenApp
 import kasta.jokes.jokes_app
 import kasta.news.news
 import kasta.wolfram.wolframAlpha
+import kasta.weather.weatherApp
 from .youtube.youtube_playing import YoutubeService
 from datetime import datetime
 from playsound import playsound
@@ -47,6 +48,7 @@ class Kasta:
         self.json_list.append(load_json('kasta/greetings/greetings_data.json'))
         self.json_list.append(load_json('kasta/general_response/general_response_data.json'))
         self.json_list.append(load_json('kasta/acknowledgement/acknowledgement_data.json'))
+        self.json_list.append(load_json('kasta/weather/weather_data.json'))
 
     def decision_making_process(self, i, key_word):
         print(f'Keyword: {key_word}')
@@ -99,6 +101,10 @@ class Kasta:
                 playsound('kasta/sound2.wav')
                 calculate = kasta.wolfram.wolframAlpha.Calculate.makeCalculations(self.text)
                 print(calculate), self.speak(calculate)
+            case "weather":
+                playsound('kasta/sound2.wav')
+                weather = kasta.weather.weatherApp.Weather.get_weather(self.text)
+                print(weather), self.speak(weather)
 
     def speak(self, text):
         self.engine.say(text)
