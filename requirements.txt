@@ -20,3 +20,4 @@ pyjokes~=0.6.0
 playsound~=1.2.2
 pandas~=1.4.2
 pywhatkit~=5.3
+wolframalpha~=5.0.0

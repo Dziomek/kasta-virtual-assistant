@@ -19,13 +19,12 @@ import kasta.wolfram.wolframAlpha
 from .youtube.youtube_playing import play_on_yt
 from datetime import datetime
 from playsound import playsound
-import speech_recognition as sr
 
-USERNAME= 'Pawel'  #tymczasowo
+USERNAME = 'Pawel'  # tymczasowo
+
 
 class Kasta:
     def __init__(self):
-        self.listener = sr.Recognizer() ### to make app faster
         self.engine = pyttsx3.init()
         # self.engine.connect('finished-utterance', self.stop_listening)
         self.voices = self.engine.getProperty('voices')
@@ -39,15 +38,15 @@ class Kasta:
         #########
         self.json_list = []
         self.json_list.append(load_json('kasta/wiki/wikipedia_data.json'))
-        self.json_list.append(load_json('kasta/greetings/greetings_data.json'))
-        self.json_list.append(load_json('kasta/general_response/general_response_data.json'))
         self.json_list.append(load_json('kasta/date/date_data.json'))
         self.json_list.append(load_json('kasta/openApp/openApp_data.json'))
         self.json_list.append(load_json('kasta/jokes/jokes_data.json'))
         self.json_list.append(load_json('kasta/news/news_data.json'))
-        self.json_list.append(load_json('kasta/acknowledgement/acknowledgement_data.json'))
         self.json_list.append(load_json('kasta/youtube/youtube_data.json'))
         self.json_list.append(load_json('kasta/wolfram/wolfram_data.json'))
+        self.json_list.append(load_json('kasta/greetings/greetings_data.json'))
+        self.json_list.append(load_json('kasta/general_response/general_response_data.json'))
+        self.json_list.append(load_json('kasta/acknowledgement/acknowledgement_data.json'))
 
     def decision_making_process(self, i, key_word):
         print(f'Keyword: {key_word}')
@@ -114,7 +113,7 @@ class Kasta:
         """Greets the user according to the time"""
         playsound('kasta/sound3.wav')
         hour = datetime.now().hour
-        if (hour >=6) and (hour<12):
+        if (hour >= 6) and (hour < 12):
             self.speak(f"Good morning {USERNAME}")
         elif (hour >= 12) and (hour < 16):
             self.speak(f"Good afternoon {USERNAME}")
@@ -123,9 +122,10 @@ class Kasta:
         self.speak("I am Kasta. How may I assist you?")
 
     def listen(self):
-        self.greet_user()
+        #self.greet_user()
         print('listening...')
         self.stream.start_stream()
+        is_done = False
         while True:
             data = self.stream.read(4000, exception_on_overflow=False)
             if len(data) == 0:
@@ -139,15 +139,15 @@ class Kasta:
                             if self.json_list[i]['commands']['name'][j] in self.text:
                                 self.decision_making_process(i, self.json_list[i]['commands']['name'][j])
                                 print(self.text)
+                                print(f'wywolanie {i}')
+                                print(f"key word: {self.json_list[i]['commands']['name'][j]}")
+                                is_done = True
                                 break
-
+                        if is_done:
+                            is_done = False
+                            break
                 except KeyError:
                     print('JSON file error')
-
-
-
-
-
 
     ##print(self.rec.FinalResult())
 
