@@ -16,7 +16,7 @@ from kasta.openApp.open_applications import OpenApp
 import kasta.jokes.jokes_app
 import kasta.news.news
 import kasta.wolfram.wolframAlpha
-import kasta.weather.weatherApp
+from .weather.weatherApp import Weather
 import kasta.headsortails.tossCoin
 from .youtube.youtube_playing import YoutubeService
 from datetime import datetime
@@ -104,8 +104,13 @@ class Kasta:
                 calculate = kasta.wolfram.wolframAlpha.Calculate.makeCalculations(self.text)
                 print(calculate), self.speak(calculate)
             case "weather":
+                print(self.text)
+                city = self.text.split(' ')[1]
+                city = city.replace(city[-1], '') ## usuniecie znaku /n na koncu miasta
+
+                print(city)
                 playsound('kasta/sound2.wav')
-                weather = kasta.weather.weatherApp.Weather.get_weather(self.text)
+                weather = Weather.get_weather(key_word, city)
                 print(weather), self.speak(weather)
             case "flip_coin":
                 playsound('kasta/sound2.wav')
@@ -146,7 +151,7 @@ class Kasta:
             if len(data) == 0:
                 break
             if self.rec.AcceptWaveform(data):
-                self.text = self.rec.Result()[12:-1]  # od 12 po to, żeby wypisać samą komendę (bez 'text' itp)
+                self.text = self.rec.Result()[13:-1]  # od 12 po to, żeby wypisać samą komendę (bez 'text' itp)
                 self.text = self.text.replace('"', '')
                 try:
                     for i in range(len(self.json_list)):
