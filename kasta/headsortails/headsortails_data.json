@@ -1,0 +1,6 @@
+{
+  "commands":{
+    "name": ["flip a coin", "head or tails","flip coin"],
+    "action": "flip_coin"
+  }
+}

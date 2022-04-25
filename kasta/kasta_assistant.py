@@ -17,6 +17,7 @@ import kasta.jokes.jokes_app
 import kasta.news.news
 import kasta.wolfram.wolframAlpha
 import kasta.weather.weatherApp
+import kasta.headsortails.tossCoin
 from .youtube.youtube_playing import YoutubeService
 from datetime import datetime
 from playsound import playsound
@@ -49,6 +50,7 @@ class Kasta:
         self.json_list.append(load_json('kasta/general_response/general_response_data.json'))
         self.json_list.append(load_json('kasta/acknowledgement/acknowledgement_data.json'))
         self.json_list.append(load_json('kasta/weather/weather_data.json'))
+        self.json_list.append(load_json('kasta/headsortails/headsortails_data.json'))
 
     def decision_making_process(self, i, key_word):
         print(f'Keyword: {key_word}')
@@ -105,6 +107,11 @@ class Kasta:
                 playsound('kasta/sound2.wav')
                 weather = kasta.weather.weatherApp.Weather.get_weather(self.text)
                 print(weather), self.speak(weather)
+            case "flip_coin":
+                playsound('kasta/sound2.wav')
+                coin = kasta.headsortails.tossCoin.tossCoin()
+                print(coin), self.speak(coin)
+
 
     def speak(self, text):
         self.engine.say(text)
