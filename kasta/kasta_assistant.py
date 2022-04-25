@@ -12,11 +12,11 @@ import kasta.greetings.greetings
 import kasta.date.date
 import kasta.acknowledgement.acknowledgment
 import kasta.general_response.general_response
-import kasta.openApp.open_applications
+from kasta.openApp.open_applications import OpenApp
 import kasta.jokes.jokes_app
 import kasta.news.news
 import kasta.wolfram.wolframAlpha
-from .youtube.youtube_playing import play_on_yt
+from .youtube.youtube_playing import YoutubeService
 from datetime import datetime
 from playsound import playsound
 
@@ -37,9 +37,9 @@ class Kasta:
         self.data = None
         #########
         self.json_list = []
-        self.json_list.append(load_json('kasta/wiki/wikipedia_data.json'))
         self.json_list.append(load_json('kasta/date/date_data.json'))
         self.json_list.append(load_json('kasta/openApp/openApp_data.json'))
+        self.json_list.append(load_json('kasta/wiki/wikipedia_data.json'))
         self.json_list.append(load_json('kasta/jokes/jokes_data.json'))
         self.json_list.append(load_json('kasta/news/news_data.json'))
         self.json_list.append(load_json('kasta/youtube/youtube_data.json'))
@@ -79,7 +79,9 @@ class Kasta:
                 print(say_general_response), self.speak(say_general_response)
             case "open_app":
                 playsound('kasta/sound2.wav')
-                say_open_app = kasta.openApp.open_applications.OpenApp.OpenAplication(self.text)
+                p = multiprocessing.Process(target=OpenApp.open_application, args=(key_word,))
+                p.start()
+                p.join()
                 ##print(say_open_app), self.speak(say_open_app)
             case "tell_jokes":
                 playsound('kasta/sound2.wav')
@@ -90,7 +92,7 @@ class Kasta:
                 tell_news = kasta.news.news.tell_news()
                 print(tell_news), self.speak(tell_news)
             case "play_yt":
-                p = multiprocessing.Process(target=play_on_yt, args=(self.text, key_word,))
+                p = multiprocessing.Process(target=YoutubeService.play_on_yt, args=(self.text, key_word,))
                 p.start()
                 p.join()
             case "calculate":
@@ -138,9 +140,6 @@ class Kasta:
                         for j in range(len(self.json_list[i]['commands']['name'])):
                             if self.json_list[i]['commands']['name'][j] in self.text:
                                 self.decision_making_process(i, self.json_list[i]['commands']['name'][j])
-                                print(self.text)
-                                print(f'wywolanie {i}')
-                                print(f"key word: {self.json_list[i]['commands']['name'][j]}")
                                 is_done = True
                                 break
                         if is_done:
