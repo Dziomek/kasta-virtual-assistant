@@ -18,3 +18,5 @@ requests~=2.27.1
 spotipy~=2.19.0
 pyjokes~=0.6.0
 playsound~=1.3.0
+pandas~=1.4.2
+pywhatkit~=5.3

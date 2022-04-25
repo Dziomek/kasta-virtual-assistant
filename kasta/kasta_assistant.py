@@ -1,3 +1,6 @@
+import multiprocessing
+import threading
+
 import wikipedia
 from vosk import Model, KaldiRecognizer
 import pyaudio
@@ -12,11 +15,14 @@ import kasta.general_response.general_response
 import kasta.openApp.open_applications
 import kasta.jokes.jokes_app
 import kasta.news.news
+from .youtube.youtube_playing import play_on_yt
 import time
 from playsound import playsound
+import speech_recognition as sr
 
 class Kasta:
     def __init__(self):
+        self.listener = sr.Recognizer() ### to make app faster
         self.engine = pyttsx3.init()
         # self.engine.connect('finished-utterance', self.stop_listening)
         self.voices = self.engine.getProperty('voices')
@@ -37,10 +43,11 @@ class Kasta:
         self.json_list.append(load_json('kasta/jokes/jokes_data.json'))
         self.json_list.append(load_json('kasta/news/news_data.json'))
         self.json_list.append(load_json('kasta/acknowledgement/acknowledgement_data.json'))
+        self.json_list.append(load_json('kasta/youtube/youtube_data.json'))
 
-
-    def decision_making_process(self, i):
-        print(self.json_list[i]['commands']['action'])
+    def decision_making_process(self, i, key_word):
+        print(f'Keyword: {key_word}')
+        print(f"Action: {self.json_list[i]['commands']['action']}")
         match self.json_list[i]['commands']['action']:
             case "wiki_search":
                 playsound('kasta/sound2.wav')
@@ -70,16 +77,19 @@ class Kasta:
             case "open_app":
                 playsound('kasta/sound2.wav')
                 say_open_app = kasta.openApp.open_applications.OpenApp.OpenAplication(self.text)
-                print(say_open_app), self.speak(say_open_app)
+                ##print(say_open_app), self.speak(say_open_app)
             case "tell_jokes":
                 playsound('kasta/sound2.wav')
-                tell_jokes= kasta.jokes.jokes_app.tell_joke()
+                tell_jokes = kasta.jokes.jokes_app.tell_joke()
                 print(tell_jokes), self.speak(tell_jokes)
             case "tell_news":
                 playsound('kasta/sound2.wav')
                 tell_news = kasta.news.news.tell_news()
                 print(tell_news), self.speak(tell_news)
-
+            case "play_yt":
+                p = multiprocessing.Process(target=play_on_yt, args=(self.text, key_word,))
+                p.start()
+                p.join()
 
     def speak(self, text):
         self.engine.say(text)
@@ -106,7 +116,7 @@ class Kasta:
                     for i in range(len(self.json_list)):
                         for j in range(len(self.json_list[i]['commands']['name'])):
                             if self.json_list[i]['commands']['name'][j] in self.text:
-                                self.decision_making_process(i)
+                                self.decision_making_process(i, self.json_list[i]['commands']['name'][j])
                                 print(self.text)
                                 break
 
