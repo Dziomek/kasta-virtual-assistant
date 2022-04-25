@@ -96,6 +96,7 @@ class Kasta:
                 tell_news = kasta.news.news.tell_news()
                 print(tell_news), self.speak(tell_news)
             case "play_yt":
+                playsound('kasta/sound2.wav')
                 p = multiprocessing.Process(target=YoutubeService.play_on_yt, args=(self.text, key_word,))
                 p.start()
                 p.join()
@@ -104,19 +105,19 @@ class Kasta:
                 calculate = kasta.wolfram.wolframAlpha.Calculate.makeCalculations(self.text)
                 print(calculate), self.speak(calculate)
             case "weather":
-                print(self.text)
-                city = self.text.split(' ')[1]
-                city = city.replace(city[-1], '') ## usuniecie znaku /n na koncu miasta
-
-                print(city)
+                weather = Weather()
+                if self.text != "weather" and self.text != "whether":
+                    weather.city = self.text.split(' ')[1]
+                    ##weather.city = weather.city.replace(weather.city[-1], '') ## usuniecie znaku /n na koncu miasta
+                else:
+                    weather.city = ''
                 playsound('kasta/sound2.wav')
-                weather = Weather.get_weather(key_word, city)
-                print(weather), self.speak(weather)
+                weather_info = weather.get_weather(key_word, weather.city)
+                print(weather_info), self.speak(weather_info)
             case "flip_coin":
                 playsound('kasta/sound2.wav')
                 coin = kasta.headsortails.tossCoin.tossCoin()
                 print(coin), self.speak(coin)
-
 
     def speak(self, text):
         self.engine.say(text)
@@ -153,6 +154,7 @@ class Kasta:
             if self.rec.AcceptWaveform(data):
                 self.text = self.rec.Result()[13:-1]  # od 12 po to, żeby wypisać samą komendę (bez 'text' itp)
                 self.text = self.text.replace('"', '')
+                self.text = self.text.replace(self.text[-1], '')
                 try:
                     for i in range(len(self.json_list)):
                         for j in range(len(self.json_list[i]['commands']['name'])):
@@ -164,6 +166,7 @@ class Kasta:
                             is_done = False
                             break
                 except KeyError:
+                    self.speak("I didn't find it in my dictionary. Please try again")
                     print('JSON file error')
 
     ##print(self.rec.FinalResult())
