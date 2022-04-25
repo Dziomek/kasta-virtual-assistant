@@ -15,10 +15,13 @@ import kasta.general_response.general_response
 import kasta.openApp.open_applications
 import kasta.jokes.jokes_app
 import kasta.news.news
+import kasta.wolfram.wolframAlpha
 from .youtube.youtube_playing import play_on_yt
-import time
+from datetime import datetime
 from playsound import playsound
 import speech_recognition as sr
+
+USERNAME= 'Pawel'  #tymczasowo
 
 class Kasta:
     def __init__(self):
@@ -44,6 +47,7 @@ class Kasta:
         self.json_list.append(load_json('kasta/news/news_data.json'))
         self.json_list.append(load_json('kasta/acknowledgement/acknowledgement_data.json'))
         self.json_list.append(load_json('kasta/youtube/youtube_data.json'))
+        self.json_list.append(load_json('kasta/wolfram/wolfram_data.json'))
 
     def decision_making_process(self, i, key_word):
         print(f'Keyword: {key_word}')
@@ -90,6 +94,10 @@ class Kasta:
                 p = multiprocessing.Process(target=play_on_yt, args=(self.text, key_word,))
                 p.start()
                 p.join()
+            case "calculate":
+                playsound('kasta/sound2.wav')
+                calculate = kasta.wolfram.wolframAlpha.Calculate.makeCalculations(self.text)
+                print(calculate), self.speak(calculate)
 
     def speak(self, text):
         self.engine.say(text)
@@ -102,7 +110,20 @@ class Kasta:
             self.engine.runAndWait()
         '''
 
+    def greet_user(self):
+        """Greets the user according to the time"""
+        playsound('kasta/sound3.wav')
+        hour = datetime.now().hour
+        if (hour >=6) and (hour<12):
+            self.speak(f"Good morning {USERNAME}")
+        elif (hour >= 12) and (hour < 16):
+            self.speak(f"Good afternoon {USERNAME}")
+        elif (hour >= 16) and (hour < 19):
+            self.speak(f"Good Evening {USERNAME}")
+        self.speak("I am Kasta. How may I assist you?")
+
     def listen(self):
+        self.greet_user()
         print('listening...')
         self.stream.start_stream()
         while True:
