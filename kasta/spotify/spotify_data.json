@@ -1,0 +1,6 @@
+{
+  "commands":{
+    "name": ["play music","spotify", "music on spotify"],
+    "action": "play_song"
+  }
+}

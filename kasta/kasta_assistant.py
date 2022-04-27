@@ -51,6 +51,7 @@ class Kasta:
         self.json_list.append(load_json('kasta/acknowledgement/acknowledgement_data.json'))
         self.json_list.append(load_json('kasta/weather/weather_data.json'))
         self.json_list.append(load_json('kasta/headsortails/headsortails_data.json'))
+        self.json_list.append(load_json('kasta/spotify/spotify_data.json'))
 
     def decision_making_process(self, i, key_word):
         print(f'Keyword: {key_word}')
@@ -111,6 +112,21 @@ class Kasta:
                 playsound('kasta/sound2.wav')
                 coin = kasta.headsortails.tossCoin.tossCoin()
                 print(coin), self.speak(coin)
+            case "play_song":
+                playsound('kasta/sound2.wav')
+                self.speak("I will open spotify in a minute. What song do you want me to play?")
+                while True:
+                    nowyTekst = self.listen2()
+                    print(nowyTekst)
+                    self.stop_listening()
+                    if 'windows' in nowyTekst:
+                        self.speak('Mata is very good. Do you want to play this song')
+                        nowyTekst2 = self.listen2()
+                        self.stop_listening()
+                        if 'yes' in nowyTekst2:
+                            self.speak('Ok. i will play it ')
+                            self.listen()
+                            break
 
 
     def speak(self, text):
@@ -154,12 +170,26 @@ class Kasta:
                             if self.json_list[i]['commands']['name'][j] in self.text:
                                 self.decision_making_process(i, self.json_list[i]['commands']['name'][j])
                                 is_done = True
-                                break
+
                         if is_done:
                             is_done = False
                             break
                 except KeyError:
                     print('JSON file error')
+
+    def listen2(self):
+        print('listening2...')
+        self.stream.start_stream()
+
+        while True:
+            data = self.stream.read(4000, exception_on_overflow=False)
+            if len(data) == 0:
+                break
+            if self.rec.AcceptWaveform(data):
+                self.text = self.rec.Result()[12:-1]  # od 12 po to, żeby wypisać samą komendę (bez 'text' itp)
+                self.text = self.text.replace('"', '')
+
+                return self.text
 
     ##print(self.rec.FinalResult())
 
