@@ -1,6 +1,6 @@
 import multiprocessing
 import threading
-
+import random
 import wikipedia
 from vosk import Model, KaldiRecognizer
 import pyaudio
@@ -15,12 +15,15 @@ import kasta.general_response.general_response
 from kasta.openApp.open_applications import OpenApp
 import kasta.jokes.jokes_app
 import kasta.news.news
+import kasta.note.makeNote
 import kasta.wolfram.wolframAlpha
+import kasta.rockpaperscisorrs.game
 from .weather.weatherApp import Weather
 import kasta.headsortails.tossCoin
 from .youtube.youtube_playing import YoutubeService
 from datetime import datetime
 from playsound import playsound
+from DataBase.Connection import ConnectDatabase
 
 USERNAME = 'Pawel'  # tymczasowo
 
@@ -37,6 +40,14 @@ class Kasta:
         self.stream = self.p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=8000)
         self.text = ""
         self.data = None
+
+        #####
+        email = 'niecko.jakub@gmail.com'
+        connection = ConnectDatabase()
+        self.idUsers = connection.returnIdUser(email) ####### DO POPRAWY
+
+
+
         #########
         self.json_list = []
         self.json_list.append(load_json('kasta/date/date_data.json'))
@@ -52,6 +63,9 @@ class Kasta:
         self.json_list.append(load_json('kasta/weather/weather_data.json'))
         self.json_list.append(load_json('kasta/headsortails/headsortails_data.json'))
         self.json_list.append(load_json('kasta/spotify/spotify_data.json'))
+        self.json_list.append(load_json('kasta/rockpaperscisorrs/rockpapersisorrs_data.json'))
+        self.json_list.append(load_json('kasta/note/note_data.json'))
+
 
     def decision_making_process(self, i, key_word):
         print(f'Keyword: {key_word}')
@@ -121,12 +135,12 @@ class Kasta:
                 print(coin), self.speak(coin)
             case "play_song":
                 playsound('kasta/sound2.wav')
-                self.speak("I will open spotify in a minute. What song do you want me to play?")
+                self.speak("Choose among rock, paper or scissors.")
                 while True:
                     nowyTekst = self.listen2()
                     print(nowyTekst)
                     self.stop_listening()
-                    if 'windows' in nowyTekst:
+                    if 'rock' in nowyTekst:
                         self.speak('Mata is very good. Do you want to play this song')
                         nowyTekst2 = self.listen2()
                         self.stop_listening()
@@ -134,6 +148,45 @@ class Kasta:
                             self.speak('Ok. i will play it ')
                             self.listen()
                             break
+            case "play_game":
+                playsound('kasta/sound2.wav')
+                self.speak("Choose among rock, paper or scissors.")
+                while True:
+                    user_choose = self.listen2()
+                    print(user_choose)
+                    self.stop_listening()
+                    if 'rock' in user_choose or 'paper' in user_choose or 'scissors' in user_choose:
+                        result = kasta.rockpaperscisorrs.game.game(user_choose)
+                        print(result), self.speak(result)
+                        self.listen()
+                        break
+
+            case "make_note":
+                playsound('kasta/sound2.wav')
+                self.speak("What is the topic of your note?")
+                while True:
+                    title = self.listen2()
+                    print(title)
+                    self.stop_listening()
+                    self.speak(f"Your note topis is {title}. Do you like it ?")
+                    response = self.listen2()
+                    print(response)
+                    self.stop_listening()
+
+                    if "yes" in response:
+                        self.speak("I will record your thoughts. Do it quick. Start one second after signal")
+                        playsound('kasta/sound2.wav')
+
+                        note = self.listen2()
+                        print(note)
+                        self.stop_listening()
+
+                        kasta.note.makeNote.make_note(title, note, self.idUsers)   #### 47 Linijka zwraca None - > do poprawy
+
+                        self.listen()
+                        break
+                    elif "no" in response:
+                        self.speak("What is the topic of your note?")
 
     def speak(self, text):
         self.engine.say(text)

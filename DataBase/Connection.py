@@ -69,3 +69,25 @@ class ConnectDatabase:
             cursor = self.connection.cursor()
             cursor.execute(sql_select_Query)
             self.connection.commit()
+
+
+    def returnIdUser(self, email):
+        if self.connection.is_connected():
+            sql_select_Query = "SELECT idUsers from Users WHERE email = '" + email + "'"
+            cursor = self.connection.cursor()
+            cursor.execute(sql_select_Query)
+            cursor.fetchall()
+
+
+    def insertNote(self,title, note, idUsers):
+        if self.connection.is_connected():
+            sql_select_Query = "INSERT INTO Notes(title,text,idUsers) VALUES ('" +title + "','" + note + "','" + str(idUsers) + "')"
+            cursor = self.connection.cursor()
+            cursor.execute(sql_select_Query)
+            self.connection.commit()
+
+    def returnTitle(self, idUsers):
+        pass
+
+    def readNote(self, title, idUsers):
+        pass

@@ -1,0 +1,6 @@
+{
+  "commands":{
+    "name": ["rock paper scissors","game"],
+    "action": "play_game"
+  }
+}
