@@ -1,4 +1,5 @@
 from PySide2 import QtCore
+from PySide2.QtCore import QPoint
 from PySide2.QtGui import (QColor)
 from PySide2.QtWidgets import *
 
@@ -66,3 +67,10 @@ class OtpPage(QMainWindow):
         lastName = ''
         sendEmail.emailVerification(firstName, lastName, self.email_in_otp, token)
 
+    def mousePressEvent(self, event):
+        self.old_position = event.globalPos()
+
+    def mouseMoveEvent(self, event):
+        delta = QPoint(event.globalPos() - self.old_position)
+        self.move(self.x() + delta.x(), self.y() + delta.y())
+        self.old_position = event.globalPos()

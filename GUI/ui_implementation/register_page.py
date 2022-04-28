@@ -1,4 +1,5 @@
 from PySide2 import QtCore
+from PySide2.QtCore import QPoint
 from PySide2.QtGui import (QColor)
 from PySide2.QtWidgets import *
 from GUI.ui_python_files.ui_register_page import Ui_Form
@@ -85,3 +86,11 @@ class RegisterPage(QMainWindow):
 
                         else:
                             self.ui.errorLabel.setText('Invalid password confirmation. Please try again.')
+
+    def mousePressEvent(self, event):
+        self.old_position = event.globalPos()
+
+    def mouseMoveEvent(self, event):
+        delta = QPoint(event.globalPos() - self.old_position)
+        self.move(self.x() + delta.x(), self.y() + delta.y())
+        self.old_position = event.globalPos()

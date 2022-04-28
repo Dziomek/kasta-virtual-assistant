@@ -1,6 +1,6 @@
 import threading
 from PySide2 import QtCore
-from PySide2.QtCore import QThread
+from PySide2.QtCore import QThread, QPoint
 from PySide2.QtWidgets import *
 from GUI.ui_python_files.ui_kasta_page import Ui_Form
 from kasta.kasta_assistant import Kasta, KastaWorker
@@ -19,6 +19,7 @@ class KastaPage(QMainWindow):
         self.ui.startButton.clicked.connect(self.listening_thread.start)
         self.ui.startButton.clicked.connect(self.text_changing_thread.start)
         self.ui.endButton.clicked.connect(self.listening_thread.stop)
+        
         # self.t1.start()
 
         ## REMOVE TITLE BAR
@@ -30,7 +31,11 @@ class KastaPage(QMainWindow):
         while True:
             self.ui.emailLabel.setText(self.listening_thread.kasta.text)
 
+    def mousePressEvent(self, event):
+        self.old_position = event.globalPos()
 
-
-
+    def mouseMoveEvent(self, event):
+        delta = QPoint(event.globalPos() - self.old_position)
+        self.move(self.x() + delta.x(), self.y() + delta.y())
+        self.old_position = event.globalPos()
 

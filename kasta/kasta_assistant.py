@@ -205,7 +205,7 @@ class Kasta:
             self.engine.say(text)
             self.engine.runAndWait()
         '''
-        time.sleep(1) # po to, by bezpiecznie wylaczyc kaste po zakonczeniu mowienia (bug fix)
+        time.sleep(2) # po to, by bezpiecznie wylaczyc kaste po zakonczeniu mowienia (bug fix)
         self.is_speaking = False
         print('Speaking:' + str(self.is_speaking))
 

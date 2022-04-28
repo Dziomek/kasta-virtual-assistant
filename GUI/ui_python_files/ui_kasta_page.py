@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'kasta_pagehYPqna.ui'
+## Form generated from reading UI file 'kasta_pageJxWVlo.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -14,6 +14,7 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
     QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
     QRadialGradient)
 from PySide2.QtWidgets import *
+
 
 
 class Ui_Form(object):
@@ -114,6 +115,24 @@ class Ui_Form(object):
 "background-position: calc(100% - 10px)center;\n"
 "background-color: #ff662b;;\n"
 "}")
+        self.helpButton = QPushButton(self.widget)
+        self.helpButton.setObjectName(u"helpButton")
+        self.helpButton.setGeometry(QRect(160, 160, 93, 28))
+        self.helpButton.setStyleSheet(u"QPushButton{\n"
+"background-color:  rgb(212, 192, 169);\n"
+"color: #20242a;\n"
+"border-radius: 10px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: #837c73;\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"padding-left: 5px;\n"
+"padding-right: 5px;\n"
+"background-position: calc(100% - 10px)center;\n"
+"background-color: #ff662b;;\n"
+"}")
 
         self.retranslateUi(Form)
 
@@ -130,5 +149,6 @@ class Ui_Form(object):
         self.label_title.setText(QCoreApplication.translate("Form", u"<strong>KASTA</strong> VA", None))
         self.label_description.setText(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-weight:600;\">Virtual Assistant</span></p></body></html>", None))
         self.endButton.setText(QCoreApplication.translate("Form", u"Stop listening", None))
+        self.helpButton.setText(QCoreApplication.translate("Form", u"Help", None))
     # retranslateUi
 

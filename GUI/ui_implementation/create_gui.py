@@ -1,6 +1,8 @@
 import time
 
 from PySide2.QtCore import QThread
+
+from GUI.ui_implementation.faq import FAQPage
 from GUI.ui_implementation.kasta_page import KastaPage
 from GUI.ui_implementation.login_page import LoginPage
 from GUI.ui_implementation.register_page import RegisterPage
@@ -18,6 +20,7 @@ class CreateGui:
         self.kasta_page = KastaPage()
         self.otp_page = OtpPage()
         self.confirmation_page = ConfirmationPage()
+        self.faq_page = FAQPage()
         self.main_page.login_page.ui.registerButton.clicked.connect(self.login_to_register)
         self.main_page.login_page.ui.loginButton.clicked.connect(self.login_to_kasta_or_otp)
         #self.main_page.login_page.ui.loginButton.clicked.connect(self.login_to_otp)
@@ -28,6 +31,7 @@ class CreateGui:
         self.otp_page.ui.loginButton.clicked.connect(self.otp_to_login)
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(self.confirmation_to_login)
+        self.kasta_page.ui.helpButton.clicked.connect(self.kasta_to_faq)
 
 
     def empty_text_fields(self):
@@ -103,6 +107,10 @@ class CreateGui:
             self.otp_page.close()
             self.confirmation_page.show()
             self.timer.start(5000)
+
+    def kasta_to_faq(self):
+        self.faq_page.show()
+
 
 
 

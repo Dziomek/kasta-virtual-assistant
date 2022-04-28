@@ -1,10 +1,12 @@
 from PySide2 import QtCore
+from PySide2.QtCore import QPoint
 from PySide2.QtGui import (QColor)
 from PySide2.QtWidgets import *
 from GUI.ui_python_files.ui_login_page import Ui_Form
 from DataBase.Connection import ConnectDatabase
 
 import hashlib
+
 
 class LoginPage(QDialog):
     def __init__(self):
@@ -22,7 +24,7 @@ class LoginPage(QDialog):
 
         # Buttons event
         self.ui.loginButton.clicked.connect(self.login)
-        #self.ui.registerButton.clicked.connect(self.showRegisterForm)
+        # self.ui.registerButton.clicked.connect(self.showRegisterForm)
 
         ######
         self.logged_in = False
@@ -54,7 +56,10 @@ class LoginPage(QDialog):
             else:
                 self.ui.errorLabel.setText("Wrong email or password. Please try again")
 
+    def mousePressEvent(self, event):
+        self.old_position = event.globalPos()
 
-    '''def showRegisterForm(self):
-        pass
-    '''
+    def mouseMoveEvent(self, event):
+        delta = QPoint(event.globalPos() - self.old_position)
+        self.move(self.x() + delta.x(), self.y() + delta.y())
+        self.old_position = event.globalPos()
