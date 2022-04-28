@@ -1,7 +1,10 @@
 import multiprocessing
 import threading
 import random
+import time
+
 import wikipedia
+from PySide2.QtCore import QThread
 from vosk import Model, KaldiRecognizer
 import pyaudio
 import pyttsx3
@@ -44,9 +47,7 @@ class Kasta:
         #####
         email = 'niecko.jakub@gmail.com'
         connection = ConnectDatabase()
-        self.idUsers = connection.returnIdUser(email) ####### DO POPRAWY
-
-
+        self.idUsers = connection.returnIdUser(email)  ####### DO POPRAWY
 
         #########
         self.json_list = []
@@ -66,6 +67,8 @@ class Kasta:
         self.json_list.append(load_json('kasta/rockpaperscisorrs/rockpapersisorrs_data.json'))
         self.json_list.append(load_json('kasta/note/note_data.json'))
 
+        self.is_listening = False
+        self.is_speaking = False
 
     def decision_making_process(self, i, key_word):
         print(f'Keyword: {key_word}')
@@ -181,7 +184,8 @@ class Kasta:
                         print(note)
                         self.stop_listening()
 
-                        kasta.note.makeNote.make_note(title, note, self.idUsers)   #### 47 Linijka zwraca None - > do poprawy
+                        kasta.note.makeNote.make_note(title, note,
+                                                      self.idUsers)  #### 47 Linijka zwraca None - > do poprawy
 
                         self.listen()
                         break
@@ -189,6 +193,9 @@ class Kasta:
                         self.speak("What is the topic of your note?")
 
     def speak(self, text):
+        self.is_speaking = True
+        time.sleep(0.5) # po to, by moc jeszcze wylaczyc kaste, zanim zacznie mowic (bug fix)
+        print('Speaking:' + str(self.is_speaking))
         self.engine.say(text)
         self.engine.runAndWait()
         '''else:
@@ -198,6 +205,9 @@ class Kasta:
             self.engine.say(text)
             self.engine.runAndWait()
         '''
+        time.sleep(1) # po to, by bezpiecznie wylaczyc kaste po zakonczeniu mowienia (bug fix)
+        self.is_speaking = False
+        print('Speaking:' + str(self.is_speaking))
 
     def greet_user(self):
         """Greets the user according to the time"""
@@ -212,31 +222,33 @@ class Kasta:
         self.speak("I am Kasta. How may I assist you?")
 
     def listen(self):
-        #self.greet_user()
-        print('listening...')
-        self.stream.start_stream()
-        is_done = False
-        while True:
-            data = self.stream.read(4000, exception_on_overflow=False)
-            if len(data) == 0:
-                break
-            if self.rec.AcceptWaveform(data):
-                self.text = self.rec.Result()[13:-1]  # od 12 po to, żeby wypisać samą komendę (bez 'text' itp)
-                self.text = self.text.replace('"', '')
-                self.text = self.text.replace(self.text[-1], '')
-                try:
-                    for i in range(len(self.json_list)):
-                        for j in range(len(self.json_list[i]['commands']['name'])):
-                            if self.json_list[i]['commands']['name'][j] in self.text:
-                                self.decision_making_process(i, self.json_list[i]['commands']['name'][j])
-                                is_done = True
+        # self.greet_user()
+        if not self.is_listening:
+            print('listening...')
+            self.stream.start_stream()
+            self.is_listening = True
+            is_done = False
+            while True:
+                data = self.stream.read(4000, exception_on_overflow=False)
+                if len(data) == 0:
+                    break
+                if self.rec.AcceptWaveform(data):
+                    self.text = self.rec.Result()[13:-1]  # od 12 po to, żeby wypisać samą komendę (bez 'text' itp)
+                    self.text = self.text.replace('"', '')
+                    self.text = self.text.replace(self.text[-1], '')
+                    try:
+                        for i in range(len(self.json_list)):
+                            for j in range(len(self.json_list[i]['commands']['name'])):
+                                if self.json_list[i]['commands']['name'][j] in self.text:
+                                    self.decision_making_process(i, self.json_list[i]['commands']['name'][j])
+                                    is_done = True
 
-                        if is_done:
-                            is_done = False
-                            break
-                except KeyError:
-                    self.speak("I didn't find it in my dictionary. Please try again")
-                    print('JSON file error')
+                            if is_done:
+                                is_done = False
+                                break
+                    except KeyError:
+                        self.speak("I didn't find it in my dictionary. Please try again")
+                        print('JSON file error')
 
     def listen2(self):
         print('listening2...')
@@ -261,11 +273,30 @@ class Kasta:
     '''
 
     def stop_listening(self):
-        self.stream.stop_stream()
-        self.text = ""
-        print('listening stopped')
+        if self.is_listening:
+            self.is_listening = False
+            print('Listening:' + str(self.is_listening))
+            self.stream.stop_stream()
+            self.text = ""
+            print('listening stopped')
 
     def terminate_kasta(self):
         self.engine.stop()
         self.stream.close()
         self.p.terminate()
+
+
+class KastaWorker(QThread):
+    def __init__(self):
+        super().__init__()
+        self.kasta = Kasta()
+
+    def run(self):
+        self.kasta.listen()
+
+    def stop(self):
+        if not self.kasta.is_speaking:
+            self.terminate()
+            self.kasta.stop_listening()
+
+
