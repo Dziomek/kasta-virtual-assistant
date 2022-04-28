@@ -1,8 +1,5 @@
 <RCC>
-  <qresource prefix="images">
-    <file>kastalogo.png</file>
-  </qresource>
-  <qresource>
-    <file>res.qrc</file>
+  <qresource prefix="logo">
+    <file>kaastavector.png</file>
   </qresource>
 </RCC>

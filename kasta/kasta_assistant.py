@@ -21,6 +21,7 @@ import kasta.news.news
 import kasta.note.makeNote
 import kasta.wolfram.wolframAlpha
 import kasta.rockpaperscisorrs.game
+import kasta.read_note.readNote
 from .weather.weatherApp import Weather
 import kasta.headsortails.tossCoin
 from .youtube.youtube_playing import YoutubeService
@@ -66,6 +67,7 @@ class Kasta:
         self.json_list.append(load_json('kasta/spotify/spotify_data.json'))
         self.json_list.append(load_json('kasta/rockpaperscisorrs/rockpapersisorrs_data.json'))
         self.json_list.append(load_json('kasta/note/note_data.json'))
+        self.json_list.append(load_json('kasta/read_note/read_note_data.json'))
 
         self.is_listening = False
         self.is_speaking = False
@@ -191,6 +193,8 @@ class Kasta:
                         break
                     elif "no" in response:
                         self.speak("What is the topic of your note?")
+            case "read_note":
+                pass
 
     def speak(self, text):
         self.is_speaking = True

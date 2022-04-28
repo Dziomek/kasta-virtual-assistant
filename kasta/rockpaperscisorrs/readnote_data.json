@@ -1,0 +1,6 @@
+{
+  "commands":{
+    "name": ["read note", "show my notes", "show my note"],
+    "action": "read_note"
+  }
+}

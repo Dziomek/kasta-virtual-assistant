@@ -42,7 +42,7 @@ border-radius: 30px;</string>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>30</x>
       <y>30</y>
       <width>321</width>
       <height>521</height>
@@ -54,6 +54,9 @@ border-radius: 30px;</string>
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
@@ -386,17 +389,23 @@ background-color: #ff662b;;
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>110</y>
-      <width>141</width>
-      <height>181</height>
+      <x>70</x>
+      <y>70</y>
+      <width>251</width>
+      <height>241</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-image: url(:/images/kastalogo.png);</string>
+     <string notr="true">background-image: url(:/logo/kaastavector.png);</string>
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="../../icons/res.qrc">:/logo/kaastavector.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
