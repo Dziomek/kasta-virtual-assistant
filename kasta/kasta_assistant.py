@@ -22,14 +22,16 @@ import kasta.note.makeNote
 import kasta.wolfram.wolframAlpha
 import kasta.rockpaperscisorrs.game
 import kasta.read_note.readNote
+import kasta.help.help
 from .weather.weatherApp import Weather
 import kasta.headsortails.tossCoin
 from .youtube.youtube_playing import YoutubeService
 from datetime import datetime
 from playsound import playsound
 from DataBase.Connection import ConnectDatabase
+from EmailService.emailService import MailService
 
-USERNAME = 'Pawel'  # tymczasowo
+
 
 
 class Kasta:
@@ -69,6 +71,8 @@ class Kasta:
         self.json_list.append(load_json('kasta/rockpaperscisorrs/rockpapersisorrs_data.json'))
         self.json_list.append(load_json('kasta/note/note_data.json'))
         self.json_list.append(load_json('kasta/read_note/read_note_data.json'))
+        self.json_list.append(load_json('kasta/send_note_via_email/email_note_data.json'))
+        self.json_list.append(load_json('kasta/help/help_data.json'))
 
         self.is_listening = False
         self.is_speaking = False
@@ -82,6 +86,11 @@ class Kasta:
         print(f'Keyword: {key_word}')
         print(f"Action: {self.json_list[i]['commands']['action']}")
         match self.json_list[i]['commands']['action']:
+            case "help":
+                playsound('kasta/sound2.wav')
+                self.response = kasta.help.help.helpMe()
+                print(self.response), self.speak(self.response)
+
             case "wiki_search":
                 playsound('kasta/sound2.wav')
                 try:
@@ -248,6 +257,58 @@ class Kasta:
                     break
                 self.listen()
 
+            case "email_note":
+                playsound('kasta/sound2.wav')
+                self.speak("I will read your all notes topics. Chose one of them.")
+                connection = ConnectDatabase()
+                idUsers = connection.returnIdUser(self.user_email)
+                UserId = idUsers[0][0]
+
+                topics = connection.returnNotesTopics(UserId)
+                print(topics)
+                topics_list = []
+
+                for topic in topics:
+                    print(topic[0])
+                    self.speak(topic[0])
+                    topics_list.append(topic[0])
+
+                while True:
+                    user_choose = self.listen2()
+                    for topic in topics_list:
+                        if topic in user_choose:
+                            self.stop_listening()
+                            print('topic', topic)
+                            print(user_choose)
+
+                            self.speak(f"Is {user_choose} correct ?")
+
+                            response = self.listen2()
+                            print(response)
+                            self.stop_listening()
+
+                            if "yes" in response:
+                                user_choose = user_choose.strip()
+                                note = connection.returnNote(user_choose, UserId)
+                                self.response = note
+                                if self.response is not None:
+                                    self.response = self.response[0][0]
+
+
+                                    ##email
+                                    sendmail = MailService()
+                                    sendmail.sendNoteViaEmail(self.user_name, self.user_email, user_choose, note[0][0])
+
+                                    self.response = f"Your note with topic {user_choose} and with content {self.response} was sent to your email."
+                                    self.speak(self.response),
+                                    print(self.response)
+
+                            elif "no" in response:
+                                self.speak('Choose a topic'), print('Choose a topic')
+                                break
+                    break
+                self.listen()
+
 
     def speak(self, text):
         self.is_speaking = True
@@ -272,11 +333,11 @@ class Kasta:
         playsound('kasta/sound3.wav')
         hour = datetime.now().hour
         if (hour >= 6) and (hour < 12):
-            self.speak(f"Good morning {USERNAME}")
+            self.speak(f"Good morning {self.user_name}")
         elif (hour >= 12) and (hour < 16):
-            self.speak(f"Good afternoon {USERNAME}")
+            self.speak(f"Good afternoon {self.user_name}")
         elif (hour >= 16) and (hour < 19):
-            self.speak(f"Good Evening {USERNAME}")
+            self.speak(f"Good Evening {self.user_name}")
         self.speak("I am Kasta. How may I assist you?")
 
     def listen(self):

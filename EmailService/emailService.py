@@ -38,3 +38,22 @@ class MailService:
 
         self.smtpObj.send_message(msg)
 
+
+    def sendNoteViaEmail(self,firstName, emailUser,topic,note):
+        msg = EmailMessage()
+        msg['Subject'] = f'Kasta VA: Note - {topic}'
+        msg['From'] = EMAIL_ADDRESS
+        msg['To'] = emailUser
+
+        username = firstName
+        email = emailUser
+
+
+        file_loader = FileSystemLoader('EmailService/templates')
+        env = Environment(loader=file_loader)
+        template = env.get_template('note.html')
+        output = template.render(email=email, username=username, topic=topic, note=note)
+        msg.add_alternative(output, subtype='html')
+
+        self.smtpObj.send_message(msg)
+

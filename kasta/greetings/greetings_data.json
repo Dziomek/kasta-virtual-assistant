@@ -1,6 +1,6 @@
 {
   "commands":{
-    "name": ["hi", "hey", "Hello my friend", "hello", "hey there", "help me"],
+    "name": ["hi", "hey", "Hello my friend", "hello", "hey there"],
     "action": "say_hello"
   }
 }

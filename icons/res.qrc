@@ -1,5 +1,5 @@
 <RCC>
-  <qresource prefix="logo">
+  <qresource prefix="nowyPrzedrostek">
     <file>kaastavector.png</file>
   </qresource>
 </RCC>
