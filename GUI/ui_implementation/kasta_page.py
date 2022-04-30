@@ -32,6 +32,7 @@ class KastaPage(QMainWindow):
         self.ui.startButton.clicked.disconnect(self.text_changing_thread.start)
         while True:
             self.ui.emailLabel.setText(self.listening_thread.kasta.text)
+            self.ui.kastaLabel.setText(self.listening_thread.kasta.response)
 
     def mousePressEvent(self, event):
         self.old_position = event.globalPos()
