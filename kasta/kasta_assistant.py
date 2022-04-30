@@ -73,6 +73,8 @@ class Kasta:
         self.is_listening = False
         self.is_speaking = False
 
+        ####
+        self.response = ''
 
 
 
@@ -90,35 +92,35 @@ class Kasta:
                     print('Unfortunately I did not find this page. Please try again')
             case "say_hello":
                 playsound('kasta/sound2.wav')
-                say_hello_response = kasta.greetings.greetings.sayHello()
-                print(say_hello_response), self.speak(say_hello_response)
+                self.response = kasta.greetings.greetings.sayHello()
+                print(self.response), self.speak(self.response)
             case "say_time":
                 playsound('kasta/sound2.wav')
-                say_time_response = kasta.date.date.Date.say_time(self.text)
-                print(say_time_response), self.speak(say_time_response)
+                self.response = kasta.date.date.Date.say_time(self.text)
+                print(self.response), self.speak(self.response)
             case "say_thank_you":
                 playsound('kasta/sound2.wav')
-                say_acknowledgment = kasta.acknowledgement.acknowledgment.thank_you()
-                print(say_acknowledgment), self.speak(say_acknowledgment)
+                self.response = kasta.acknowledgement.acknowledgment.thank_you()
+                print(self.response), self.speak(self.response)
             case "general_response":
                 playsound('kasta/sound2.wav')
-                say_general_response = kasta.general_response.general_response.GeneralResponse.general_response(
+                self.response = kasta.general_response.general_response.GeneralResponse.general_response(
                     self.text)
-                print(say_general_response), self.speak(say_general_response)
+                print(self.response), self.speak(self.response)
             case "open_app":
                 playsound('kasta/sound2.wav')
                 p = multiprocessing.Process(target=OpenApp.open_application, args=(key_word,))
                 p.start()
                 p.join()
-                ##print(say_open_app), self.speak(say_open_app)
+                self.response = f"Opening {key_word.split(' ', 2)[1]}"
             case "tell_jokes":
                 playsound('kasta/sound2.wav')
-                tell_jokes = kasta.jokes.jokes_app.tell_joke()
-                print(tell_jokes), self.speak(tell_jokes)
+                self.response = kasta.jokes.jokes_app.tell_joke()
+                print(self.response), self.speak(self.response)
             case "tell_news":
                 playsound('kasta/sound2.wav')
-                tell_news = kasta.news.news.tell_news()
-                print(tell_news), self.speak(tell_news)
+                self.response = kasta.news.news.tell_news()
+                print(self.response), self.speak(self.response)
             case "play_yt":
                 playsound('kasta/sound2.wav')
                 p = multiprocessing.Process(target=YoutubeService.play_on_yt, args=(self.text, key_word,))
@@ -126,8 +128,8 @@ class Kasta:
                 p.join()
             case "calculate":
                 playsound('kasta/sound2.wav')
-                calculate = kasta.wolfram.wolframAlpha.Calculate.makeCalculations(self.text)
-                print(calculate), self.speak(calculate)
+                self.response = kasta.wolfram.wolframAlpha.Calculate.makeCalculations(self.text)
+                print(self.response), self.speak(self.response)
             case "weather":
                 weather = Weather()
                 if self.text != "weather" and self.text != "whether":
@@ -136,12 +138,12 @@ class Kasta:
                 else:
                     weather.city = ''
                 playsound('kasta/sound2.wav')
-                weather_info = weather.get_weather(key_word, weather.city)
-                print(weather_info), self.speak(weather_info)
+                self.response = weather.get_weather(key_word, weather.city)
+                print(self.response), self.speak(self.response)
             case "flip_coin":
                 playsound('kasta/sound2.wav')
-                coin = kasta.headsortails.tossCoin.tossCoin()
-                print(coin), self.speak(coin)
+                self.response = kasta.headsortails.tossCoin.tossCoin()
+                print(self.response), self.speak(self.response)
             case "play_song":
                 playsound('kasta/sound2.wav')
                 self.speak("Choose among rock, paper or scissors.")
@@ -165,8 +167,8 @@ class Kasta:
                     print(user_choose)
                     self.stop_listening()
                     if 'rock' in user_choose or 'paper' in user_choose or 'scissors' in user_choose:
-                        result = kasta.rockpaperscisorrs.game.game(user_choose)
-                        print(result), self.speak(result)
+                        self.response = kasta.rockpaperscisorrs.game.game(user_choose)
+                        print(self.response), self.speak(self.response)
                         self.listen()
                         break
 
@@ -193,7 +195,7 @@ class Kasta:
                         idUsers = connection.returnIdUser(self.user_email)
                         UserId = idUsers[0][0]
 
-                        kasta.note.makeNote.make_note(title, note, UserId)  #### 47 Linijka zwraca None - > do poprawy
+                        kasta.note.makeNote.make_note(title, note, UserId)
                         time.sleep(1)
                         self.speak("I have passed your note to database.")
                         self.listen()
@@ -201,8 +203,48 @@ class Kasta:
                         break
                     elif "no" in response:
                         self.speak("What is the topic of your note?")
+
             case "read_note":
-                pass
+                playsound('kasta/sound2.wav')
+                self.speak("I will read your all notes topics. Chose one of them.")
+                connection = ConnectDatabase()
+                idUsers = connection.returnIdUser(self.user_email)
+                UserId = idUsers[0][0]
+
+                topics = connection.returnNotesTopics(UserId)
+                print(topics)
+                topics_list = []
+
+                for topic in topics:
+                    print(topic[0])
+                    self.speak(topic[0])
+                    topics_list.append(topic[0])
+
+                while True:
+                    user_choose = self.listen2()
+                    for topic in topics_list:
+                        if topic in user_choose:
+                            self.stop_listening()
+                            print('topic',topic)
+                            print(user_choose)
+
+                            self.speak(f"Is {user_choose} correct ?")
+
+                            response = self.listen2()
+                            print(response)
+                            self.stop_listening()
+
+                            if "yes" in response:
+
+                                entire_note = connection.returnNote(user_choose, UserId)
+                                print(entire_note)
+                                self.speak(entire_note[0]), print(entire_note[0])
+                            elif "no" in response:
+                                self.speak('Choose a topic'), print('Choose a topic')
+                                break
+                    break
+                self.listen()
+
 
     def speak(self, text):
         self.is_speaking = True
