@@ -49,7 +49,7 @@ class Kasta:
         email = 'niecko.jakub@gmail.com'
         connection = ConnectDatabase()
         self.idUsers = connection.returnIdUser(email)  ####### DO POPRAWY
-
+        print(self.idUsers[0][0])
         #########
         self.json_list = []
         self.json_list.append(load_json('kasta/date/date_data.json'))
@@ -67,7 +67,7 @@ class Kasta:
         self.json_list.append(load_json('kasta/spotify/spotify_data.json'))
         self.json_list.append(load_json('kasta/rockpaperscisorrs/rockpapersisorrs_data.json'))
         self.json_list.append(load_json('kasta/note/note_data.json'))
-        self.json_list.append(load_json('kasta/read_note/read_note_data.json'))
+        #self.json_list.append(load_json('kasta/read_note/read_note_data.json'))
 
         self.is_listening = False
         self.is_speaking = False

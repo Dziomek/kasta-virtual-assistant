@@ -76,7 +76,7 @@ class ConnectDatabase:
             sql_select_Query = "SELECT idUsers from Users WHERE email = '" + email + "'"
             cursor = self.connection.cursor()
             cursor.execute(sql_select_Query)
-            cursor.fetchall()
+            return cursor.fetchall()
 
 
     def insertNote(self,title, note, idUsers):
