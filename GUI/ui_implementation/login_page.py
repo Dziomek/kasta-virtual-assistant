@@ -23,13 +23,16 @@ class LoginPage(QDialog):
         # QtCore.QTimer.singleShot(1500, lambda: self.setStyleSheet("background-color: #222; color: #FFF"))
 
         # Buttons event
-        self.ui.loginButton.clicked.connect(self.login)
+        #self.ui.loginButton.clicked.connect(self.login)
         # self.ui.registerButton.clicked.connect(self.showRegisterForm)
 
         ######
         self.logged_in = False
         self.validAccount = False
-        self.email = ''
+        self.connection = None
+
+        self.name = ''
+        self.email = '' # user data that will be passed to kasta page
 
     def login(self):
 
@@ -42,17 +45,21 @@ class LoginPage(QDialog):
             self.ui.errorLabel.setText('Missing fields. Please try again')
         else:
             # DATABASE CONNECTION
-            connection = ConnectDatabase()
+            self.connection = ConnectDatabase()
 
             # CHECKED HASH PASSWORD
             hashedPassword = hashlib.sha256(password.encode('utf-8')).hexdigest()
 
-            records = connection.loginAuthentication(self.email, hashedPassword)
-
+            records = self.connection.loginAuthentication(self.email, hashedPassword)
             if records:
+                self.name = self.connection.get_user_name(self.email)[0][0]
+
                 self.logged_in = True
                 for record in records:
                     self.validAccount = record[7]
+
+
+                    return self.email, self.name
             else:
                 self.ui.errorLabel.setText("Wrong email or password. Please try again")
 

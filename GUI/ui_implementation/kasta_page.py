@@ -26,6 +26,8 @@ class KastaPage(QMainWindow):
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
 
+        self.user_email = ''
+
     def change_text(self):
         self.ui.startButton.clicked.disconnect(self.text_changing_thread.start)
         while True:

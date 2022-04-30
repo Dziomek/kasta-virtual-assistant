@@ -45,6 +45,7 @@ class Kasta:
         self.text = ""
         self.data = None
 
+
         #####
         email = 'niecko.jakub@gmail.com'
         connection = ConnectDatabase()
@@ -71,6 +72,11 @@ class Kasta:
 
         self.is_listening = False
         self.is_speaking = False
+
+        ####
+
+        self.user_email = ''
+        self.user_name= ''
 
     def decision_making_process(self, i, key_word):
         print(f'Keyword: {key_word}')

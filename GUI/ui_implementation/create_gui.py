@@ -63,9 +63,16 @@ class CreateGui:
         self.empty_text_fields()
 
     def login_to_kasta_or_otp(self):
+        data = self.main_page.login_page.login()
         if self.main_page.login_page.logged_in and self.main_page.login_page.validAccount == 'True':
+            self.kasta_page.listening_thread.kasta.user_email = data[0]
+            self.kasta_page.listening_thread.kasta.user_name = data[1]
+            self.kasta_page.ui.userEmailLabel.setText(data[0])
+            self.kasta_page.ui.userNameLabel.setText(data[1])
+            print(self.kasta_page.listening_thread.kasta.user_email, self.kasta_page.listening_thread.kasta.user_name)
             self.main_page.login_page.close()
             self.kasta_page.show()
+            print(self.kasta_page.user_email)
         elif self.main_page.login_page.logged_in and self.main_page.login_page.validAccount == 'False':
             self.otp_page.email_in_otp = self.main_page.login_page.email  # PRZEKAZANIE MAILA
             self.main_page.login_page.close()

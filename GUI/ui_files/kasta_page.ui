@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1145</width>
+    <width>1400</width>
     <height>764</height>
    </rect>
   </property>
@@ -257,6 +257,32 @@ background-color: #ff662b;;
     </property>
     <property name="text">
      <string>Help</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="userEmailLabel">
+    <property name="geometry">
+     <rect>
+      <x>770</x>
+      <y>20</y>
+      <width>251</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>xdxdxd</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="userNameLabel">
+    <property name="geometry">
+     <rect>
+      <x>760</x>
+      <y>50</y>
+      <width>131</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>xdxdxd</string>
     </property>
    </widget>
   </widget>
