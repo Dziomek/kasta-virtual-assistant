@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'kasta_pageoNLXXC.ui'
+## Form generated from reading UI file 'kasta_pageYuMihu.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -134,10 +134,19 @@ class Ui_Form(object):
 "}")
         self.userEmailLabel = QLabel(self.widget)
         self.userEmailLabel.setObjectName(u"userEmailLabel")
-        self.userEmailLabel.setGeometry(QRect(770, 20, 251, 16))
+        self.userEmailLabel.setGeometry(QRect(110, 10, 251, 16))
+        self.userEmailLabel.setStyleSheet(u"color: white;")
         self.userNameLabel = QLabel(self.widget)
         self.userNameLabel.setObjectName(u"userNameLabel")
-        self.userNameLabel.setGeometry(QRect(760, 50, 131, 16))
+        self.userNameLabel.setGeometry(QRect(110, 40, 131, 16))
+        self.userNameLabel.setStyleSheet(u"color: white;")
+        self.kastaLabel = QLabel(self.widget)
+        self.kastaLabel.setObjectName(u"kastaLabel")
+        self.kastaLabel.setGeometry(QRect(710, 10, 311, 231))
+        self.kastaLabel.setStyleSheet(u"background-color: gray;\n"
+"padding: 5px")
+        self.kastaLabel.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.kastaLabel.setWordWrap(True)
 
         self.retranslateUi(Form)
 
@@ -157,5 +166,6 @@ class Ui_Form(object):
         self.helpButton.setText(QCoreApplication.translate("Form", u"Help", None))
         self.userEmailLabel.setText(QCoreApplication.translate("Form", u"xdxdxd", None))
         self.userNameLabel.setText(QCoreApplication.translate("Form", u"xdxdxd", None))
+        self.kastaLabel.setText(QCoreApplication.translate("Form", u"TextLabel", None))
     # retranslateUi
 

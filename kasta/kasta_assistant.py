@@ -73,6 +73,9 @@ class Kasta:
         self.is_listening = False
         self.is_speaking = False
 
+        ####
+        self.response = ''
+
 
 
 
@@ -90,35 +93,36 @@ class Kasta:
                     print('Unfortunately I did not find this page. Please try again')
             case "say_hello":
                 playsound('kasta/sound2.wav')
-                say_hello_response = kasta.greetings.greetings.sayHello()
-                print(say_hello_response), self.speak(say_hello_response)
+                self.response = kasta.greetings.greetings.sayHello()
+                print(self.response), self.speak(self.response)
             case "say_time":
                 playsound('kasta/sound2.wav')
-                say_time_response = kasta.date.date.Date.say_time(self.text)
-                print(say_time_response), self.speak(say_time_response)
+                self.response = kasta.date.date.Date.say_time(self.text)
+                print(self.response), self.speak(self.response)
             case "say_thank_you":
                 playsound('kasta/sound2.wav')
-                say_acknowledgment = kasta.acknowledgement.acknowledgment.thank_you()
-                print(say_acknowledgment), self.speak(say_acknowledgment)
+                self.response = kasta.acknowledgement.acknowledgment.thank_you()
+                print(self.response), self.speak(self.response)
             case "general_response":
                 playsound('kasta/sound2.wav')
-                say_general_response = kasta.general_response.general_response.GeneralResponse.general_response(
+                self.response = kasta.general_response.general_response.GeneralResponse.general_response(
                     self.text)
-                print(say_general_response), self.speak(say_general_response)
+                print(self.response), self.speak(self.response)
             case "open_app":
                 playsound('kasta/sound2.wav')
                 p = multiprocessing.Process(target=OpenApp.open_application, args=(key_word,))
                 p.start()
                 p.join()
                 ##print(say_open_app), self.speak(say_open_app)
+                self.response = f"Opening {key_word.split(' ', 2)[1]}"
             case "tell_jokes":
                 playsound('kasta/sound2.wav')
-                tell_jokes = kasta.jokes.jokes_app.tell_joke()
-                print(tell_jokes), self.speak(tell_jokes)
+                self.response = kasta.jokes.jokes_app.tell_joke()
+                print(self.response), self.speak(self.response)
             case "tell_news":
                 playsound('kasta/sound2.wav')
-                tell_news = kasta.news.news.tell_news()
-                print(tell_news), self.speak(tell_news)
+                self.response = kasta.news.news.tell_news()
+                print(self.response), self.speak(self.response)
             case "play_yt":
                 playsound('kasta/sound2.wav')
                 p = multiprocessing.Process(target=YoutubeService.play_on_yt, args=(self.text, key_word,))
@@ -126,8 +130,8 @@ class Kasta:
                 p.join()
             case "calculate":
                 playsound('kasta/sound2.wav')
-                calculate = kasta.wolfram.wolframAlpha.Calculate.makeCalculations(self.text)
-                print(calculate), self.speak(calculate)
+                self.response = kasta.wolfram.wolframAlpha.Calculate.makeCalculations(self.text)
+                print(self.response), self.speak(self.response)
             case "weather":
                 weather = Weather()
                 if self.text != "weather" and self.text != "whether":
@@ -136,12 +140,12 @@ class Kasta:
                 else:
                     weather.city = ''
                 playsound('kasta/sound2.wav')
-                weather_info = weather.get_weather(key_word, weather.city)
-                print(weather_info), self.speak(weather_info)
+                self.response = weather.get_weather(key_word, weather.city)
+                print(self.response), self.speak(self.response)
             case "flip_coin":
                 playsound('kasta/sound2.wav')
-                coin = kasta.headsortails.tossCoin.tossCoin()
-                print(coin), self.speak(coin)
+                self.response = kasta.headsortails.tossCoin.tossCoin()
+                print(self.response), self.speak(self.response)
             case "play_song":
                 playsound('kasta/sound2.wav')
                 self.speak("Choose among rock, paper or scissors.")
@@ -165,8 +169,8 @@ class Kasta:
                     print(user_choose)
                     self.stop_listening()
                     if 'rock' in user_choose or 'paper' in user_choose or 'scissors' in user_choose:
-                        result = kasta.rockpaperscisorrs.game.game(user_choose)
-                        print(result), self.speak(result)
+                        self.response = kasta.rockpaperscisorrs.game.game(user_choose)
+                        print(self.response), self.speak(self.response)
                         self.listen()
                         break
 
