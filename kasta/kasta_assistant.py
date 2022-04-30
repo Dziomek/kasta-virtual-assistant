@@ -68,13 +68,10 @@ class Kasta:
         self.json_list.append(load_json('kasta/spotify/spotify_data.json'))
         self.json_list.append(load_json('kasta/rockpaperscisorrs/rockpapersisorrs_data.json'))
         self.json_list.append(load_json('kasta/note/note_data.json'))
-        #self.json_list.append(load_json('kasta/read_note/read_note_data.json'))
+        self.json_list.append(load_json('kasta/read_note/read_note_data.json'))
 
         self.is_listening = False
         self.is_speaking = False
-
-
-
 
     def decision_making_process(self, i, key_word):
         print(f'Keyword: {key_word}')
@@ -193,7 +190,7 @@ class Kasta:
                         idUsers = connection.returnIdUser(self.user_email)
                         UserId = idUsers[0][0]
 
-                        kasta.note.makeNote.make_note(title, note, UserId)  #### 47 Linijka zwraca None - > do poprawy
+                        kasta.note.makeNote.make_note(title, note, UserId)
                         time.sleep(1)
                         self.speak("I have passed your note to database.")
                         self.listen()
@@ -201,12 +198,54 @@ class Kasta:
                         break
                     elif "no" in response:
                         self.speak("What is the topic of your note?")
+
             case "read_note":
+                playsound('kasta/sound2.wav')
+                self.speak("I will read your all notes topics. Chose one of them.")
+                connection = ConnectDatabase()
+                idUsers = connection.returnIdUser(self.user_email)
+                UserId = idUsers[0][0]
+
+                topics = connection.returnNotesTopics(UserId)
+                print(topics)
+                topics_list = []
+
+                for topic in topics:
+                    print(topic[0])
+                    self.speak(topic[0])
+                    topics_list.append(topic[0])
+
+                while True:
+                    user_choose = self.listen2()
+                    for topic in topics_list:
+                        if topic in user_choose:
+                            self.stop_listening()
+
+                            print(user_choose)
+
+                            self.speak(f"Is {user_choose} correct ?")
+
+                            response = self.listen2()
+                            print(response)
+                            self.stop_listening()
+
+                            if "yes" in response:
+                                #user_choose = 'title'
+
+                                entire_note = connection.returnNote(user_choose, UserId)
+                                self.speak(entire_note[0][0]), print(entire_note[0][0])
+                            elif "no" in response:
+                                self.speak('Choose a topic'), print('Choose a topic')
+                    break
+                self.listen()
+
+            case "email_note":
                 pass
+
 
     def speak(self, text):
         self.is_speaking = True
-        time.sleep(0.5) # po to, by moc jeszcze wylaczyc kaste, zanim zacznie mowic (bug fix)
+        time.sleep(0.5)  # po to, by moc jeszcze wylaczyc kaste, zanim zacznie mowic (bug fix)
         print('Speaking:' + str(self.is_speaking))
         self.engine.say(text)
         self.engine.runAndWait()
@@ -218,7 +257,7 @@ class Kasta:
             self.engine.runAndWait()
         '''
         # sleep do wywalenia ze względu na długi czas oczekiwania (problem w make_note) - do obserwacji ~jn
-        #time.sleep(2) # po to, by bezpiecznie wylaczyc kaste po zakonczeniu mowienia (bug fix)
+        # time.sleep(2) # po to, by bezpiecznie wylaczyc kaste po zakonczeniu mowienia (bug fix)
         self.is_speaking = False
         print('Speaking:' + str(self.is_speaking))
 
@@ -313,5 +352,3 @@ class KastaWorker(QThread):
         if not self.kasta.is_speaking:
             self.terminate()
             self.kasta.stop_listening()
-
-

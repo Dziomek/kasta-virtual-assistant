@@ -62,6 +62,8 @@ class ConnectDatabase:
             cursor = self.connection.cursor()
             cursor.execute(sql_select_Query)
             self.connection.commit()
+        else:
+            print('Error while updating data to DB')
 
     def newOtpCode(self, email, token):
         if self.connection.is_connected():
@@ -69,6 +71,8 @@ class ConnectDatabase:
             cursor = self.connection.cursor()
             cursor.execute(sql_select_Query)
             self.connection.commit()
+        else:
+            print('Error while inserting new token')
 
 
     def returnIdUser(self, email):
@@ -77,6 +81,8 @@ class ConnectDatabase:
             cursor = self.connection.cursor()
             cursor.execute(sql_select_Query)
             return cursor.fetchall()
+        else:
+            print('Error while returning idUser')
 
 
     def insertNote(self,title, note, idUsers):
@@ -85,13 +91,24 @@ class ConnectDatabase:
             cursor = self.connection.cursor()
             cursor.execute(sql_select_Query)
             self.connection.commit()
+        else:
+            print('Error while inserting note to DB')
 
 
     def returnNotesTopics(self,idUsers):
-        pass
+        if self.connection.is_connected():
+            sql_select_Query = "SELECT title from Notes WHERE idUsers = '" + str(idUsers) + "'"
+            cursor = self.connection.cursor()
+            cursor.execute(sql_select_Query)
+            return cursor.fetchall()
 
-    def returnNote(self,topic,idUsers):
-        pass
+
+    def returnNote(self,title,idUsers):
+        if self.connection.is_connected():
+            sql_select_Query = "SELECT text from Notes WHERE idUsers = '" + str(idUsers) + "' and title = '" + title + "'"
+            cursor = self.connection.cursor()
+            cursor.execute(sql_select_Query)
+            return cursor.fetchall()
 
     def get_user_name(self, email):
         if self.connection.is_connected():
@@ -103,8 +120,3 @@ class ConnectDatabase:
             name = cursor.fetchall()
             return name
 
-    def returnTitle(self, idUsers):
-        pass
-
-    def readNote(self, title, idUsers):
-        pass

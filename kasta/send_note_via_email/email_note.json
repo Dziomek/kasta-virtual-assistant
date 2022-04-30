@@ -1,6 +1,6 @@
 {
   "commands":{
     "name": ["make a note","save a note","save my thoughts"],
-    "action": "make_note"
+    "action": "email_note"
   }
 }
