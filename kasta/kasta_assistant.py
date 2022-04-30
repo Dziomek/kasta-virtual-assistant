@@ -68,7 +68,7 @@ class Kasta:
         self.json_list.append(load_json('kasta/spotify/spotify_data.json'))
         self.json_list.append(load_json('kasta/rockpaperscisorrs/rockpapersisorrs_data.json'))
         self.json_list.append(load_json('kasta/note/note_data.json'))
-        #self.json_list.append(load_json('kasta/read_note/read_note_data.json'))
+        self.json_list.append(load_json('kasta/read_note/read_note_data.json'))
 
         self.is_listening = False
         self.is_speaking = False
@@ -235,10 +235,12 @@ class Kasta:
                             self.stop_listening()
 
                             if "yes" in response:
-
-                                entire_note = connection.returnNote(user_choose, UserId)
-                                print(entire_note)
-                                self.speak(entire_note[0]), print(entire_note[0])
+                                user_choose = user_choose.strip()
+                                self.response = connection.returnNote(user_choose, UserId)
+                                if self.response is not None:
+                                    self.response = self.response[0][0]
+                                    print(self.response)
+                                    self.speak(self.response), print(self.response)
                             elif "no" in response:
                                 self.speak('Choose a topic'), print('Choose a topic')
                                 break
