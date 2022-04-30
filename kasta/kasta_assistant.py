@@ -189,6 +189,7 @@ class Kasta:
                         playsound('kasta/sound2.wav')
 
                         note = self.listen2()
+                        note = note.strip()
                         print(note)
                         self.stop_listening()
                         connection = ConnectDatabase()
@@ -295,6 +296,7 @@ class Kasta:
                     self.text = self.rec.Result()[13:-1]  # od 12 po to, żeby wypisać samą komendę (bez 'text' itp)
                     self.text = self.text.replace('"', '')
                     self.text = self.text.replace(self.text[-1], '')
+
                     try:
                         for i in range(len(self.json_list)):
                             for j in range(len(self.json_list[i]['commands']['name'])):
@@ -318,8 +320,9 @@ class Kasta:
             if len(data) == 0:
                 break
             if self.rec.AcceptWaveform(data):
-                self.text = self.rec.Result()[12:-1]  # od 12 po to, żeby wypisać samą komendę (bez 'text' itp)
+                self.text = self.rec.Result()[13:-1]  # od 12 po to, żeby wypisać samą komendę (bez 'text' itp)
                 self.text = self.text.replace('"', '')
+                self.text = self.text.replace(self.text[-1],'')
 
                 return self.text
 
