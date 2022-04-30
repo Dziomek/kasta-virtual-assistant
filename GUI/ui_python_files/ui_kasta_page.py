@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'kasta_pageJxWVlo.ui'
+## Form generated from reading UI file 'kasta_pageoNLXXC.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -16,12 +16,11 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
 from PySide2.QtWidgets import *
 
 
-
 class Ui_Form(object):
     def setupUi(self, Form):
         if Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(1145, 764)
+        Form.resize(1400, 764)
         self.widget = QWidget(Form)
         self.widget.setObjectName(u"widget")
         self.widget.setGeometry(QRect(30, 80, 1081, 711))
@@ -133,6 +132,12 @@ class Ui_Form(object):
 "background-position: calc(100% - 10px)center;\n"
 "background-color: #ff662b;;\n"
 "}")
+        self.userEmailLabel = QLabel(self.widget)
+        self.userEmailLabel.setObjectName(u"userEmailLabel")
+        self.userEmailLabel.setGeometry(QRect(770, 20, 251, 16))
+        self.userNameLabel = QLabel(self.widget)
+        self.userNameLabel.setObjectName(u"userNameLabel")
+        self.userNameLabel.setGeometry(QRect(760, 50, 131, 16))
 
         self.retranslateUi(Form)
 
@@ -150,5 +155,7 @@ class Ui_Form(object):
         self.label_description.setText(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-weight:600;\">Virtual Assistant</span></p></body></html>", None))
         self.endButton.setText(QCoreApplication.translate("Form", u"Stop listening", None))
         self.helpButton.setText(QCoreApplication.translate("Form", u"Help", None))
+        self.userEmailLabel.setText(QCoreApplication.translate("Form", u"xdxdxd", None))
+        self.userNameLabel.setText(QCoreApplication.translate("Form", u"xdxdxd", None))
     # retranslateUi
 

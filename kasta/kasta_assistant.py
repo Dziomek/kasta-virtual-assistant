@@ -45,6 +45,7 @@ class Kasta:
         self.text = ""
         self.data = None
 
+
         #####
         email = 'niecko.jakub@gmail.com'
         connection = ConnectDatabase()
@@ -67,10 +68,15 @@ class Kasta:
         self.json_list.append(load_json('kasta/spotify/spotify_data.json'))
         self.json_list.append(load_json('kasta/rockpaperscisorrs/rockpapersisorrs_data.json'))
         self.json_list.append(load_json('kasta/note/note_data.json'))
-        self.json_list.append(load_json('kasta/read_note/read_note_data.json'))
+        #self.json_list.append(load_json('kasta/read_note/read_note_data.json'))
 
         self.is_listening = False
         self.is_speaking = False
+
+        ####
+
+        self.user_email = ''
+        self.user_name= ''
 
     def decision_making_process(self, i, key_word):
         print(f'Keyword: {key_word}')
