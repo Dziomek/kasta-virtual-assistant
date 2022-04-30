@@ -44,13 +44,13 @@ class Kasta:
         self.stream = self.p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=8000)
         self.text = ""
         self.data = None
+        self.appFirstRun = True
 
+        ####
 
-        #####
-        email = 'niecko.jakub@gmail.com'
-        connection = ConnectDatabase()
-        self.idUsers = connection.returnIdUser(email)  ####### DO POPRAWY
-        print(self.idUsers[0][0])
+        self.user_email = ''
+        self.user_name = ''
+
         #########
         self.json_list = []
         self.json_list.append(load_json('kasta/date/date_data.json'))
@@ -73,10 +73,8 @@ class Kasta:
         self.is_listening = False
         self.is_speaking = False
 
-        ####
 
-        self.user_email = ''
-        self.user_name= ''
+
 
     def decision_making_process(self, i, key_word):
         print(f'Keyword: {key_word}')
@@ -191,11 +189,15 @@ class Kasta:
                         note = self.listen2()
                         print(note)
                         self.stop_listening()
+                        connection = ConnectDatabase()
+                        idUsers = connection.returnIdUser(self.user_email)
+                        UserId = idUsers[0][0]
 
-                        kasta.note.makeNote.make_note(title, note,
-                                                      self.idUsers)  #### 47 Linijka zwraca None - > do poprawy
-
+                        kasta.note.makeNote.make_note(title, note, UserId)  #### 47 Linijka zwraca None - > do poprawy
+                        time.sleep(1)
+                        self.speak("I have passed your note to database.")
                         self.listen()
+
                         break
                     elif "no" in response:
                         self.speak("What is the topic of your note?")
@@ -215,7 +217,8 @@ class Kasta:
             self.engine.say(text)
             self.engine.runAndWait()
         '''
-        time.sleep(2) # po to, by bezpiecznie wylaczyc kaste po zakonczeniu mowienia (bug fix)
+        # sleep do wywalenia ze względu na długi czas oczekiwania (problem w make_note) - do obserwacji ~jn
+        #time.sleep(2) # po to, by bezpiecznie wylaczyc kaste po zakonczeniu mowienia (bug fix)
         self.is_speaking = False
         print('Speaking:' + str(self.is_speaking))
 
@@ -232,7 +235,9 @@ class Kasta:
         self.speak("I am Kasta. How may I assist you?")
 
     def listen(self):
-        # self.greet_user()
+        if self.appFirstRun:
+            self.greet_user()
+        self.appFirstRun = False
         if not self.is_listening:
             print('listening...')
             self.stream.start_stream()

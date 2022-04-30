@@ -86,6 +86,13 @@ class ConnectDatabase:
             cursor.execute(sql_select_Query)
             self.connection.commit()
 
+
+    def returnNotesTopics(self,idUsers):
+        pass
+
+    def returnNote(self,topic,idUsers):
+        pass
+
     def get_user_name(self, email):
         if self.connection.is_connected():
             sql_select_Query = "SELECT firstName from Users WHERE email = '" + email + "'"
