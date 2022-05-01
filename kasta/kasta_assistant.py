@@ -308,6 +308,8 @@ class Kasta:
                                 break
                     break
                 self.listen()
+            case "send_sms":
+                pass
 
 
     def speak(self, text):

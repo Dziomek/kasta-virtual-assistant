@@ -7,8 +7,10 @@ class Calculate:
     def makeCalculations(text):
         app_id = "L52Y7X-8LJK6XHPQ9"
         client = wolframalpha.Client(app_id)
-        ind = text.lower().split().index('calculate')
-        text = text.split()[ind + 1]
-        res = client.query(" ".join(text))
-        answer = next(res.result).text
-        return "The answer is ", answer
+        res = client.query(text)
+        try:
+            answer = next(res.results).text
+            return "The answer is ", answer
+        except:
+            return "Oh i missed that, try again"
+
