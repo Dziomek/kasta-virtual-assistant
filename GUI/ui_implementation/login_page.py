@@ -26,6 +26,8 @@ class LoginPage(QDialog):
         #self.ui.loginButton.clicked.connect(self.login)
         # self.ui.registerButton.clicked.connect(self.showRegisterForm)
 
+        self.ui.label_7.setPixmap('icons/kaastavector.png')
+
         ######
         self.logged_in = False
         self.validAccount = False

@@ -22,6 +22,8 @@ class KastaPage(QMainWindow):
         
         # self.t1.start()
 
+        self.ui.label_3.setPixmap("icons/kaastavector.png")
+
         ## REMOVE TITLE BAR
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'login_pageTJbNeP.ui'
+## Form generated from reading UI file 'login_pageoYMIhc.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -15,7 +15,7 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
     QRadialGradient)
 from PySide2.QtWidgets import *
 
-
+#import res_rc
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -32,9 +32,10 @@ class Ui_Form(object):
 "border-radius: 30px;")
         self.label_2 = QLabel(self.widget)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(40, 30, 321, 521))
+        self.label_2.setGeometry(QRect(30, 30, 321, 521))
         self.label_2.setStyleSheet(u"background-color: #20242a;\n"
 "border-radius: 30px;")
+        self.label_2.setScaledContents(False)
         self.label_3 = QLabel(self.widget)
         self.label_3.setObjectName(u"label_3")
         self.label_3.setGeometry(QRect(360, 80, 401, 81))
@@ -184,8 +185,10 @@ class Ui_Form(object):
         self.label_6.setAlignment(Qt.AlignCenter)
         self.label_7 = QLabel(self.widget)
         self.label_7.setObjectName(u"label_7")
-        self.label_7.setGeometry(QRect(120, 110, 141, 181))
-        self.label_7.setStyleSheet(u"background-image: url(:/images/kastalogo.png);")
+        self.label_7.setGeometry(QRect(100, 80, 201, 201))
+        self.label_7.setStyleSheet(u"background-image: url(:/logo/kaastavector.png);")
+        self.label_7.setPixmap(QPixmap(u"../../icons/kaastavector.png"))
+        self.label_7.setScaledContents(True)
 
         self.retranslateUi(Form)
 
