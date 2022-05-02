@@ -30,6 +30,7 @@ from datetime import datetime
 from playsound import playsound
 from DataBase.Connection import ConnectDatabase
 from EmailService.emailService import MailService
+from .notification.notification import notify_me
 
 
 
@@ -57,6 +58,7 @@ class Kasta:
         self.json_list = []
         self.json_list.append(load_json('kasta/date/date_data.json'))
         self.json_list.append(load_json('kasta/openApp/openApp_data.json'))
+        self.json_list.append(load_json('kasta/notification/notification_data.json'))
         self.json_list.append(load_json('kasta/wiki/wikipedia_data.json'))
         self.json_list.append(load_json('kasta/jokes/jokes_data.json'))
         self.json_list.append(load_json('kasta/news/news_data.json'))
@@ -180,7 +182,6 @@ class Kasta:
                         print(self.response), self.speak(self.response)
                         self.listen()
                         break
-
             case "make_note":
                 playsound('kasta/sound2.wav')
                 self.speak("What is the topic of your note?")
@@ -310,6 +311,9 @@ class Kasta:
                 self.listen()
             case "send_sms":
                 pass
+            case "notify":
+                print(self.text)
+                notify_me(self.text)
 
 
     def speak(self, text):

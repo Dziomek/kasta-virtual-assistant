@@ -1,0 +1,6 @@
+{
+  "commands":{
+    "name": ["notification"],
+    "action": "notify"
+  }
+}
