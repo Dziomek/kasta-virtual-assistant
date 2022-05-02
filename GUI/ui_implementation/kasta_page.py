@@ -1,6 +1,7 @@
 import threading
 from PySide2 import QtCore
 from PySide2.QtCore import QThread, QPoint
+from PySide2.QtGui import QIcon
 from PySide2.QtWidgets import *
 from GUI.ui_python_files.ui_kasta_page import Ui_Form
 from kasta.kasta_assistant import Kasta, KastaWorker
@@ -23,6 +24,7 @@ class KastaPage(QMainWindow):
         # self.t1.start()
 
         self.ui.label_3.setPixmap("icons/kaastavector.png")
+        self.ui.helpButton.setIcon(QIcon("icons/help_icon.png"))
 
         ## REMOVE TITLE BAR
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)

@@ -213,31 +213,35 @@ background-color: #ff662b;;
    <widget class="QPushButton" name="helpButton">
     <property name="geometry">
      <rect>
-      <x>780</x>
-      <y>560</y>
-      <width>93</width>
-      <height>28</height>
+      <x>840</x>
+      <y>250</y>
+      <width>81</width>
+      <height>71</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
-background-color:  rgb(212, 192, 169);
+background-color: #2b3038;
 color: #20242a;
 border-radius: 10px;
 }
-QPushButton:hover{
-background-color: #837c73;
-}
-
-QPushButton:pressed{
-padding-left: 5px;
-padding-right: 5px;
-background-position: calc(100% - 10px)center;
-background-color: #ff662b;;
-}</string>
+</string>
     </property>
     <property name="text">
-     <string>Help</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../icons/help_icon.png</normaloff>../../icons/help_icon.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>100</width>
+      <height>100</height>
+     </size>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLabel" name="userEmailLabel">
@@ -336,6 +340,103 @@ paddinf-bottom: 7px;</string>
     </property>
     <property name="wordWrap">
      <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_description_3">
+    <property name="geometry">
+     <rect>
+      <x>850</x>
+      <y>330</y>
+      <width>61</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #837c73</string>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Helper&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="addCommandButton">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>80</y>
+      <width>141</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>13</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+background-color:  rgb(212, 192, 169);
+color: #20242a;
+border-radius: 10px;
+}
+QPushButton:hover{
+background-color: #837c73;
+}
+
+QPushButton:pressed{
+padding-left: 5px;
+padding-right: 5px;
+background-position: calc(100% - 10px)center;
+background-color: #ff662b;;
+}</string>
+    </property>
+    <property name="text">
+     <string>Add command</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="myCommandsButton">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>80</y>
+      <width>141</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>13</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+background-color:  rgb(212, 192, 169);
+color: #20242a;
+border-radius: 10px;
+}
+QPushButton:hover{
+background-color: #837c73;
+}
+
+QPushButton:pressed{
+padding-left: 5px;
+padding-right: 5px;
+background-position: calc(100% - 10px)center;
+background-color: #ff662b;;
+}</string>
+    </property>
+    <property name="text">
+     <string>My commands</string>
     </property>
    </widget>
   </widget>

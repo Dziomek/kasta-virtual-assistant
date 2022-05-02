@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'kasta_pageuSTwBD.ui'
+## Form generated from reading UI file 'kasta_pageAzZDSU.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -110,22 +110,18 @@ class Ui_Form(object):
 "}")
         self.helpButton = QPushButton(self.widget)
         self.helpButton.setObjectName(u"helpButton")
-        self.helpButton.setGeometry(QRect(780, 560, 93, 28))
+        self.helpButton.setGeometry(QRect(840, 250, 81, 71))
         self.helpButton.setStyleSheet(u"QPushButton{\n"
-"background-color:  rgb(212, 192, 169);\n"
+"background-color: #2b3038;\n"
 "color: #20242a;\n"
 "border-radius: 10px;\n"
 "}\n"
-"QPushButton:hover{\n"
-"background-color: #837c73;\n"
-"}\n"
-"\n"
-"QPushButton:pressed{\n"
-"padding-left: 5px;\n"
-"padding-right: 5px;\n"
-"background-position: calc(100% - 10px)center;\n"
-"background-color: #ff662b;;\n"
-"}")
+"")
+        icon = QIcon()
+        icon.addFile(u"../../icons/help_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.helpButton.setIcon(icon)
+        self.helpButton.setIconSize(QSize(100, 100))
+        self.helpButton.setFlat(False)
         self.userEmailLabel = QLabel(self.widget)
         self.userEmailLabel.setObjectName(u"userEmailLabel")
         self.userEmailLabel.setGeometry(QRect(110, 20, 251, 16))
@@ -157,6 +153,50 @@ class Ui_Form(object):
         self.label_3.setScaledContents(True)
         self.label_3.setAlignment(Qt.AlignCenter)
         self.label_3.setWordWrap(False)
+        self.label_description_3 = QLabel(self.widget)
+        self.label_description_3.setObjectName(u"label_description_3")
+        self.label_description_3.setGeometry(QRect(850, 330, 61, 41))
+        self.label_description_3.setFont(font3)
+        self.label_description_3.setStyleSheet(u"color: #837c73")
+        self.label_description_3.setAlignment(Qt.AlignCenter)
+        self.addCommandButton = QPushButton(self.widget)
+        self.addCommandButton.setObjectName(u"addCommandButton")
+        self.addCommandButton.setGeometry(QRect(100, 80, 141, 41))
+        self.addCommandButton.setFont(font1)
+        self.addCommandButton.setStyleSheet(u"QPushButton{\n"
+"background-color:  rgb(212, 192, 169);\n"
+"color: #20242a;\n"
+"border-radius: 10px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: #837c73;\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"padding-left: 5px;\n"
+"padding-right: 5px;\n"
+"background-position: calc(100% - 10px)center;\n"
+"background-color: #ff662b;;\n"
+"}")
+        self.myCommandsButton = QPushButton(self.widget)
+        self.myCommandsButton.setObjectName(u"myCommandsButton")
+        self.myCommandsButton.setGeometry(QRect(260, 80, 141, 41))
+        self.myCommandsButton.setFont(font1)
+        self.myCommandsButton.setStyleSheet(u"QPushButton{\n"
+"background-color:  rgb(212, 192, 169);\n"
+"color: #20242a;\n"
+"border-radius: 10px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: #837c73;\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"padding-left: 5px;\n"
+"padding-right: 5px;\n"
+"background-position: calc(100% - 10px)center;\n"
+"background-color: #ff662b;;\n"
+"}")
 
         self.retranslateUi(Form)
 
@@ -172,10 +212,13 @@ class Ui_Form(object):
         self.label_title.setText(QCoreApplication.translate("Form", u"<strong>KASTA</strong> VA", None))
         self.label_description.setText(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-weight:600;\">Virtual Assistant</span></p></body></html>", None))
         self.endButton.setText(QCoreApplication.translate("Form", u"Stop listening", None))
-        self.helpButton.setText(QCoreApplication.translate("Form", u"Help", None))
+        self.helpButton.setText("")
         self.userEmailLabel.setText(QCoreApplication.translate("Form", u"xdxdxd", None))
         self.userNameLabel.setText(QCoreApplication.translate("Form", u"xdxdxd", None))
         self.kastaLabel.setText("")
         self.label_3.setText("")
+        self.label_description_3.setText(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-weight:600;\">Helper</span></p><p><span style=\" font-weight:600;\"><br/></span></p></body></html>", None))
+        self.addCommandButton.setText(QCoreApplication.translate("Form", u"Add command", None))
+        self.myCommandsButton.setText(QCoreApplication.translate("Form", u"My commands", None))
     # retranslateUi
 
