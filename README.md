@@ -41,7 +41,7 @@ The application only works when the database is turned on. When the database is 
 
 In progress
 
-### Grafical User Interface
+### Graphical User Interface
 * [Splash Screen](#splashScreen)
 * [Login Page](#loginPage)
 * [Regsiter](#register)
