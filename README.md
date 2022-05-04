@@ -1,7 +1,9 @@
-
-<img src="https://user-images.githubusercontent.com/72970978/166124613-df2ae0d7-1f7c-4d03-bbcb-97fc9ead719d.png" alt="logo" width="200"/>
-
-# Kasta VA Virtual Assistant
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/72970978/166124613-df2ae0d7-1f7c-4d03-bbcb-97fc9ead719d.png" alt="logo" width="200"/>
+</p>
+<div align="center">
+    <p><h1>Kasta VA Virtual Assistant</h1></p>
+</div>
 This is a application in the graphical user interface resembling Siri or the Google assistant in its operation. It has been equipped with many functions, e.g. reading the weather from the API, telling jokes and even saving notes to the database and sending them to an e-mail or phone.
 
 Uses speech recognition to take your commands and process them appropriately. Kasta answers by voice and writes the answer on the screen.
