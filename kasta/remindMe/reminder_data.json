@@ -1,0 +1,7 @@
+{
+  "commands":
+    {
+      "name": ["sent a reminder", "remind me", "save the reminder"],
+      "action": "remind_me"
+    }
+}

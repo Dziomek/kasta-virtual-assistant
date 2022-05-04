@@ -23,16 +23,17 @@ import kasta.wolfram.wolframAlpha
 import kasta.rockpaperscisorrs.game
 import kasta.read_note.readNote
 import kasta.help.help
+import SMSService.smsService
+import kasta.remindMe.reminder
 from .weather.weatherApp import Weather
 import kasta.headsortails.tossCoin
+import kasta.googlesearch.googlesearch
 from .youtube.youtube_playing import YoutubeService
 from datetime import datetime
 from playsound import playsound
 from DataBase.Connection import ConnectDatabase
 from EmailService.emailService import MailService
 from .notification.notification import notify_me
-
-
 
 
 class Kasta:
@@ -75,14 +76,14 @@ class Kasta:
         self.json_list.append(load_json('kasta/read_note/read_note_data.json'))
         self.json_list.append(load_json('kasta/send_note_via_email/email_note_data.json'))
         self.json_list.append(load_json('kasta/help/help_data.json'))
+        self.json_list.append(load_json('kasta/googlesearch/googlesearch_data.json'))
+        self.json_list.append(load_json('kasta/remindMe/reminder_data.json'))
 
         self.is_listening = False
         self.is_speaking = False
 
         ####
         self.response = ''
-
-
 
     def decision_making_process(self, i, key_word):
         print(f'Keyword: {key_word}')
@@ -155,7 +156,7 @@ class Kasta:
                 playsound('kasta/sound2.wav')
                 self.response = kasta.headsortails.tossCoin.tossCoin()
                 print(self.response), self.speak(self.response)
-            case "play_song":
+            case "play_song":  ##### do wywalenia
                 playsound('kasta/sound2.wav')
                 self.speak("Choose among rock, paper or scissors.")
                 while True:
@@ -236,7 +237,7 @@ class Kasta:
                     for topic in topics_list:
                         if topic in user_choose:
                             self.stop_listening()
-                            print('topic',topic)
+                            print('topic', topic)
                             print(user_choose)
 
                             self.speak(f"Is {user_choose} correct ?")
@@ -295,7 +296,6 @@ class Kasta:
                                 if self.response is not None:
                                     self.response = self.response[0][0]
 
-
                                     ##email
                                     sendmail = MailService()
                                     sendmail.sendNoteViaEmail(self.user_name, self.user_email, user_choose, note[0][0])
@@ -314,11 +314,42 @@ class Kasta:
             case "notify":
                 print(self.text)
                 notify_me(self.text)
+            case "search_google":
+                playsound('kasta/sound2.wav')
+                search = self.text.split(" ", 3)[3]
+                response = kasta.googlesearch.googlesearch.search_google(search)
+                self.response = f"Searching {search} in Google"
 
+            case "remind_me":
+                playsound('kasta/sound2.wav')
+                self.speak("What reminder should i set?")
+                while True:
+                    reminder = self.listen2()
+                    print(reminder)
+                    self.stop_listening()
+
+                    self.speak('please tell when it happens')
+                    date = self.listen2()
+                    print(date)
+                    self.stop_listening()
+
+                    self.speak(f"Your new reminder is {reminder} is set to {date}. Is it correct?")
+                    response = self.listen2()
+                    print(response)
+                    self.stop_listening()
+                    if 'yes' in response:
+                        self.speak('I will sent your reminder to your phone number which is associated with your '
+                                   'account.')
+                        smsservice = SMSService.smsService.SendSms()
+                        user_phone_number = '' #### wpisac swoj numer telefonu np '+48123123123'
+                        smsservice.send_reminder(reminder, date, user_phone_number)
+
+                        self.listen()
+                        break
 
     def speak(self, text):
         self.is_speaking = True
-        time.sleep(0.5) # po to, by moc jeszcze wylaczyc kaste, zanim zacznie mowic (bug fix)
+        time.sleep(0.5)  # po to, by moc jeszcze wylaczyc kaste, zanim zacznie mowic (bug fix)
         print('Speaking:' + str(self.is_speaking))
         self.engine.say(text)
         self.engine.runAndWait()
@@ -330,7 +361,7 @@ class Kasta:
             self.engine.runAndWait()
         '''
         # sleep do wywalenia ze względu na długi czas oczekiwania (problem w make_note) - do obserwacji ~jn
-        #time.sleep(2) # po to, by bezpiecznie wylaczyc kaste po zakonczeniu mowienia (bug fix)
+        # time.sleep(2) # po to, by bezpiecznie wylaczyc kaste po zakonczeniu mowienia (bug fix)
         self.is_speaking = False
         print('Speaking:' + str(self.is_speaking))
 
@@ -389,7 +420,7 @@ class Kasta:
             if self.rec.AcceptWaveform(data):
                 self.text = self.rec.Result()[13:-1]  # od 12 po to, żeby wypisać samą komendę (bez 'text' itp)
                 self.text = self.text.replace('"', '')
-                self.text = self.text.replace(self.text[-1],'')
+                self.text = self.text.replace(self.text[-1], '')
 
                 return self.text
 
@@ -427,5 +458,3 @@ class KastaWorker(QThread):
         if not self.kasta.is_speaking:
             self.terminate()
             self.kasta.stop_listening()
-
-
