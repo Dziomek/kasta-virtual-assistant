@@ -39,6 +39,34 @@ The application only works when the database is turned on. When the database is 
 
 In progress
 
+### Grafical User Interface
+* [Splash Screen](#splashScreen)
+* [Login Page](#loginPage)
+* [Regsiter](#register)
+* [One time password](#otp)
+* [Main window](#main)
+
+### Kasta VA Features
+
+* [Greetings](#greetings)
+* [Acknowledgment](#acknowledgment)
+* [Help](#help)
+* [Date](#date)
+* [General response](#generalresponse)
+* [headortails](#headsortails)
+* [Jokes](#jokes)
+* [News](#news)
+* [Create Note](#createnote)
+* [Read Note](#readnote)
+* [Send Note via email](#sendNoteViaEmail)
+* [Send Note via SMS](#sendNoteViaSms)
+* [Open Application](#openApp)
+* [Weather](#weather)
+* [Wikipedia](#wikipedia)
+* [WolframAlpha](#wolfram)
+* [Open Youtube video](#youtube)
+* [Rock paper scisorrs](#rockpapperscissors)
+* [Search in google](#googleSearch)
 
 ## Authors
 
