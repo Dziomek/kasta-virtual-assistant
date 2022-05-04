@@ -42,9 +42,9 @@ The application only works when the database is turned on. When the database is 
 In progress
 
 ### Graphical User Interface
-* [Splash Screen](#splashScreen)
-* [Login Page](#loginPage)
-* [Regsiter](#register)
+* [Splash Screen](#Splash-Screen)
+* [Login Page](#Log-In)
+* [Regsiter](#Register)
 * [One time password](#otp)
 * [Main window](#main)
 
@@ -69,6 +69,36 @@ In progress
 * [Open Youtube video](#youtube)
 * [Rock paper scisorrs](#rockpapperscissors)
 * [Search in google](#googleSearch)
+
+
+
+
+
+
+
+## Splash Screen
+The splash screen is used to load all modules in the application
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/72970978/166832470-4874afe3-3d69-4bff-90f4-7be91b38836a.png" alt="splash"/>
+</p>
+
+## Log In
+Log in takes place by entering an e-mail and password. The password is saved in the database as a hash.
+The Login Page returns information about the correct data entry, wrong password and the lack of completion of all fields.
+When the account is not confirmed after clicking log in, we are asked to enter OTP.
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/72970978/166832472-41f582a8-6a58-42d7-948a-3943d4dc8ee2.png" alt="login"/>
+</p>
+
+## Register
+The password is encrypted and saved to the database.
+After registering the user, the e-mail associated with the account receives a one-time password that must be entered to activate the account.
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/72970978/166832467-395f812f-ef98-4b69-8f5e-c8505e117b0d.png" alt="register"/>
+</p>
+
+
+
 
 ## Authors
 
