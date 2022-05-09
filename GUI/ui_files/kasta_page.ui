@@ -614,6 +614,42 @@ border-radius: 10px;
      <bool>false</bool>
     </property>
    </widget>
+   <widget class="QPushButton" name="myNotesButton">
+    <property name="geometry">
+     <rect>
+      <x>780</x>
+      <y>150</y>
+      <width>141</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>13</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+background-color:  rgb(212, 192, 169);
+color: #20242a;
+border-radius: 10px;
+}
+QPushButton:hover{
+background-color: #837c73;
+}
+
+QPushButton:pressed{
+padding-left: 5px;
+padding-right: 5px;
+background-position: calc(100% - 10px)center;
+background-color: #ff662b;;
+}</string>
+    </property>
+    <property name="text">
+     <string>My notes</string>
+    </property>
+   </widget>
    <zorder>label</zorder>
    <zorder>label_2</zorder>
    <zorder>emailLabel</zorder>
@@ -635,6 +671,7 @@ border-radius: 10px;
    <zorder>enterCommandButton</zorder>
    <zorder>keyboardLabel</zorder>
    <zorder>speakerIcon</zorder>
+   <zorder>myNotesButton</zorder>
   </widget>
  </widget>
  <resources>

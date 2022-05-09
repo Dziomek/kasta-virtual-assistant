@@ -3,6 +3,9 @@ from PySide2 import QtCore
 from PySide2.QtCore import QThread, QPoint, QTimer
 from PySide2.QtGui import QIcon
 from PySide2.QtWidgets import *
+
+from GUI.ui_implementation.faq import FAQPage
+from GUI.ui_implementation.notes_page import MyNotesPage
 from GUI.ui_python_files.ui_kasta_page import Ui_Form
 from kasta.kasta_assistant import Kasta, KastaWorker
 import multiprocessing
@@ -21,6 +24,7 @@ class KastaPage(QMainWindow):
         self.ui.startButton.clicked.connect(self.text_changing_thread.start)
         self.ui.startButton.clicked.connect(self.set_type_button_disabled)
         self.ui.startButton.clicked.connect(self.set_listen_button_disabled)
+        self.my_notes = MyNotesPage()
 
 
         self.ui.endButton.clicked.connect(self.kasta_thread.stop)
@@ -47,6 +51,16 @@ class KastaPage(QMainWindow):
 
         self.command_typed = False
         self.command_listened = False
+
+        self.ui.myNotesButton.clicked.connect(self.switch_to_notes)
+
+    def switch_to_notes(self):
+        for x in range(10):
+            for y in range(2):
+                self.my_notes.create_new_widget(x, y)
+        self.my_notes.show()
+
+
 
     def set_parameters(self):
         if not self.kasta_thread.kasta.is_action_performed:
@@ -89,6 +103,7 @@ class KastaPage(QMainWindow):
             print(self.command_typed)
 
     #########################################
+
 
 
     def mousePressEvent(self, event):

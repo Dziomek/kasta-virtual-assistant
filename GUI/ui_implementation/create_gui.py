@@ -5,6 +5,7 @@ from PySide2.QtCore import QThread
 from GUI.ui_implementation.faq import FAQPage
 from GUI.ui_implementation.kasta_page import KastaPage
 from GUI.ui_implementation.login_page import LoginPage
+from GUI.ui_implementation.notes_page import MyNotesPage
 from GUI.ui_implementation.register_page import RegisterPage
 from GUI.ui_implementation.splash import SplashScreen
 from GUI.ui_implementation.otp_page import OtpPage
@@ -21,6 +22,7 @@ class CreateGui:
         self.otp_page = OtpPage()
         self.confirmation_page = ConfirmationPage()
         self.faq_page = FAQPage()
+        self.my_notes_page = MyNotesPage()
         self.main_page.login_page.ui.registerButton.clicked.connect(self.login_to_register)
         self.main_page.login_page.ui.loginButton.clicked.connect(self.login_to_kasta_or_otp)
         #self.main_page.login_page.ui.loginButton.clicked.connect(self.login_to_otp)
@@ -117,6 +119,9 @@ class CreateGui:
 
     def kasta_to_faq(self):
         self.faq_page.show()
+
+    def kasta_to_notes(self):
+        self.my_notes_page.show()
 
 
 

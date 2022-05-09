@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'kasta_pageuwTMpB.ui'
+## Form generated from reading UI file 'kasta_pageaoPsvc.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -264,6 +264,25 @@ class Ui_Form(object):
         self.speakerIcon.setIcon(icon2)
         self.speakerIcon.setIconSize(QSize(100, 100))
         self.speakerIcon.setFlat(False)
+        self.myNotesButton = QPushButton(self.widget)
+        self.myNotesButton.setObjectName(u"myNotesButton")
+        self.myNotesButton.setGeometry(QRect(780, 150, 141, 41))
+        self.myNotesButton.setFont(font1)
+        self.myNotesButton.setStyleSheet(u"QPushButton{\n"
+"background-color:  rgb(212, 192, 169);\n"
+"color: #20242a;\n"
+"border-radius: 10px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: #837c73;\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"padding-left: 5px;\n"
+"padding-right: 5px;\n"
+"background-position: calc(100% - 10px)center;\n"
+"background-color: #ff662b;;\n"
+"}")
         self.label.raise_()
         self.label_2.raise_()
         self.emailLabel.raise_()
@@ -285,6 +304,7 @@ class Ui_Form(object):
         self.enterCommandButton.raise_()
         self.keyboardLabel.raise_()
         self.speakerIcon.raise_()
+        self.myNotesButton.raise_()
 
         self.retranslateUi(Form)
 
@@ -315,5 +335,6 @@ class Ui_Form(object):
         self.label_4.setText("")
         self.keyboardLabel.setText("")
         self.speakerIcon.setText("")
+        self.myNotesButton.setText(QCoreApplication.translate("Form", u"My notes", None))
     # retranslateUi
 
