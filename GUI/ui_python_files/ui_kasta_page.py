@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'kasta_pageGvNYAU.ui'
+## Form generated from reading UI file 'kasta_pageTLbqLP.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -49,6 +49,7 @@ class Ui_Form(object):
 "border-bottom-color: #ff662b;\n"
 "color: rgb(212, 192, 169);\n"
 "paddinf-bottom: 7px;")
+        self.emailLabel.setReadOnly(True)
         self.startButton = QPushButton(self.widget)
         self.startButton.setObjectName(u"startButton")
         self.startButton.setGeometry(QRect(460, 490, 191, 41))
@@ -225,6 +226,11 @@ class Ui_Form(object):
 "background-position: calc(100% - 10px)center;\n"
 "background-color: #ff662b;;\n"
 "}")
+        self.listeningLabel = QLabel(self.widget)
+        self.listeningLabel.setObjectName(u"listeningLabel")
+        self.listeningLabel.setGeometry(QRect(110, 420, 251, 16))
+        self.listeningLabel.setFont(font4)
+        self.listeningLabel.setStyleSheet(u"color: #837c73")
 
         self.retranslateUi(Form)
 
@@ -251,5 +257,6 @@ class Ui_Form(object):
         self.typeTextEdit.setText("")
         self.typeTextEdit.setPlaceholderText(QCoreApplication.translate("Form", u"enter command...", None))
         self.enterCommandButton.setText(QCoreApplication.translate("Form", u"Enter command", None))
+        self.listeningLabel.setText("")
     # retranslateUi
 

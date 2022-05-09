@@ -82,11 +82,12 @@ class Kasta:
 
         self.is_listening = False
         self.is_speaking = False
-
+        self.is_action_performed = False
         ####
         self.response = ''
 
     def decision_making_process(self, i, key_word):
+        self.is_action_performed = True
         print(f'Keyword: {key_word}')
         print(f"Action: {self.json_list[i]['commands']['action']}")
         match self.json_list[i]['commands']['action']:
@@ -94,6 +95,7 @@ class Kasta:
                 playsound('kasta/sound2.wav')
                 self.response = kasta.help.help.helpMe()
                 print(self.response), self.speak(self.response)
+                self.is_action_performed = False
 
             case "wiki_search":
                 playsound('kasta/sound2.wav')
@@ -101,65 +103,79 @@ class Kasta:
                     person = WikiSearch.wiki_person(self.text)
                     wiki = wikipedia.summary(person, sentences=2)
                     print(wiki), self.speak(wiki)
+                    self.is_action_performed = False
                 except Exception:
                     print('Unfortunately I did not find this page. Please try again')
             case "say_hello":
                 playsound('kasta/sound2.wav')
                 self.response = kasta.greetings.greetings.sayHello()
                 print(self.response), self.speak(self.response)
+                self.is_action_performed = False
             case "say_time":
                 playsound('kasta/sound2.wav')
                 self.response = kasta.date.date.Date.say_time(self.text)
                 print(self.response), self.speak(self.response)
+                self.is_action_performed = False
             case "say_thank_you":
                 playsound('kasta/sound2.wav')
                 self.response = kasta.acknowledgement.acknowledgment.thank_you()
                 print(self.response), self.speak(self.response)
+                self.is_action_performed = False
             case "general_response":
                 playsound('kasta/sound2.wav')
                 self.response = kasta.general_response.general_response.GeneralResponse.general_response(
                     self.text)
                 print(self.response), self.speak(self.response)
+                self.is_action_performed = False
             case "open_app":
                 playsound('kasta/sound2.wav')
                 p = multiprocessing.Process(target=OpenApp.open_application, args=(key_word,))
                 p.start()
                 p.join()
                 self.response = f"Opening {key_word.split(' ', 2)[1]}"
+                self.is_action_performed = False
             case "tell_jokes":
                 playsound('kasta/sound2.wav')
                 self.response = kasta.jokes.jokes_app.tell_joke()
                 print(self.response), self.speak(self.response)
+                self.is_action_performed = False
             case "tell_news":
                 playsound('kasta/sound2.wav')
                 self.response = kasta.news.news.tell_news()
                 print(self.response), self.speak(self.response)
+                self.is_action_performed = False
             case "play_yt":
                 playsound('kasta/sound2.wav')
                 p = multiprocessing.Process(target=YoutubeService.play_on_yt, args=(self.text, key_word,))
                 p.start()
                 p.join()
+                self.is_action_performed = False
             case "calculate":
                 playsound('kasta/sound2.wav')
                 self.response = kasta.wolfram.wolframAlpha.Calculate.makeCalculations(self.text)
                 print(self.response), self.speak(self.response)
+                self.is_action_performed = False
             case "weather":
                 weather = Weather()
                 if self.text != "weather" and self.text != "whether":
                     weather.city = self.text.split(' ')[1]
                     ##weather.city = weather.city.replace(weather.city[-1], '') ## usuniecie znaku /n na koncu miasta
+                    self.is_action_performed = False
                 else:
                     weather.city = ''
                 playsound('kasta/sound2.wav')
                 self.response = weather.get_weather(key_word, weather.city)
                 print(self.response), self.speak(self.response)
+                self.is_action_performed = False
             case "flip_coin":
                 playsound('kasta/sound2.wav')
                 self.response = kasta.headsortails.tossCoin.tossCoin()
                 print(self.response), self.speak(self.response)
+                self.is_action_performed = False
             case "play_song":  ##### do wywalenia
                 playsound('kasta/sound2.wav')
                 self.speak("Choose among rock, paper or scissors.")
+                self.is_action_performed = False
                 while True:
                     nowyTekst = self.listen2()
                     print(nowyTekst)
@@ -172,6 +188,7 @@ class Kasta:
                             self.speak('Ok. i will play it ')
                             self.listen()
                             break
+                self.is_action_performed = False
             case "play_game":
                 playsound('kasta/sound2.wav')
                 self.speak("Choose among rock, paper or scissors.")
@@ -184,6 +201,7 @@ class Kasta:
                         print(self.response), self.speak(self.response)
                         self.listen()
                         break
+                self.is_action_performed = False
             case "make_note":
                 playsound('kasta/sound2.wav')
                 self.speak("What is the topic of your note?")
@@ -216,7 +234,7 @@ class Kasta:
                         break
                     elif "no" in response:
                         self.speak("What is the topic of your note?")
-
+                self.is_action_performed = False
             case "read_note":
                 playsound('kasta/sound2.wav')
                 self.speak("I will read your all notes topics. Chose one of them.")
@@ -259,6 +277,7 @@ class Kasta:
                                 break
                     break
                 self.listen()
+                self.is_action_performed = False
 
             case "email_note":
                 playsound('kasta/sound2.wav')
@@ -310,20 +329,24 @@ class Kasta:
                                 break
                     break
                 self.listen()
+                self.is_action_performed = False
             case "send_sms":
                 pass
             case "notify":
                 print(self.text)
                 notify_me(self.text)
+                self.is_action_performed = False
             case "search_google":
                 playsound('kasta/sound2.wav')
                 search = self.text.split(" ", 3)[3]
                 response = kasta.googlesearch.googlesearch.search_google(search)
                 self.response = f"Searching {search} in Google"
+                self.is_action_performed = False
 
             case "remind_me":
                 playsound('kasta/sound2.wav')
                 self.speak("What reminder should i set?")
+
                 while True:
                     reminder = self.listen2()
                     print(reminder)
@@ -347,6 +370,8 @@ class Kasta:
 
                         self.listen()
                         break
+                self.is_action_performed = False
+
 
     def speak(self, text):
         self.is_speaking = True
@@ -384,7 +409,7 @@ class Kasta:
         self.appFirstRun = False
         if not self.is_listening:
             print('listening...')
-            self.typed_text = ""
+            self.text = ""
             self.stream.start_stream()
             self.is_listening = True
             is_done = False

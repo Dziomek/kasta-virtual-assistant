@@ -84,6 +84,9 @@ border-bottom-color: #ff662b;
 color: rgb(212, 192, 169);
 paddinf-bottom: 7px;</string>
     </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
     <property name="placeholderText">
      <string>listening...</string>
     </property>
@@ -502,6 +505,28 @@ background-color: #ff662b;;
     </property>
     <property name="text">
      <string>Enter command</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="listeningLabel">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>420</y>
+      <width>251</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #837c73</string>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>
