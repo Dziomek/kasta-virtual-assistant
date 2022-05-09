@@ -74,7 +74,7 @@ class CreateGui:
             print(self.kasta_page.kasta_thread.kasta.user_email, self.kasta_page.kasta_thread.kasta.user_name)
             self.main_page.login_page.close()
             self.kasta_page.show()
-            print(self.kasta_page.user_email)
+
         elif self.main_page.login_page.logged_in and self.main_page.login_page.validAccount == 'False':
             self.otp_page.email_in_otp = self.main_page.login_page.email  # PRZEKAZANIE MAILA
             self.main_page.login_page.close()

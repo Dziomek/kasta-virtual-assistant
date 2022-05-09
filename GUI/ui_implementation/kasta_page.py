@@ -4,6 +4,7 @@ from PySide2.QtCore import QThread, QPoint, QTimer
 from PySide2.QtGui import QIcon
 from PySide2.QtWidgets import *
 
+from DataBase.Connection import ConnectDatabase
 from GUI.ui_implementation.faq import FAQPage
 from GUI.ui_implementation.notes_page import MyNotesPage
 from GUI.ui_python_files.ui_kasta_page import Ui_Form
@@ -47,17 +48,33 @@ class KastaPage(QMainWindow):
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
 
-        self.user_email = ''
-
         self.command_typed = False
         self.command_listened = False
 
         self.ui.myNotesButton.clicked.connect(self.switch_to_notes)
 
     def switch_to_notes(self):
-        for x in range(10):
+        connection = ConnectDatabase()
+        idUsers = connection.returnIdUser(self.kasta_thread.kasta.user_email)[0][0]
+        notes = connection.get_notes(idUsers)
+        print(notes[1][0])
+        print('number of notes:' + str(len(notes)))
+        print('user id:' + str(idUsers))
+        if len(notes) % 2 == 0:
+            row_number = int(len(notes)/2)
+        else:
+            row_number = int(len(notes)/2) + 1
+
+        print('number of rows:' + str(row_number))
+        note_number = 0 ## current number of note
+        for x in range(row_number):
             for y in range(2):
-                self.my_notes.create_new_widget(x, y)
+                if note_number == len(notes):
+                    break
+                else:
+                    self.my_notes.create_new_widget(x, y, notes[note_number][0])
+                    print('created note ' + str(note_number))
+                    note_number += 1
         self.my_notes.show()
 
 

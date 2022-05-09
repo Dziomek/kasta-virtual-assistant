@@ -8,9 +8,9 @@ from GUI.ui_implementation.notes_page import MyNotesPage
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    #create_gui = CreateGui() #- PO ZAKONCZENIU TESTOW URUCHOMIMY TO PONOWNIE
+    create_gui = CreateGui() #- PO ZAKONCZENIU TESTOW URUCHOMIMY TO PONOWNIE
 
-    kasta_page = KastaPage() # TYMCZASOWO, PODCZAS ROBIENIA KASTY
-    kasta_page.show()
+    #kasta_page = KastaPage() # TYMCZASOWO, PODCZAS ROBIENIA KASTY
+    #kasta_page.show()
     # widgets = CreateWidgets()
     sys.exit(app.exec_())

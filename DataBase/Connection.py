@@ -120,3 +120,13 @@ class ConnectDatabase:
             name = cursor.fetchall()
             return name
 
+    def get_notes(self, idUsers):
+        if self.connection.is_connected():
+            sql_select_Query = "SELECT text from Notes WHERE idUsers = '" + str(idUsers) + "'"
+            print(sql_select_Query)
+            cursor = self.connection.cursor()
+            cursor.execute(sql_select_Query)
+            return cursor.fetchall()
+
+
+
