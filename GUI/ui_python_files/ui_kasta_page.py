@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'kasta_pageTLbqLP.ui'
+## Form generated from reading UI file 'kasta_pageuwTMpB.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -24,22 +24,22 @@ class Ui_Form(object):
         Form.resize(1400, 832)
         self.widget = QWidget(Form)
         self.widget.setObjectName(u"widget")
-        self.widget.setGeometry(QRect(30, 80, 1081, 711))
+        self.widget.setGeometry(QRect(30, 80, 1081, 911))
         self.label = QLabel(self.widget)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(90, 0, 951, 701))
+        self.label.setGeometry(QRect(90, 0, 951, 751))
         self.label.setStyleSheet(u"background-color: #2b3038;\n"
 "border-radius: 30px;")
         self.label.setScaledContents(False)
         self.label.setWordWrap(False)
         self.label_2 = QLabel(self.widget)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(100, 460, 561, 211))
+        self.label_2.setGeometry(QRect(100, 470, 521, 211))
         self.label_2.setStyleSheet(u"background-color: #20242a;\n"
 "border-radius: 30px;")
         self.emailLabel = QLineEdit(self.widget)
         self.emailLabel.setObjectName(u"emailLabel")
-        self.emailLabel.setGeometry(QRect(110, 490, 341, 40))
+        self.emailLabel.setGeometry(QRect(110, 490, 301, 40))
         font = QFont()
         font.setFamily(u"Segoe UI")
         font.setPointSize(9)
@@ -52,7 +52,7 @@ class Ui_Form(object):
         self.emailLabel.setReadOnly(True)
         self.startButton = QPushButton(self.widget)
         self.startButton.setObjectName(u"startButton")
-        self.startButton.setGeometry(QRect(460, 490, 191, 41))
+        self.startButton.setGeometry(QRect(460, 490, 151, 41))
         font1 = QFont()
         font1.setFamily(u"Segoe UI")
         font1.setPointSize(13)
@@ -92,7 +92,7 @@ class Ui_Form(object):
         self.label_description.setAlignment(Qt.AlignCenter)
         self.endButton = QPushButton(self.widget)
         self.endButton.setObjectName(u"endButton")
-        self.endButton.setGeometry(QRect(460, 540, 191, 41))
+        self.endButton.setGeometry(QRect(460, 540, 151, 41))
         self.endButton.setFont(font1)
         self.endButton.setStyleSheet(u"QPushButton{\n"
 "background-color:  rgb(212, 192, 169);\n"
@@ -111,7 +111,7 @@ class Ui_Form(object):
 "}")
         self.helpButton = QPushButton(self.widget)
         self.helpButton.setObjectName(u"helpButton")
-        self.helpButton.setGeometry(QRect(840, 250, 81, 71))
+        self.helpButton.setGeometry(QRect(130, 140, 81, 71))
         self.helpButton.setStyleSheet(u"QPushButton{\n"
 "background-color: #2b3038;\n"
 "color: #20242a;\n"
@@ -138,7 +138,7 @@ class Ui_Form(object):
         self.userNameLabel.setStyleSheet(u"color: #837c73")
         self.kastaLabel = QLabel(self.widget)
         self.kastaLabel.setObjectName(u"kastaLabel")
-        self.kastaLabel.setGeometry(QRect(330, 640, 491, 51))
+        self.kastaLabel.setGeometry(QRect(330, 680, 491, 51))
         self.kastaLabel.setStyleSheet(u"background-color: rgba(0,0,0,0);\n"
 "border: 2px solid rgba(0,0,0,0);\n"
 "border-bottom-color: #ff662b;\n"
@@ -156,7 +156,7 @@ class Ui_Form(object):
         self.label_3.setWordWrap(False)
         self.label_description_3 = QLabel(self.widget)
         self.label_description_3.setObjectName(u"label_description_3")
-        self.label_description_3.setGeometry(QRect(850, 330, 71, 41))
+        self.label_description_3.setGeometry(QRect(140, 220, 71, 41))
         self.label_description_3.setFont(font3)
         self.label_description_3.setStyleSheet(u"color: #837c73")
         self.label_description_3.setAlignment(Qt.AlignCenter)
@@ -231,6 +231,60 @@ class Ui_Form(object):
         self.listeningLabel.setGeometry(QRect(110, 420, 251, 16))
         self.listeningLabel.setFont(font4)
         self.listeningLabel.setStyleSheet(u"color: #837c73")
+        self.label_4 = QLabel(self.widget)
+        self.label_4.setObjectName(u"label_4")
+        self.label_4.setGeometry(QRect(630, 470, 401, 211))
+        self.label_4.setStyleSheet(u"background-color: #20242a;\n"
+"border-radius: 30px;")
+        self.keyboardLabel = QPushButton(self.widget)
+        self.keyboardLabel.setObjectName(u"keyboardLabel")
+        self.keyboardLabel.setGeometry(QRect(790, 370, 121, 81))
+        self.keyboardLabel.setStyleSheet(u"QPushButton{\n"
+"background-color: #2b3038;\n"
+"color: #20242a;\n"
+"border-radius: 10px;\n"
+"}\n"
+"")
+        icon1 = QIcon()
+        icon1.addFile(u"../../icons/keyboardicon.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.keyboardLabel.setIcon(icon1)
+        self.keyboardLabel.setIconSize(QSize(100, 100))
+        self.keyboardLabel.setFlat(False)
+        self.speakerIcon = QPushButton(self.widget)
+        self.speakerIcon.setObjectName(u"speakerIcon")
+        self.speakerIcon.setGeometry(QRect(210, 390, 81, 71))
+        self.speakerIcon.setStyleSheet(u"QPushButton{\n"
+"background-color: #2b3038;\n"
+"color: #20242a;\n"
+"border-radius: 10px;\n"
+"}\n"
+"")
+        icon2 = QIcon()
+        icon2.addFile(u"../../icons/speaker.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.speakerIcon.setIcon(icon2)
+        self.speakerIcon.setIconSize(QSize(100, 100))
+        self.speakerIcon.setFlat(False)
+        self.label.raise_()
+        self.label_2.raise_()
+        self.emailLabel.raise_()
+        self.startButton.raise_()
+        self.label_title.raise_()
+        self.label_description.raise_()
+        self.endButton.raise_()
+        self.helpButton.raise_()
+        self.userEmailLabel.raise_()
+        self.userNameLabel.raise_()
+        self.kastaLabel.raise_()
+        self.label_3.raise_()
+        self.label_description_3.raise_()
+        self.addCommandButton.raise_()
+        self.listeningLabel.raise_()
+        self.label_4.raise_()
+        self.typeTextEdit.raise_()
+        self.myCommandsButton.raise_()
+        self.enterCommandButton.raise_()
+        self.keyboardLabel.raise_()
+        self.speakerIcon.raise_()
 
         self.retranslateUi(Form)
 
@@ -258,5 +312,8 @@ class Ui_Form(object):
         self.typeTextEdit.setPlaceholderText(QCoreApplication.translate("Form", u"enter command...", None))
         self.enterCommandButton.setText(QCoreApplication.translate("Form", u"Enter command", None))
         self.listeningLabel.setText("")
+        self.label_4.setText("")
+        self.keyboardLabel.setText("")
+        self.speakerIcon.setText("")
     # retranslateUi
 

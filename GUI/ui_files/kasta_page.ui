@@ -19,7 +19,7 @@
      <x>30</x>
      <y>80</y>
      <width>1081</width>
-     <height>711</height>
+     <height>911</height>
     </rect>
    </property>
    <widget class="QLabel" name="label">
@@ -28,7 +28,7 @@
       <x>90</x>
       <y>0</y>
       <width>951</width>
-      <height>701</height>
+      <height>751</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -49,8 +49,8 @@ border-radius: 30px;</string>
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>460</y>
-      <width>561</width>
+      <y>470</y>
+      <width>521</width>
       <height>211</height>
      </rect>
     </property>
@@ -67,7 +67,7 @@ border-radius: 30px;</string>
      <rect>
       <x>110</x>
       <y>490</y>
-      <width>341</width>
+      <width>301</width>
       <height>40</height>
      </rect>
     </property>
@@ -96,7 +96,7 @@ paddinf-bottom: 7px;</string>
      <rect>
       <x>460</x>
       <y>490</y>
-      <width>191</width>
+      <width>151</width>
       <height>41</height>
      </rect>
     </property>
@@ -182,7 +182,7 @@ background-color: #ff662b;;
      <rect>
       <x>460</x>
       <y>540</y>
-      <width>191</width>
+      <width>151</width>
       <height>41</height>
      </rect>
     </property>
@@ -216,8 +216,8 @@ background-color: #ff662b;;
    <widget class="QPushButton" name="helpButton">
     <property name="geometry">
      <rect>
-      <x>840</x>
-      <y>250</y>
+      <x>130</x>
+      <y>140</y>
       <width>81</width>
       <height>71</height>
      </rect>
@@ -295,7 +295,7 @@ border-radius: 10px;
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>640</y>
+      <y>680</y>
       <width>491</width>
       <height>51</height>
      </rect>
@@ -348,8 +348,8 @@ paddinf-bottom: 7px;</string>
    <widget class="QLabel" name="label_description_3">
     <property name="geometry">
      <rect>
-      <x>850</x>
-      <y>330</y>
+      <x>140</x>
+      <y>220</y>
       <width>71</width>
       <height>41</height>
      </rect>
@@ -529,6 +529,112 @@ background-color: #ff662b;;
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>470</y>
+      <width>401</width>
+      <height>211</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #20242a;
+border-radius: 30px;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="keyboardLabel">
+    <property name="geometry">
+     <rect>
+      <x>790</x>
+      <y>370</y>
+      <width>121</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+background-color: #2b3038;
+color: #20242a;
+border-radius: 10px;
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../icons/keyboardicon.png</normaloff>../../icons/keyboardicon.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>100</width>
+      <height>100</height>
+     </size>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="speakerIcon">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>390</y>
+      <width>81</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+background-color: #2b3038;
+color: #20242a;
+border-radius: 10px;
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../icons/speaker.png</normaloff>../../icons/speaker.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>100</width>
+      <height>100</height>
+     </size>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <zorder>label</zorder>
+   <zorder>label_2</zorder>
+   <zorder>emailLabel</zorder>
+   <zorder>startButton</zorder>
+   <zorder>label_title</zorder>
+   <zorder>label_description</zorder>
+   <zorder>endButton</zorder>
+   <zorder>helpButton</zorder>
+   <zorder>userEmailLabel</zorder>
+   <zorder>userNameLabel</zorder>
+   <zorder>kastaLabel</zorder>
+   <zorder>label_3</zorder>
+   <zorder>label_description_3</zorder>
+   <zorder>addCommandButton</zorder>
+   <zorder>listeningLabel</zorder>
+   <zorder>label_4</zorder>
+   <zorder>typeTextEdit</zorder>
+   <zorder>myCommandsButton</zorder>
+   <zorder>enterCommandButton</zorder>
+   <zorder>keyboardLabel</zorder>
+   <zorder>speakerIcon</zorder>
   </widget>
  </widget>
  <resources>

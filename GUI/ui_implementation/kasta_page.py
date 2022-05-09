@@ -36,6 +36,8 @@ class KastaPage(QMainWindow):
 
         self.ui.label_3.setPixmap("icons/kaastavector.png")
         self.ui.helpButton.setIcon(QIcon("icons/help_icon.png"))
+        self.ui.keyboardLabel.setIcon(QIcon("icons/keyboardicon.png"))
+        self.ui.speakerIcon.setIcon(QIcon("icons/speaker.png"))
 
         ## REMOVE TITLE BAR
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
@@ -47,9 +49,10 @@ class KastaPage(QMainWindow):
         self.command_listened = False
 
     def set_parameters(self):
-        self.command_typed = False
-        self.ui.typeTextEdit.setText('')
-        print(self.command_typed)
+        if not self.kasta_thread.kasta.is_action_performed:
+            self.command_typed = False
+            self.ui.typeTextEdit.setText('')
+            print(self.command_typed)
 
     def set_type_button_disabled(self):
         self.ui.enterCommandButton.setEnabled(False)

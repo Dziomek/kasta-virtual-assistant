@@ -407,7 +407,7 @@ class Kasta:
         if self.appFirstRun:
             self.greet_user()
         self.appFirstRun = False
-        if not self.is_listening:
+        if not self.is_listening and not self.is_action_performed:
             print('listening...')
             self.text = ""
             self.stream.start_stream()
