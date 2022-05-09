@@ -22,3 +22,4 @@ pandas~=1.4.2
 pywhatkit~=5.3
 wolframalpha~=5.0.0
 plyer~=2.0.0
+twilio~=7.9.0

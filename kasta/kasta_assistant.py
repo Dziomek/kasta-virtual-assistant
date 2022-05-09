@@ -47,6 +47,7 @@ class Kasta:
         self.p = pyaudio.PyAudio()
         self.stream = self.p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=8000)
         self.text = ""
+
         self.data = None
         self.appFirstRun = True
 
@@ -383,6 +384,7 @@ class Kasta:
         self.appFirstRun = False
         if not self.is_listening:
             print('listening...')
+            self.typed_text = ""
             self.stream.start_stream()
             self.is_listening = True
             is_done = False
@@ -432,6 +434,10 @@ class Kasta:
             self.engine.stop()
     '''
 
+    '''def take_typed_command(self, text):
+        if not self.is_listening:
+            self.typed_text = text'''
+
     def stop_listening(self):
         if self.is_listening:
             self.is_listening = False
@@ -444,6 +450,26 @@ class Kasta:
         self.engine.stop()
         self.stream.close()
         self.p.terminate()
+
+    def take_action_from_text(self):
+        is_done = False
+        if not self.is_listening and not self.is_speaking:
+            try:
+                for i in range(len(self.json_list)):
+                    for j in range(len(self.json_list[i]['commands']['name'])):
+                        if self.json_list[i]['commands']['name'][j] in self.text:
+                            self.decision_making_process(i, self.json_list[i]['commands']['name'][j])
+                            is_done = True
+
+                    if is_done:
+                        break
+            except KeyError:
+                self.speak("I didn't find it in my dictionary. Please try again")
+                print('JSON file error')
+
+    def do_typed_command(self):
+        p1 = threading.Thread(target=self.take_action_from_text)
+        p1.start()
 
 
 class KastaWorker(QThread):
@@ -458,3 +484,9 @@ class KastaWorker(QThread):
         if not self.kasta.is_speaking:
             self.terminate()
             self.kasta.stop_listening()
+
+
+
+
+
+

@@ -48,9 +48,9 @@ border-radius: 30px;</string>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>100</x>
       <y>460</y>
-      <width>781</width>
+      <width>561</width>
       <height>211</height>
      </rect>
     </property>
@@ -65,9 +65,9 @@ border-radius: 30px;</string>
    <widget class="QLineEdit" name="emailLabel">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>110</x>
       <y>490</y>
-      <width>491</width>
+      <width>341</width>
       <height>40</height>
      </rect>
     </property>
@@ -91,7 +91,7 @@ paddinf-bottom: 7px;</string>
    <widget class="QPushButton" name="startButton">
     <property name="geometry">
      <rect>
-      <x>730</x>
+      <x>460</x>
       <y>490</y>
       <width>191</width>
       <height>41</height>
@@ -177,8 +177,8 @@ background-color: #ff662b;;
    <widget class="QPushButton" name="endButton">
     <property name="geometry">
      <rect>
-      <x>730</x>
-      <y>610</y>
+      <x>460</x>
+      <y>540</y>
       <width>191</width>
       <height>41</height>
      </rect>
@@ -291,8 +291,8 @@ border-radius: 10px;
    <widget class="QLabel" name="kastaLabel">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>600</y>
+      <x>330</x>
+      <y>640</y>
       <width>491</width>
       <height>51</height>
      </rect>
@@ -347,7 +347,7 @@ paddinf-bottom: 7px;</string>
      <rect>
       <x>850</x>
       <y>330</y>
-      <width>61</width>
+      <width>71</width>
       <height>41</height>
      </rect>
     </property>
@@ -437,6 +437,71 @@ background-color: #ff662b;;
     </property>
     <property name="text">
      <string>My commands</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="typeTextEdit">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>490</y>
+      <width>341</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,0);
+border: 2px solid rgba(0,0,0,0);
+border-bottom-color: #ff662b;
+color: rgb(212, 192, 169);
+paddinf-bottom: 7px;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="placeholderText">
+     <string>enter command...</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="enterCommandButton">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>550</y>
+      <width>191</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>13</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+background-color:  rgb(212, 192, 169);
+color: #20242a;
+border-radius: 10px;
+}
+QPushButton:hover{
+background-color: #837c73;
+}
+
+QPushButton:pressed{
+padding-left: 5px;
+padding-right: 5px;
+background-position: calc(100% - 10px)center;
+background-color: #ff662b;;
+}</string>
+    </property>
+    <property name="text">
+     <string>Enter command</string>
     </property>
    </widget>
   </widget>
