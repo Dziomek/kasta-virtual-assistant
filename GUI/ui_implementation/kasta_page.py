@@ -90,19 +90,18 @@ class KastaPage(QMainWindow):
             self.ui.enterCommandButton.setEnabled(False)
 
     def set_type_button_enabled(self):
-        self.ui.enterCommandButton.setDisabled(False)
+        if not self.kasta_thread.kasta.is_speaking:
+            self.ui.enterCommandButton.setDisabled(False)
 
     def set_listen_button_disabled(self):
         if not self.kasta_thread.kasta.is_speaking:
             if not self.kasta_thread.kasta.is_action_performed:
                 self.ui.startButton.setEnabled(False)
 
-
     def set_listen_button_enabled(self):
         if not self.kasta_thread.kasta.is_speaking:
             if not self.kasta_thread.kasta.is_listening:
                 self.ui.startButton.setDisabled(False)
-
 
     def change_text(self):
         self.ui.enterCommandButton.clicked.disconnect(self.text_changing_thread.start)

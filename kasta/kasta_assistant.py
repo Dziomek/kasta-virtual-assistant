@@ -86,15 +86,15 @@ class Kasta:
         print('Speaking:' + str(self.is_speaking))
 
     def listen(self):
-        if self.appFirstRun:
-            self.greet_user()
+        '''if self.appFirstRun:
+            self.greet_user()'''
         self.appFirstRun = False
         if not self.is_listening and not self.is_action_performed and not self.is_speaking:
             print('listening...')
-            self.text = ''
+            self.text = ""
             self.stream.start_stream()
             self.is_listening = True
-            is_done = False
+
             while True:
                 data = self.stream.read(4000, exception_on_overflow=False)
                 if len(data) == 0:
@@ -104,19 +104,7 @@ class Kasta:
                     self.text = self.text.replace('"', '')
                     self.text = self.text.replace(self.text[-1], '')
 
-                    try:
-                        for i in range(len(self.json_list)):
-                            for j in range(len(self.json_list[i]['commands']['name'])):
-                                if self.json_list[i]['commands']['name'][j] in self.text:
-                                    self.decision_making_process(i, self.json_list[i]['commands']['name'][j])
-                                    is_done = True
-
-                            if is_done:
-                                is_done = False
-                                break
-                    except KeyError:
-                        self.speak("I didn't find it in my dictionary. Please try again")
-                        print('JSON file error')
+                    self.find_action_in_json()
 
     def listen2(self):
         print('listening2...')
@@ -158,24 +146,8 @@ class Kasta:
         self.stream.close()
         self.p.terminate()
 
-    def take_action_from_text(self):
-        is_done = False
-        if not self.is_listening and not self.is_speaking:
-            try:
-                for i in range(len(self.json_list)):
-                    for j in range(len(self.json_list[i]['commands']['name'])):
-                        if self.json_list[i]['commands']['name'][j] in self.text:
-                            self.decision_making_process(i, self.json_list[i]['commands']['name'][j])
-                            is_done = True
-
-                    if is_done:
-                        break
-            except KeyError:
-                self.speak("I didn't find it in my dictionary. Please try again")
-                print('JSON file error')
-
     def do_typed_command(self):
-        p1 = threading.Thread(target=self.take_action_from_text)
+        p1 = threading.Thread(target=self.find_action_in_json)
         p1.start()
 
 
@@ -252,6 +224,23 @@ class Kasta:
         elif (hour >= 16) and (hour < 19):
             self.speak(f"Good Evening {self.user_name}")
         self.speak("I am Kasta. How may I assist you?")
+
+    def find_action_in_json(self):
+        is_done = False
+        print('jestem tu')
+        if not self.is_speaking:
+            try:
+                for i in range(len(self.json_list)):
+                    for j in range(len(self.json_list[i]['commands']['name'])):
+                        if self.json_list[i]['commands']['name'][j] in self.text:
+                            self.decision_making_process(i, self.json_list[i]['commands']['name'][j])
+                            is_done = True
+
+                    if is_done:
+                        break
+            except KeyError:
+                self.speak("I didn't find it in my dictionary. Please try again")
+                print('JSON file error')
 
 
     ########################### ACTIONS #########################
