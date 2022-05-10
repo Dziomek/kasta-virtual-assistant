@@ -117,11 +117,13 @@ class KastaPage(QMainWindow):
                 self.ui.listeningLabel.setText('')
 
     def take_typed_command(self):
-        if not self.kasta_thread.kasta.is_listening and not self.kasta_thread.kasta.is_speaking:
-            self.command_typed = True
-            self.kasta_thread.kasta.text = self.ui.typeTextEdit.text()
-            print(self.kasta_thread.kasta.text)
-            print(self.command_typed)
+        if not self.kasta_thread.kasta.is_listening:
+            if not self.kasta_thread.kasta.is_speaking:
+                if not self.kasta_thread.kasta.is_action_performed:
+                    self.command_typed = True
+                    self.kasta_thread.kasta.text = self.ui.typeTextEdit.text()
+                    print(self.kasta_thread.kasta.text)
+                    print(self.command_typed)
 
     #########################################
 
