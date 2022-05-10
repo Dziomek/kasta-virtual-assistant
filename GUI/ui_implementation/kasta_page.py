@@ -53,6 +53,8 @@ class KastaPage(QMainWindow):
 
         self.ui.myNotesButton.clicked.connect(self.switch_to_notes)
 
+        self.old_position = None # FIX
+
     def switch_to_notes(self):
         connection = ConnectDatabase()
         idUsers = connection.returnIdUser(self.kasta_thread.kasta.user_email)[0][0]
@@ -77,8 +79,6 @@ class KastaPage(QMainWindow):
                     note_number += 1
         self.my_notes.show()
 
-
-
     def set_parameters(self):
         if not self.kasta_thread.kasta.is_action_performed:
             self.command_typed = False
@@ -86,19 +86,23 @@ class KastaPage(QMainWindow):
             print(self.command_typed)
 
     def set_type_button_disabled(self):
-        self.ui.enterCommandButton.setEnabled(False)
+        if not self.kasta_thread.kasta.is_action_performed:
+            self.ui.enterCommandButton.setEnabled(False)
 
     def set_type_button_enabled(self):
         self.ui.enterCommandButton.setDisabled(False)
 
     def set_listen_button_disabled(self):
         if not self.kasta_thread.kasta.is_speaking:
-            self.ui.startButton.setEnabled(False)
+            if not self.kasta_thread.kasta.is_action_performed:
+                self.ui.startButton.setEnabled(False)
+
 
     def set_listen_button_enabled(self):
         if not self.kasta_thread.kasta.is_speaking:
-            if not self.kasta_thread.kasta.is_action_performed:
+            if not self.kasta_thread.kasta.is_listening:
                 self.ui.startButton.setDisabled(False)
+
 
     def change_text(self):
         self.ui.enterCommandButton.clicked.disconnect(self.text_changing_thread.start)
@@ -120,7 +124,6 @@ class KastaPage(QMainWindow):
             print(self.command_typed)
 
     #########################################
-
 
 
     def mousePressEvent(self, event):

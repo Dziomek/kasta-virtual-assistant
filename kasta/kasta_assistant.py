@@ -4,6 +4,7 @@ import random
 import time
 
 import wikipedia
+from PySide2 import QtCore
 from PySide2.QtCore import QThread
 from vosk import Model, KaldiRecognizer
 import pyaudio
@@ -83,11 +84,13 @@ class Kasta:
         self.is_listening = False
         self.is_speaking = False
         self.is_action_performed = False
+
         ####
         self.response = ''
 
     def decision_making_process(self, i, key_word):
         self.is_action_performed = True
+        self.response = ''
         print(f'Keyword: {key_word}')
         print(f"Action: {self.json_list[i]['commands']['action']}")
         match self.json_list[i]['commands']['action']:
@@ -160,7 +163,7 @@ class Kasta:
                 if self.text != "weather" and self.text != "whether":
                     weather.city = self.text.split(' ')[1]
                     ##weather.city = weather.city.replace(weather.city[-1], '') ## usuniecie znaku /n na koncu miasta
-                    self.is_action_performed = False
+
                 else:
                     weather.city = ''
                 playsound('kasta/sound2.wav')
@@ -375,7 +378,9 @@ class Kasta:
 
     def speak(self, text):
         self.is_speaking = True
-        time.sleep(0.5)  # po to, by moc jeszcze wylaczyc kaste, zanim zacznie mowic (bug fix)
+        timer = QtCore.QTimer()
+        timer.start(500)# po to, by moc jeszcze wylaczyc kaste, zanim zacznie mowic (bug fix)
+        timer.stop()
         print('Speaking:' + str(self.is_speaking))
         self.engine.say(text)
         self.engine.runAndWait()
@@ -506,9 +511,11 @@ class KastaWorker(QThread):
         self.kasta.listen()
 
     def stop(self):
-        if not self.kasta.is_speaking:
-            self.terminate()
-            self.kasta.stop_listening()
+        if self.kasta.is_listening:
+            if not self.kasta.is_speaking:
+                if not self.kasta.is_action_performed:
+                    self.terminate()
+                    self.kasta.stop_listening()
 
 
 
