@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'notesarzbcJ.ui'
+## Form generated from reading UI file 'notesdNfADs.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -57,6 +57,10 @@ class Ui_Form(object):
         self.label.setGeometry(QRect(0, 0, 400, 200))
         self.label.setStyleSheet(u"padding: 10px")
         self.label.setWordWrap(True)
+        self.deleteButton = QPushButton(self.frame)
+        self.deleteButton.setObjectName(u"deleteButton")
+        self.deleteButton.setGeometry(QRect(290, 10, 93, 28))
+        self.deleteButton.setStyleSheet(u"background-color: white;")
 
         self.gridLayout.addWidget(self.frame, 0, 0, 1, 1, Qt.AlignLeft|Qt.AlignTop)
 
@@ -76,6 +80,7 @@ class Ui_Form(object):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
         self.label_3.setText(QCoreApplication.translate("Form", u"<html><head/><body><p>Notes</p><p><br/></p></body></html>", None))
         self.label.setText(QCoreApplication.translate("Form", u"xddxdxdx", None))
+        self.deleteButton.setText(QCoreApplication.translate("Form", u"Delete", None))
         self.exitButton.setText(QCoreApplication.translate("Form", u"EXIT", None))
     # retranslateUi
 

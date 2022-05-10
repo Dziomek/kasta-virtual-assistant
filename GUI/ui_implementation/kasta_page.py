@@ -59,25 +59,30 @@ class KastaPage(QMainWindow):
         connection = ConnectDatabase()
         idUsers = connection.returnIdUser(self.kasta_thread.kasta.user_email)[0][0]
         notes = connection.get_notes(idUsers)
-        print(notes[1][0])
-        print('number of notes:' + str(len(notes)))
-        print('user id:' + str(idUsers))
+        #print(notes[1][0])
+        #print('number of notes:' + str(len(notes)))
+        #print('user id:' + str(idUsers))
         if len(notes) % 2 == 0:
             row_number = int(len(notes)/2)
         else:
             row_number = int(len(notes)/2) + 1
 
-        print('number of rows:' + str(row_number))
+        #print('number of rows:' + str(row_number))
         note_number = 0 ## current number of note
         for x in range(row_number):
             for y in range(2):
                 if note_number == len(notes):
                     break
                 else:
-                    self.my_notes.create_new_widget(x, y, notes[note_number][0])
-                    print('created note ' + str(note_number))
+                    note_id = connection.get_id_note(notes[note_number][0])[0][0]
+                    self.my_notes.create_new_widget(x, y, notes[note_number][0], note_id) ## ostatni numer to id notatki
+                    #print('created note ' + str(note_number))
+                    #print(note_id)
                     note_number += 1
+
+
         self.my_notes.show()
+
 
     def set_parameters(self):
         if not self.kasta_thread.kasta.is_action_performed:
