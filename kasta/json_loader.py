@@ -18,6 +18,7 @@ def make_json():
                  load_json('kasta/weather/weather_data.json'), load_json('kasta/headsortails/headsortails_data.json'),
                  load_json('kasta/spotify/spotify_data.json'),
                  load_json('kasta/rockpaperscisorrs/rockpapersisorrs_data.json'),
+                 load_json('kasta/note/note_type_data.json'),
                  load_json('kasta/note/note_data.json'), load_json('kasta/read_note/read_note_data.json'),
                  load_json('kasta/send_note_via_email/email_note_data.json'), load_json('kasta/help/help_data.json'),
                  load_json('kasta/googlesearch/googlesearch_data.json'), load_json('kasta/remindMe/reminder_data.json')]

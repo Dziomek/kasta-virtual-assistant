@@ -20,6 +20,7 @@ from kasta.openApp.open_applications import OpenApp
 import kasta.jokes.jokes_app
 import kasta.news.news
 import kasta.note.makeNote
+from kasta.note.type_note import type_note
 import kasta.wolfram.wolframAlpha
 import kasta.rockpaperscisorrs.game
 import kasta.read_note.readNote
@@ -212,6 +213,8 @@ class Kasta:
                 self.search_google_action()
             case "remind_me":
                 self.remind_me_action()
+            case "type_note":
+                self.type_note_action()
 
     def greet_user(self):
         """Greets the user according to the time"""
@@ -545,6 +548,14 @@ class Kasta:
                 break
         self.is_action_performed = False
 
+    def type_note_action(self):
+        playsound('kasta/sound2.wav')
+        connection = ConnectDatabase()
+        idUsers = connection.returnIdUser(self.user_email)
+        UserId = idUsers[0][0]
+
+        type_note(self.text, UserId)
+        self.speak('I saved your note')
 
 
 

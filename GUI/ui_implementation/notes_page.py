@@ -3,6 +3,7 @@ from PySide2.QtCore import QSize, QPoint, QRect
 from PySide2.QtGui import Qt
 from PySide2.QtWidgets import QMainWindow, QFrame, QLabel, QPushButton
 
+from DataBase.Connection import ConnectDatabase
 from GUI.ui_python_files.ui_notes import Ui_Form
 
 
@@ -39,15 +40,16 @@ class MyNotesPage(QMainWindow):
         self.deleteButton.setStyleSheet(u"background-color: white;")
         self.ui.gridLayout.addWidget(self.frame, row_number, column_number, 1, 1, Qt.AlignLeft | Qt.AlignTop)
 
-        print(new_button_name)
-        print(new_frame_name)
+        print(new_button_name + ' ' + new_frame_name)
+
+
+        return self.deleteButton
 
     def exit_page(self):
         self.close()
 
-    def delete_note(self, idNotes):
-        pass
-
+    def delete_note(self, idNotes, connection):
+        connection.delete_note_with_id(idNotes)
 
     def mousePressEvent(self, event):
         self.old_position = event.globalPos()

@@ -3,7 +3,7 @@ from PySide2 import QtCore
 from PySide2.QtCore import QThread, QPoint, QTimer
 from PySide2.QtGui import QIcon
 from PySide2.QtWidgets import *
-
+from functools import partial
 from DataBase.Connection import ConnectDatabase
 from GUI.ui_implementation.faq import FAQPage
 from GUI.ui_implementation.notes_page import MyNotesPage
@@ -56,11 +56,11 @@ class KastaPage(QMainWindow):
         self.old_position = None # FIX
 
     def switch_to_notes(self):
+        self.my_notes = MyNotesPage()
         connection = ConnectDatabase()
         idUsers = connection.returnIdUser(self.kasta_thread.kasta.user_email)[0][0]
         notes = connection.get_notes(idUsers)
-        #print(notes[1][0])
-        #print('number of notes:' + str(len(notes)))
+        print('number of notes:' + str(len(notes)))
         #print('user id:' + str(idUsers))
         if len(notes) % 2 == 0:
             row_number = int(len(notes)/2)
@@ -69,20 +69,36 @@ class KastaPage(QMainWindow):
 
         #print('number of rows:' + str(row_number))
         note_number = 0 ## current number of note
+        buttons = []
+        id_notes = []
         for x in range(row_number):
             for y in range(2):
                 if note_number == len(notes):
                     break
                 else:
                     note_id = connection.get_id_note(notes[note_number][0])[0][0]
-                    self.my_notes.create_new_widget(x, y, notes[note_number][0], note_id) ## ostatni numer to id notatki
+                    print('Note id: ' + str(note_id))
+                    print('Note number: ' + str(note_number))
+
+                    buttons.append(self.my_notes.create_new_widget(x, y, notes[note_number][0], note_id)) ## ostatni numer to id notatki
+                    buttons[note_number].clicked.connect(partial(connection.delete_note_with_id, note_id))
+                    buttons[note_number].clicked.connect(self.my_notes.close)
+
+                    buttons[note_number].clicked.connect(self.switch_to_notes)
+                    print('Added action to ' + buttons[note_number].objectName() + ' ' + 'delete note ' + str(note_id))
+                    print('list_len: ' + str(len(buttons)))
                     #print('created note ' + str(note_number))
                     #print(note_id)
+
+                    buttons[note_number].setText(buttons[note_number].objectName())
+                    print('Dodano: ' + buttons[note_number].objectName())
                     note_number += 1
+        for button in buttons:
+            print(button.objectName())
+
 
 
         self.my_notes.show()
-
 
     def set_parameters(self):
         if not self.kasta_thread.kasta.is_action_performed:
