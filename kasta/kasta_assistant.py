@@ -265,11 +265,11 @@ class Kasta:
         playsound('kasta/sound2.wav')
         try:
             person = WikiSearch.wiki_person(self.text)
-            wiki = wikipedia.summary(person, sentences=2)
-            print(wiki), self.speak(wiki)
-            self.is_action_performed = False
+            self.response = wikipedia.summary(person, sentences=2)
+            print(self.response), self.speak(self.response)
         except Exception:
             print('Unfortunately I did not find this page. Please try again')
+        self.is_action_performed = False
 
     def say_hello_action(self):
         playsound('kasta/sound2.wav')

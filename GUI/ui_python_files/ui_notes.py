@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'notessPXBBF.ui'
+## Form generated from reading UI file 'notesldBQLd.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -79,7 +79,21 @@ class Ui_Form(object):
         self.exitButton = QPushButton(self.widget)
         self.exitButton.setObjectName(u"exitButton")
         self.exitButton.setGeometry(QRect(870, 30, 93, 28))
-        self.exitButton.setStyleSheet(u"background-color: white\n"
+        self.exitButton.setStyleSheet(u"QPushButton{\n"
+"background-color:  rgb(212, 192, 169);\n"
+"color: #20242a;\n"
+"border-radius: 10px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: #837c73;\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"padding-left: 5px;\n"
+"padding-right: 5px;\n"
+"background-position: calc(100% - 10px)center;\n"
+"background-color: #ff662b;;\n"
+"}\n"
 "")
 
         self.retranslateUi(Form)
@@ -92,6 +106,6 @@ class Ui_Form(object):
         self.label_3.setText(QCoreApplication.translate("Form", u"<html><head/><body><p>Notes</p><p><br/></p></body></html>", None))
         self.label.setText(QCoreApplication.translate("Form", u"xddxdxdx", None))
         self.deleteButton.setText("")
-        self.exitButton.setText(QCoreApplication.translate("Form", u"EXIT", None))
+        self.exitButton.setText(QCoreApplication.translate("Form", u"RETURN", None))
     # retranslateUi
 

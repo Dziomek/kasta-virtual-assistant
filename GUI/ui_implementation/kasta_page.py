@@ -40,9 +40,12 @@ class KastaPage(QMainWindow):
         # self.t1.start()
 
         self.ui.label_3.setPixmap("icons/kaastavector.png")
-        self.ui.helpButton.setIcon(QIcon("icons/help_icon.png"))
+        self.ui.helpButton.setIcon(QIcon("icons/question_mark.png"))
+        self.ui.myNotesButton.setIcon(QIcon("icons/note.png"))
         self.ui.keyboardLabel.setIcon(QIcon("icons/keyboardicon.png"))
         self.ui.speakerIcon.setIcon(QIcon("icons/speaker.png"))
+        self.ui.assistantLabel.setIcon(QIcon("icons/assistant_icon.png"))
+        self.ui.addCommandButton_2.setIcon(QIcon("icons/plus_icon.png"))
 
         ## REMOVE TITLE BAR
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
