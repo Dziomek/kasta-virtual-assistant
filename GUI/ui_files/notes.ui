@@ -89,12 +89,14 @@ border-radius: 30px;</string>
        <widget class="QFrame" name="frame">
         <property name="minimumSize">
          <size>
-          <width>400</width>
+          <width>460</width>
           <height>200</height>
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: gray;</string>
+         <string notr="true">background-color: #20242a;
+font: 10pt &quot;Arial&quot;;
+color: white;</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
@@ -106,9 +108,9 @@ border-radius: 30px;</string>
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>0</y>
-           <width>400</width>
-           <height>200</height>
+           <y>49</y>
+           <width>460</width>
+           <height>151</height>
           </rect>
          </property>
          <property name="styleSheet">
@@ -117,6 +119,9 @@ border-radius: 30px;</string>
          <property name="text">
           <string>xddxdxdx</string>
          </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+         </property>
          <property name="wordWrap">
           <bool>true</bool>
          </property>
@@ -124,17 +129,31 @@ border-radius: 30px;</string>
         <widget class="QPushButton" name="deleteButton">
          <property name="geometry">
           <rect>
-           <x>290</x>
+           <x>410</x>
            <y>10</y>
-           <width>93</width>
+           <width>31</width>
            <height>28</height>
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: white;</string>
+          <string notr="true">QPushButton{
+background-color: #20242a;
+color: #20242a;
+border-radius: 10px;
+}</string>
          </property>
          <property name="text">
-          <string>Delete</string>
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../../icons/x_icon.png</normaloff>../../icons/x_icon.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>32</width>
+           <height>32</height>
+          </size>
          </property>
         </widget>
        </widget>

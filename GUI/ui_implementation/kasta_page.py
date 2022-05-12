@@ -90,7 +90,7 @@ class KastaPage(QMainWindow):
                     #print('created note ' + str(note_number))
                     #print(note_id)
 
-                    buttons[note_number].setText(buttons[note_number].objectName())
+                    #buttons[note_number].setText(buttons[note_number].objectName())
                     #print('Dodano: ' + buttons[note_number].objectName())
                     note_number += 1
         self.my_notes.show()
