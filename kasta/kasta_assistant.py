@@ -65,6 +65,8 @@ class Kasta:
 
         self.user_email = ''
         self.user_name = ''
+        self.user_id = ''
+
 
     def speak(self, text):
         self.is_speaking = True
@@ -148,6 +150,7 @@ class Kasta:
         self.p.terminate()
 
     def do_typed_command(self):
+        print(self.user_id)
         p1 = threading.Thread(target=self.find_action_in_json)
         p1.start()
 
@@ -550,12 +553,9 @@ class Kasta:
 
     def type_note_action(self):
         playsound('kasta/sound2.wav')
-        connection = ConnectDatabase()
-        idUsers = connection.returnIdUser(self.user_email)
-        UserId = idUsers[0][0]
-
-        type_note(self.text, UserId)
+        type_note(self.text, self.user_id)
         self.speak('I saved your note')
+        self.is_action_performed = False
 
 
 

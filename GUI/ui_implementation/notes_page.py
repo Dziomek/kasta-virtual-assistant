@@ -40,9 +40,7 @@ class MyNotesPage(QMainWindow):
         self.deleteButton.setStyleSheet(u"background-color: white;")
         self.ui.gridLayout.addWidget(self.frame, row_number, column_number, 1, 1, Qt.AlignLeft | Qt.AlignTop)
 
-        print(new_button_name + ' ' + new_frame_name)
-
-
+        #print(new_button_name + ' ' + new_frame_name)
         return self.deleteButton
 
     def exit_page(self):

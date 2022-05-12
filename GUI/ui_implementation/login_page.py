@@ -35,6 +35,7 @@ class LoginPage(QDialog):
 
         self.name = ''
         self.email = '' # user data that will be passed to kasta page
+        self.id = ''
 
     def login(self):
 
@@ -55,13 +56,13 @@ class LoginPage(QDialog):
             records = self.connection.loginAuthentication(self.email, hashedPassword)
             if records:
                 self.name = self.connection.get_user_name(self.email)[0][0]
-
+                self.id = self.connection.returnIdUser(self.email)[0][0]
                 self.logged_in = True
                 for record in records:
                     self.validAccount = record[7]
 
 
-                    return self.email, self.name
+                    return self.email, self.name, self.id
             else:
                 self.ui.errorLabel.setText("Wrong email or password. Please try again")
 

@@ -139,10 +139,10 @@ class ConnectDatabase:
     def delete_note_with_id(self, note_id):
         if self.connection.is_connected():
             sql_select_Query = "DELETE from Notes WHERE idNotes = '" + str(note_id) + "'"
-            print(sql_select_Query)
+            #print(sql_select_Query)
             cursor = self.connection.cursor()
             cursor.execute(sql_select_Query)
             self.connection.commit()
-            print('note ' + str(note_id) + ' deleted')
+            #print('note ' + str(note_id) + ' deleted')
 
 

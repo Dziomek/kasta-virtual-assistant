@@ -69,6 +69,7 @@ class CreateGui:
         if self.main_page.login_page.logged_in and self.main_page.login_page.validAccount == 'True':
             self.kasta_page.kasta_thread.kasta.user_email = data[0]
             self.kasta_page.kasta_thread.kasta.user_name = data[1]
+            self.kasta_page.kasta_thread.kasta.user_id = data[2]
             self.kasta_page.ui.userEmailLabel.setText(data[0])
             self.kasta_page.ui.userNameLabel.setText(data[1])
             print(self.kasta_page.kasta_thread.kasta.user_email, self.kasta_page.kasta_thread.kasta.user_name)
