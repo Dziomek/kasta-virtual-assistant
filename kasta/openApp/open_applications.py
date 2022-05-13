@@ -6,15 +6,15 @@ class OpenApp:
     @staticmethod
     def open_application(key_word):
         match key_word:
-            case "open google":
+            case "google":
                 webbrowser.open_new("https://www.google.com/")
-            case "open youtube":
+            case "youtube":
                 webbrowser.open_new("https://www.youtube.com/")
-            case "open spotify":
+            case "spotify":
                 webbrowser.open_new("https://www.spotify.com/pl/")
-            case "open wikipedia":
+            case "wikipedia":
                 webbrowser.open_new("https://pl.wikipedia.org/wiki/Wikipedia")
-            case "open github":
+            case "github":
                 webbrowser.open_new("https://github.com/")
 
         '''if "open google" in text:

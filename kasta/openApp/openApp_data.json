@@ -1,6 +1,6 @@
 {
   "commands":{
-    "name": ["open google", "open youtube", "open wikipedia", "open spotify", "open github"],
+    "name": ["open"],
     "action": "open_app"
   }
 }

@@ -66,6 +66,8 @@ class Kasta:
         self.user_email = ''
         self.user_name = ''
         self.user_id = ''
+        self.apps_to_open = ["google", "youtube", "spotify", "wikipedia", "github"]
+
 
 
     def speak(self, text):
@@ -185,7 +187,7 @@ class Kasta:
             case "general_response":
                 self.general_response_action()
             case "open_app":
-                self.open_app_action(key_word)
+                self.open_app_action()
             case "tell_jokes":
                 self.tell_jokes_action()
             case "tell_news":
@@ -238,7 +240,7 @@ class Kasta:
             try:
                 for i in range(len(self.json_list)):
                     for j in range(len(self.json_list[i]['commands']['name'])):
-                        if self.json_list[i]['commands']['name'][j] in self.text:
+                        if self.json_list[i]['commands']['name'][j] == self.text.split(' ', 2)[0].strip():
                             self.decision_making_process(i, self.json_list[i]['commands']['name'][j])
                             is_done = True
 
@@ -296,12 +298,16 @@ class Kasta:
         print(self.response), self.speak(self.response)
         self.is_action_performed = False
 
-    def open_app_action(self, key_word):
+    def open_app_action(self):
         playsound('kasta/sound2.wav')
-        p = multiprocessing.Process(target=OpenApp.open_application, args=(key_word,))
-        p.start()
-        p.join()
-        self.response = f"Opening {key_word.split(' ', 2)[1]}"
+        key_word = self.text.split('open', 2)[1].strip()
+        if key_word in self.apps_to_open:
+            p = multiprocessing.Process(target=OpenApp.open_application, args=(key_word,))
+            p.start()
+            p.join()
+            self.response = "Opening application"
+        else:
+            self.response = "Application not found"
         self.is_action_performed = False
 
     def tell_jokes_action(self):
