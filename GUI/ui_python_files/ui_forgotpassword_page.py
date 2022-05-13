@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'forgotpassword_pageqEVAsz.ui'
+## Form generated from reading UI file 'forgotpassword_pageWEhsSZ.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##

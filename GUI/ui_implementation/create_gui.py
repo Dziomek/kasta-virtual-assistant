@@ -3,6 +3,7 @@ import time
 from PySide2.QtCore import QThread
 
 from GUI.ui_implementation.faq import FAQPage
+from GUI.ui_implementation.forotpassword_page import ForgotPasswordPage
 from GUI.ui_implementation.kasta_page import KastaPage
 from GUI.ui_implementation.login_page import LoginPage
 from GUI.ui_implementation.notes_page import MyNotesPage
@@ -23,8 +24,11 @@ class CreateGui:
         self.confirmation_page = ConfirmationPage()
         self.faq_page = FAQPage()
         self.my_notes_page = MyNotesPage()
+        self.forgotpassword_page = ForgotPasswordPage()
         self.main_page.login_page.ui.registerButton.clicked.connect(self.login_to_register)
         self.main_page.login_page.ui.loginButton.clicked.connect(self.login_to_kasta_or_otp)
+        self.main_page.login_page.ui.forgotPasswordButton.clicked.connect(self.login_to_forgotpassword)
+        self.forgotpassword_page.ui.backToLoginButton.clicked.connect(self.forgotpassword_to_login)
         #self.main_page.login_page.ui.loginButton.clicked.connect(self.login_to_otp)
         self.register_page.ui.backButton.clicked.connect(self.register_to_login)
         self.register_page.ui.registerButton.clicked.connect(self.register_to_otp)
@@ -124,6 +128,12 @@ class CreateGui:
     def kasta_to_notes(self):
         self.my_notes_page.show()
 
+    def login_to_forgotpassword(self):
+        self.forgotpassword_page.show()
+
+    def forgotpassword_to_login(self):
+        self.forgotpassword_page.close()
+        self.main_page.login_page.show()
 
 
 
