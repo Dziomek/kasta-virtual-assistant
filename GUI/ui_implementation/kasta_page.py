@@ -37,6 +37,8 @@ class KastaPage(QMainWindow):
         self.ui.enterCommandButton.clicked.connect(self.take_typed_command)
         self.ui.enterCommandButton.clicked.connect(self.kasta_thread.kasta.do_typed_command)
 
+
+
         # self.t1.start()
 
         self.ui.label_3.setPixmap("icons/kaastavector.png")
@@ -154,3 +156,6 @@ class KastaPage(QMainWindow):
         self.move(self.x() + delta.x(), self.y() + delta.y())
         self.old_position = event.globalPos()
 
+
+    def exit(self):
+        self.close()

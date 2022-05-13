@@ -408,6 +408,39 @@ background-color: #ff662b;;
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QPushButton" name="exitButton">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>40</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+background-color: #20242a;
+color: #20242a;
+border-radius: 10px;
+}
+QPushButton:hover{
+background-color: black;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../icons/x_icon.png</normaloff>../../icons/x_icon.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources>

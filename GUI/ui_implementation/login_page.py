@@ -1,6 +1,6 @@
 from PySide2 import QtCore
 from PySide2.QtCore import QPoint
-from PySide2.QtGui import (QColor)
+from PySide2.QtGui import (QColor, QIcon)
 from PySide2.QtWidgets import *
 from GUI.ui_python_files.ui_login_page import Ui_Form
 from DataBase.Connection import ConnectDatabase
@@ -36,6 +36,9 @@ class LoginPage(QDialog):
         self.name = ''
         self.email = '' # user data that will be passed to kasta page
         self.id = ''
+
+        self.ui.exitButton.setIcon(QIcon('icons/x_icon.png'))
+        self.ui.exitButton.clicked.connect(self.exit)
 
     def login(self):
 
@@ -73,3 +76,6 @@ class LoginPage(QDialog):
         delta = QPoint(event.globalPos() - self.old_position)
         self.move(self.x() + delta.x(), self.y() + delta.y())
         self.old_position = event.globalPos()
+
+    def exit(self):
+        self.close()

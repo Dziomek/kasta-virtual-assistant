@@ -293,9 +293,9 @@ paddinf-bottom: 7px;</string>
    <widget class="QPushButton" name="backButton">
     <property name="geometry">
      <rect>
-      <x>560</x>
-      <y>640</y>
-      <width>51</width>
+      <x>670</x>
+      <y>40</y>
+      <width>41</width>
       <height>41</height>
      </rect>
     </property>
@@ -307,24 +307,60 @@ paddinf-bottom: 7px;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
-background-color:  rgb(212, 192, 169);
+background-color: #20242a;
 color: #20242a;
 border-radius: 10px;
 }
 QPushButton:hover{
-background-color: #837c73;
-}
-
-QPushButton:pressed{
-padding-left: 5px;
-padding-right: 5px;
-background-position: calc(100% - 10px)center;
-background-color: #ff662b;;
+background-color: black;
 }
 </string>
     </property>
     <property name="text">
-     <string>Back</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../icons/back_icon.png</normaloff>../../icons/back_icon.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>40</width>
+      <height>40</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="exitButton">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>40</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+background-color: #20242a;
+color: #20242a;
+border-radius: 10px;
+}
+QPushButton:hover{
+background-color: black;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../icons/x_icon.png</normaloff>../../icons/x_icon.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
     </property>
    </widget>
   </widget>

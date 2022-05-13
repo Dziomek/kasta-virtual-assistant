@@ -145,4 +145,13 @@ class ConnectDatabase:
             self.connection.commit()
             #print('note ' + str(note_id) + ' deleted')
 
+    def get_valid_account(self, user_email):
+        if self.connection.is_connected():
+            sql_select_Query = "SELECT validAccount from Users WHERE email = '" + user_email + "'"
+            # print(sql_select_Query)
+            cursor = self.connection.cursor()
+            cursor.execute(sql_select_Query)
+            #print(cursor.fetchall()[0][0])
+            return cursor.fetchall()
+
 

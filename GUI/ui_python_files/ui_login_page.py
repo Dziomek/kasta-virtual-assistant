@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'login_pageoYMIhc.ui'
+## Form generated from reading UI file 'login_pageatFLWH.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -189,6 +189,21 @@ class Ui_Form(object):
         self.label_7.setStyleSheet(u"background-image: url(:/logo/kaastavector.png);")
         self.label_7.setPixmap(QPixmap(u"../../icons/kaastavector.png"))
         self.label_7.setScaledContents(True)
+        self.exitButton = QPushButton(self.widget)
+        self.exitButton.setObjectName(u"exitButton")
+        self.exitButton.setGeometry(QRect(700, 40, 41, 41))
+        self.exitButton.setStyleSheet(u"QPushButton{\n"
+"background-color: #20242a;\n"
+"color: #20242a;\n"
+"border-radius: 10px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: black;\n"
+"}")
+        icon = QIcon()
+        icon.addFile(u"../../icons/x_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.exitButton.setIcon(icon)
+        self.exitButton.setIconSize(QSize(30, 30))
 
         self.retranslateUi(Form)
 
@@ -211,5 +226,6 @@ class Ui_Form(object):
         self.label_5.setText(QCoreApplication.translate("Form", u"<strong>KASTA </strong>VA", None))
         self.label_6.setText(QCoreApplication.translate("Form", u"<html><head/><body><p>Virtual Assistant</p></body></html>", None))
         self.label_7.setText("")
+        self.exitButton.setText("")
     # retranslateUi
 

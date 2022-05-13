@@ -1,12 +1,12 @@
 from PySide2 import QtCore
 from PySide2.QtCore import QPoint
-from PySide2.QtGui import (QColor)
+from PySide2.QtGui import (QColor, QIcon)
 from PySide2.QtWidgets import *
 
 from DataBase.Connection import ConnectDatabase
 from EmailService.emailService import MailService
 from GUI.ui_implementation.main_page import MainPage
-from GUI.ui_python_files.ui_otp import Ui_Otp
+from GUI.ui_python_files.ui_otp import Ui_Form
 from GUI.ui_implementation.login_page import LoginPage
 from EmailService.token import generateToken
 
@@ -14,13 +14,14 @@ from EmailService.token import generateToken
 class OtpPage(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.ui = Ui_Otp()
+        self.ui = Ui_Form()
         self.ui.setupUi(self)
 
         ## REMOVE TITLE BAR
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-
+        self.ui.exitButton.setIcon(QIcon("icons/x_icon.png"))
+        self.ui.exitButton.clicked.connect(self.close)
         # Button on action
         self.ui.sendAgainButton.clicked.connect(self.sendAgain)
 
@@ -53,6 +54,8 @@ class OtpPage(QMainWindow):
             print('confirmed')
             connection = ConnectDatabase()
             connection.updateValidationAccount(self.email_in_otp)
+        else:
+            self.ui.infoLabel.setText('Invalid token. Please try again')
 
     def sendAgain(self):
         self.ui.infoLabel.setText('We have sent the new code again!')
@@ -74,3 +77,6 @@ class OtpPage(QMainWindow):
         delta = QPoint(event.globalPos() - self.old_position)
         self.move(self.x() + delta.x(), self.y() + delta.y())
         self.old_position = event.globalPos()
+
+    def exit(self):
+        self.close()
