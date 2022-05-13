@@ -7,8 +7,8 @@ from GUI.ui_implementation.kasta_page import KastaPage
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    #create_gui = CreateGui() #- PO ZAKONCZENIU TESTOW URUCHOMIMY TO PONOWNIE
-    kasta_page = KastaPage() # TYMCZASOWO, PODCZAS ROBIENIA KASTY
-    kasta_page.show()
-    # widgets = CreateWidgets()
+    create_gui = CreateGui() #- PO ZAKONCZENIU TESTOW URUCHOMIMY TO PONOWNIE
+    #kasta_page = KastaPage() # TYMCZASOWO, PODCZAS ROBIENIA KASTY
+    #kasta_page.show()
+    #widgets = CreateWidgets()
     sys.exit(app.exec_())
