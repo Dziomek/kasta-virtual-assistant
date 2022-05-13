@@ -12,7 +12,7 @@ def tell_news():
         return "Check your connection"
     news = json.loads(response.text)
     for new in news['articles']:
-        return str(new['title']), str(new['description'])
+        return f"{str(new['title'])}\n" + f"{str(new['description'])}"
 
 
 

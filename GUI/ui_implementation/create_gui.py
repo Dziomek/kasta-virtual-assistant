@@ -5,6 +5,7 @@ from PySide2.QtCore import QThread
 from GUI.ui_implementation.faq import FAQPage
 from GUI.ui_implementation.kasta_page import KastaPage
 from GUI.ui_implementation.login_page import LoginPage
+from GUI.ui_implementation.notes_page import MyNotesPage
 from GUI.ui_implementation.register_page import RegisterPage
 from GUI.ui_implementation.splash import SplashScreen
 from GUI.ui_implementation.otp_page import OtpPage
@@ -21,6 +22,7 @@ class CreateGui:
         self.otp_page = OtpPage()
         self.confirmation_page = ConfirmationPage()
         self.faq_page = FAQPage()
+        self.my_notes_page = MyNotesPage()
         self.main_page.login_page.ui.registerButton.clicked.connect(self.login_to_register)
         self.main_page.login_page.ui.loginButton.clicked.connect(self.login_to_kasta_or_otp)
         #self.main_page.login_page.ui.loginButton.clicked.connect(self.login_to_otp)
@@ -65,14 +67,15 @@ class CreateGui:
     def login_to_kasta_or_otp(self):
         data = self.main_page.login_page.login()
         if self.main_page.login_page.logged_in and self.main_page.login_page.validAccount == 'True':
-            self.kasta_page.listening_thread.kasta.user_email = data[0]
-            self.kasta_page.listening_thread.kasta.user_name = data[1]
+            self.kasta_page.kasta_thread.kasta.user_email = data[0]
+            self.kasta_page.kasta_thread.kasta.user_name = data[1]
+            self.kasta_page.kasta_thread.kasta.user_id = data[2]
             self.kasta_page.ui.userEmailLabel.setText(data[0])
             self.kasta_page.ui.userNameLabel.setText(data[1])
-            print(self.kasta_page.listening_thread.kasta.user_email, self.kasta_page.listening_thread.kasta.user_name)
+            print(self.kasta_page.kasta_thread.kasta.user_email, self.kasta_page.kasta_thread.kasta.user_name)
             self.main_page.login_page.close()
             self.kasta_page.show()
-            print(self.kasta_page.user_email)
+
         elif self.main_page.login_page.logged_in and self.main_page.login_page.validAccount == 'False':
             self.otp_page.email_in_otp = self.main_page.login_page.email  # PRZEKAZANIE MAILA
             self.main_page.login_page.close()
@@ -117,6 +120,9 @@ class CreateGui:
 
     def kasta_to_faq(self):
         self.faq_page.show()
+
+    def kasta_to_notes(self):
+        self.my_notes_page.show()
 
 
 

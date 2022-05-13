@@ -1,0 +1,6 @@
+{
+  "commands":{
+    "name": ["notetype"],
+    "action": "type_note"
+  }
+}

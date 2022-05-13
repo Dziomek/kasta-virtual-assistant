@@ -120,3 +120,29 @@ class ConnectDatabase:
             name = cursor.fetchall()
             return name
 
+    def get_notes(self, idUsers):
+        if self.connection.is_connected():
+            sql_select_Query = "SELECT text from Notes WHERE idUsers = '" + str(idUsers) + "'"
+            #print(sql_select_Query)
+            cursor = self.connection.cursor()
+            cursor.execute(sql_select_Query)
+            return cursor.fetchall()
+
+    def get_id_note(self, note_text):
+        if self.connection.is_connected():
+            sql_select_Query = "SELECT idNotes from Notes WHERE text = '" + note_text + "'"
+            #print(sql_select_Query)
+            cursor = self.connection.cursor()
+            cursor.execute(sql_select_Query)
+            return cursor.fetchall()
+
+    def delete_note_with_id(self, note_id):
+        if self.connection.is_connected():
+            sql_select_Query = "DELETE from Notes WHERE idNotes = '" + str(note_id) + "'"
+            #print(sql_select_Query)
+            cursor = self.connection.cursor()
+            cursor.execute(sql_select_Query)
+            self.connection.commit()
+            #print('note ' + str(note_id) + ' deleted')
+
+
