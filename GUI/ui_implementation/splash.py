@@ -2,7 +2,7 @@ from PySide2 import QtCore
 from PySide2.QtGui import (QColor)
 from PySide2.QtWidgets import *
 from GUI.ui_implementation.main_page import MainPage
-from GUI.ui_python_files.ui_splash import Ui_SplashScreen
+from GUI.ui_python_files.ui_splash import Ui_MainWindow
 from GUI.ui_implementation.login_page import LoginPage
 
 
@@ -10,7 +10,7 @@ class SplashScreen(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
         self.login_page = LoginPage()
-        self.ui = Ui_SplashScreen()
+        self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
         ## COUNTER TO LOADING PAGE

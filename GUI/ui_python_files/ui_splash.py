@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'splashsjCZjL.ui'
+## Form generated from reading UI file 'splashVjuYiG.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -16,7 +16,7 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
 from PySide2.QtWidgets import *
 
 
-class Ui_SplashScreen(object):
+class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
@@ -99,11 +99,11 @@ class Ui_SplashScreen(object):
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
 
-    def retranslateUi(self, SplashScreen):
-        SplashScreen.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+    def retranslateUi(self, MainWindow):
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.label_title.setText(QCoreApplication.translate("MainWindow", u"<strong>KASTA</strong> VA", None))
         self.label_description.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:600;\">Virtual Assistant</span></p></body></html>", None))
         self.label_loading.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:600;\">loading...</span></p></body></html>", None))
-        self.label_credits.setText(QCoreApplication.translate("MainWindow", u"<strong>Created</strong> Jakub Nie\u0107ko Dominik Ziomek", None))
+        self.label_credits.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:600;\">Created by</span> Jakub Nie\u0107ko &amp; Dominik Ziomek</p></body></html>", None))
     # retranslateUi
 

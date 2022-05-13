@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'kasta_pageHZMbfV.ui'
+## Form generated from reading UI file 'kasta_pagesTPQbH.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -15,7 +15,7 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
     QRadialGradient)
 from PySide2.QtWidgets import *
 
-# import res_rc
+#import res_rc
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -128,7 +128,7 @@ class Ui_Form(object):
         self.helpButton.setFlat(False)
         self.userEmailLabel = QLabel(self.widget)
         self.userEmailLabel.setObjectName(u"userEmailLabel")
-        self.userEmailLabel.setGeometry(QRect(110, 20, 261, 21))
+        self.userEmailLabel.setGeometry(QRect(110, 20, 261, 31))
         font4 = QFont()
         font4.setFamily(u"Segoe UI")
         font4.setPointSize(11)
@@ -277,6 +277,36 @@ class Ui_Form(object):
         self.addCommandButton_2.setIcon(icon5)
         self.addCommandButton_2.setIconSize(QSize(90, 90))
         self.addCommandButton_2.setFlat(False)
+        self.exitButton = QPushButton(self.widget)
+        self.exitButton.setObjectName(u"exitButton")
+        self.exitButton.setGeometry(QRect(970, 20, 41, 41))
+        self.exitButton.setStyleSheet(u"QPushButton{\n"
+"background-color: #20242a;\n"
+"color: #20242a;\n"
+"border-radius: 10px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: black;\n"
+"}")
+        icon6 = QIcon()
+        icon6.addFile(u"../../icons/x_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.exitButton.setIcon(icon6)
+        self.exitButton.setIconSize(QSize(30, 30))
+        self.logoutButton = QPushButton(self.widget)
+        self.logoutButton.setObjectName(u"logoutButton")
+        self.logoutButton.setGeometry(QRect(920, 20, 41, 41))
+        self.logoutButton.setStyleSheet(u"QPushButton{\n"
+"background-color: #20242a;\n"
+"color: #20242a;\n"
+"border-radius: 10px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: black;\n"
+"}")
+        icon7 = QIcon()
+        icon7.addFile(u"../../icons/logout.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.logoutButton.setIcon(icon7)
+        self.logoutButton.setIconSize(QSize(42, 42))
         self.label.raise_()
         self.label_2.raise_()
         self.emailLabel.raise_()
@@ -299,6 +329,8 @@ class Ui_Form(object):
         self.kastaLabel.raise_()
         self.assistantLabel.raise_()
         self.addCommandButton_2.raise_()
+        self.exitButton.raise_()
+        self.logoutButton.raise_()
 
         self.retranslateUi(Form)
 
@@ -330,5 +362,7 @@ class Ui_Form(object):
         self.label_5.setText("")
         self.assistantLabel.setText("")
         self.addCommandButton_2.setText("")
+        self.exitButton.setText("")
+        self.logoutButton.setText("")
     # retranslateUi
 

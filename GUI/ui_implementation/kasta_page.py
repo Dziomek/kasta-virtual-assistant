@@ -37,7 +37,7 @@ class KastaPage(QMainWindow):
         self.ui.enterCommandButton.clicked.connect(self.take_typed_command)
         self.ui.enterCommandButton.clicked.connect(self.kasta_thread.kasta.do_typed_command)
 
-
+        self.ui.exitButton.clicked.connect(self.exit)
 
         # self.t1.start()
 
@@ -48,6 +48,8 @@ class KastaPage(QMainWindow):
         self.ui.speakerIcon.setIcon(QIcon("icons/speaker.png"))
         self.ui.assistantLabel.setIcon(QIcon("icons/assistant_icon.png"))
         self.ui.addCommandButton_2.setIcon(QIcon("icons/plus_icon.png"))
+        self.ui.exitButton.setIcon(QIcon("icons/x_icon.png"))
+        self.ui.logoutButton.setIcon(QIcon("icons/logout.png"))
 
         ## REMOVE TITLE BAR
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
@@ -157,5 +159,10 @@ class KastaPage(QMainWindow):
         self.old_position = event.globalPos()
 
 
+    #TODO:
     def exit(self):
+        self.kasta_thread.terminate()
         self.close()
+
+    def logout(self):
+        pass
