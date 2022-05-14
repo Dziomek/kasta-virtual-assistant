@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'kasta_pagecUMrPO.ui'
+## Form generated from reading UI file 'kasta_pageDVELTi.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -273,9 +273,9 @@ class Ui_Form(object):
 "background-color: black;\n"
 "}")
         icon5 = QIcon()
-        icon5.addFile(u"../../icons/plus_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon5.addFile(u"../../icons/website.png", QSize(), QIcon.Normal, QIcon.Off)
         self.openAppButton.setIcon(icon5)
-        self.openAppButton.setIconSize(QSize(90, 90))
+        self.openAppButton.setIconSize(QSize(100, 100))
         self.openAppButton.setFlat(False)
         self.exitButton = QPushButton(self.widget)
         self.exitButton.setObjectName(u"exitButton")

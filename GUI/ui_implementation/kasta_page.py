@@ -50,7 +50,7 @@ class KastaPage(QMainWindow):
         self.ui.keyboardLabel.setIcon(QIcon("icons/keyboardicon.png"))
         self.ui.speakerIcon.setIcon(QIcon("icons/speaker.png"))
         self.ui.assistantLabel.setIcon(QIcon("icons/assistant_icon.png"))
-        self.ui.openAppButton.setIcon(QIcon("icons/plus_icon.png"))
+        self.ui.openAppButton.setIcon(QIcon("icons/website.png"))
         self.ui.exitButton.setIcon(QIcon("icons/x_icon.png"))
         self.ui.logoutButton.setIcon(QIcon("icons/logout.png"))
 
@@ -62,12 +62,37 @@ class KastaPage(QMainWindow):
         self.command_listened = False
 
         self.ui.myNotesButton.clicked.connect(self.switch_to_notes)
-        self.my_notes.ui.refreshButton.clicked.connect(self.refresh)
+        self.my_notes.ui.refreshButton.clicked.connect(self.refresh_notes)
         self.old_position = None # FIX
+
+    def open_app_page(self):
+        self.add_app_page = AddApplicationPage()
+        self.add_app_page.ui.refreshButton.clicked.connect(self.refresh_commands)
+        connection = ConnectDatabase()
+        idUsers = connection.returnIdUser(self.kasta_thread.kasta.user_email)[0][0]
+        self.add_app_page.user_id = idUsers
+        print(self.add_app_page.user_id)
+        commands = connection.get_commands(idUsers)
+
+        #print(commands)
+        print(len(commands))
+        buttons = []
+        for x in range(len(commands)):
+            key_word = commands[x][0]
+            url = commands[x][1]
+            command_id = connection.get_id_command(key_word)[0][0]
+            print('keyword: ' + key_word)
+            print('url: ' + url)
+            print('command id: ' + str(command_id))
+
+            buttons.append(self.add_app_page.add_application_widget(x, key_word, url))
+            buttons[x].clicked.connect(partial(connection.delete_command_with_id, command_id))
+            buttons[x].clicked.connect(self.open_app_page)
+        self.add_app_page.show()
 
     def switch_to_notes(self):
         self.my_notes = MyNotesPage()
-        self.my_notes.ui.refreshButton.clicked.connect(self.refresh)
+        self.my_notes.ui.refreshButton.clicked.connect(self.refresh_notes)
         connection = ConnectDatabase()
         idUsers = connection.returnIdUser(self.kasta_thread.kasta.user_email)[0][0]
         self.my_notes.user_id = idUsers
@@ -108,10 +133,13 @@ class KastaPage(QMainWindow):
                     note_number += 1
         self.my_notes.show()
 
-    def refresh(self):
+    def refresh_notes(self):
         self.my_notes.close()
         self.switch_to_notes()
-        print('sieuma')
+
+    def refresh_commands(self):
+        self.add_app_page.close()
+        self.open_app_page()
 
     def set_parameters(self):
         if not self.kasta_thread.kasta.is_action_performed:
@@ -157,9 +185,6 @@ class KastaPage(QMainWindow):
                     self.kasta_thread.kasta.text = self.ui.typeTextEdit.text()
                     print(self.kasta_thread.kasta.text)
                     print(self.command_typed)
-
-    def open_app_page(self):
-        self.add_app_page.show()
 
     #########################################
 

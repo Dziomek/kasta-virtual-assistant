@@ -19,13 +19,14 @@ class AddApplicationPage(QMainWindow):
         self.ui.exitButton.setIcon(QIcon("icons/x_icon.png"))
         self.ui.refreshButton.setIcon(QIcon("icons/refresh.png"))
         self.ui.addAppButton.setIcon(QIcon("icons/plus_icon.png"))
-        self.add_application_widget(1)
-        self.add_application_widget(2)
 
-    def add_application_widget(self, row_number):
+
+        self.user_id = 0
+
+    def add_application_widget(self, row_number, key_word, url):
         url_frame_name = "frame_url_" + str(row_number)
         key_word_frame_name = "frame_keyword_" + str(row_number)
-
+        delete_button_name = "button_" + str(row_number)
         self.frame = QFrame(self.ui.scrollAreaWidgetContents)
         self.frame.setObjectName(u"frame")
         self.frame.setEnabled(True)
@@ -54,7 +55,7 @@ class AddApplicationPage(QMainWindow):
                                         "QPushButton:hover{\n"
                                         "background-color: black;\n"
                                         "}")
-        self.deleteButton.setIcon(QIcon("images/x_icon.png"))
+        self.deleteButton.setIcon(QIcon("icons/x_icon.png"))
         self.deleteButton.setIconSize(QSize(30, 30))
         self.keyWordLabel = QLabel(self.frame)
         self.keyWordLabel.setObjectName(u"keyWordLabel")
@@ -67,11 +68,14 @@ class AddApplicationPage(QMainWindow):
 
         self.keyWordLabel.setObjectName(key_word_frame_name)
         self.urlLabel.setObjectName(url_frame_name)
-        self.keyWordLabel.setText(self.keyWordLabel.objectName())
-        self.urlLabel.setText(self.urlLabel.objectName())
+        self.deleteButton.setObjectName(delete_button_name)
+        self.keyWordLabel.setText(key_word)
+        self.urlLabel.setText(url)
         self.label.setText('key word')
         self.label_2.setText('application url')
         self.ui.gridLayout.addWidget(self.frame, row_number, 0, 1, 1, Qt.AlignTop)
+
+        return self.deleteButton
 
 
 

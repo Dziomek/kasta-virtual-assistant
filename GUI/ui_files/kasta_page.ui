@@ -647,12 +647,12 @@ background-color: black;
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../../icons/plus_icon.png</normaloff>../../icons/plus_icon.png</iconset>
+      <normaloff>../../icons/website.png</normaloff>../../icons/website.png</iconset>
     </property>
     <property name="iconSize">
      <size>
-      <width>90</width>
-      <height>90</height>
+      <width>100</width>
+      <height>100</height>
      </size>
     </property>
     <property name="flat">

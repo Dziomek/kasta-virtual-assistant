@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'add_applicationjYsPaR.ui'
+## Form generated from reading UI file 'add_applicationrUTMcX.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -136,6 +136,23 @@ class Ui_Form(object):
         self.addAppButton.setIcon(icon2)
         self.addAppButton.setIconSize(QSize(70, 70))
         self.addAppButton.setFlat(False)
+        self.label_4 = QLabel(self.widget)
+        self.label_4.setObjectName(u"label_4")
+        self.label_4.setGeometry(QRect(560, 380, 121, 41))
+        font2 = QFont()
+        font2.setPointSize(14)
+        self.label_4.setFont(font2)
+        self.label_4.setStyleSheet(u"color: rgb(212, 192, 169);")
+        self.label_5 = QLabel(self.widget)
+        self.label_5.setObjectName(u"label_5")
+        self.label_5.setGeometry(QRect(660, 380, 51, 41))
+        self.label_5.setFont(font2)
+        self.label_5.setStyleSheet(u"color: rgb(212, 192, 169);")
+        self.label_6 = QLabel(self.widget)
+        self.label_6.setObjectName(u"label_6")
+        self.label_6.setGeometry(QRect(720, 380, 101, 41))
+        self.label_6.setFont(font2)
+        self.label_6.setStyleSheet(u"color: white;")
 
         self.retranslateUi(Form)
 
@@ -153,5 +170,8 @@ class Ui_Form(object):
         self.urlLabel.setText(QCoreApplication.translate("Form", u"xdxdxdxdxddx", None))
         self.refreshButton.setText("")
         self.addAppButton.setText("")
+        self.label_4.setText(QCoreApplication.translate("Form", u"SYNTAX:", None))
+        self.label_5.setText(QCoreApplication.translate("Form", u"open", None))
+        self.label_6.setText(QCoreApplication.translate("Form", u"key word", None))
     # retranslateUi
 
