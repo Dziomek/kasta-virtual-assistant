@@ -5,6 +5,7 @@ from PySide2.QtGui import QIcon
 from PySide2.QtWidgets import *
 from functools import partial
 from DataBase.Connection import ConnectDatabase
+from GUI.ui_implementation.add_application_page import AddApplicationPage
 from GUI.ui_implementation.faq import FAQPage
 from GUI.ui_implementation.notes_page import MyNotesPage
 from GUI.ui_python_files.ui_kasta_page import Ui_Form
@@ -26,6 +27,7 @@ class KastaPage(QMainWindow):
         self.ui.startButton.clicked.connect(self.set_type_button_disabled)
         self.ui.startButton.clicked.connect(self.set_listen_button_disabled)
         self.my_notes = MyNotesPage()
+        self.add_app_page = AddApplicationPage()
 
 
         self.ui.endButton.clicked.connect(self.kasta_thread.stop)
@@ -38,6 +40,7 @@ class KastaPage(QMainWindow):
         self.ui.enterCommandButton.clicked.connect(self.kasta_thread.kasta.do_typed_command)
 
         self.ui.exitButton.clicked.connect(self.exit)
+        self.ui.openAppButton.clicked.connect(self.open_app_page)
 
         # self.t1.start()
 
@@ -47,7 +50,7 @@ class KastaPage(QMainWindow):
         self.ui.keyboardLabel.setIcon(QIcon("icons/keyboardicon.png"))
         self.ui.speakerIcon.setIcon(QIcon("icons/speaker.png"))
         self.ui.assistantLabel.setIcon(QIcon("icons/assistant_icon.png"))
-        self.ui.addCommandButton_2.setIcon(QIcon("icons/plus_icon.png"))
+        self.ui.openAppButton.setIcon(QIcon("icons/plus_icon.png"))
         self.ui.exitButton.setIcon(QIcon("icons/x_icon.png"))
         self.ui.logoutButton.setIcon(QIcon("icons/logout.png"))
 
@@ -154,6 +157,9 @@ class KastaPage(QMainWindow):
                     self.kasta_thread.kasta.text = self.ui.typeTextEdit.text()
                     print(self.kasta_thread.kasta.text)
                     print(self.command_typed)
+
+    def open_app_page(self):
+        self.add_app_page.show()
 
     #########################################
 

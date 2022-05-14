@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'kasta_pagesTPQbH.ui'
+## Form generated from reading UI file 'kasta_pagecUMrPO.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -260,11 +260,11 @@ class Ui_Form(object):
         self.assistantLabel.setIcon(icon4)
         self.assistantLabel.setIconSize(QSize(140, 140))
         self.assistantLabel.setFlat(False)
-        self.addCommandButton_2 = QPushButton(self.widget)
-        self.addCommandButton_2.setObjectName(u"addCommandButton_2")
-        self.addCommandButton_2.setGeometry(QRect(110, 90, 101, 101))
-        self.addCommandButton_2.setFont(font1)
-        self.addCommandButton_2.setStyleSheet(u"QPushButton{\n"
+        self.openAppButton = QPushButton(self.widget)
+        self.openAppButton.setObjectName(u"openAppButton")
+        self.openAppButton.setGeometry(QRect(110, 90, 101, 101))
+        self.openAppButton.setFont(font1)
+        self.openAppButton.setStyleSheet(u"QPushButton{\n"
 "background-color: #20242a;\n"
 "color: #20242a;\n"
 "border-radius: 50px;\n"
@@ -274,9 +274,9 @@ class Ui_Form(object):
 "}")
         icon5 = QIcon()
         icon5.addFile(u"../../icons/plus_icon.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.addCommandButton_2.setIcon(icon5)
-        self.addCommandButton_2.setIconSize(QSize(90, 90))
-        self.addCommandButton_2.setFlat(False)
+        self.openAppButton.setIcon(icon5)
+        self.openAppButton.setIconSize(QSize(90, 90))
+        self.openAppButton.setFlat(False)
         self.exitButton = QPushButton(self.widget)
         self.exitButton.setObjectName(u"exitButton")
         self.exitButton.setGeometry(QRect(970, 20, 41, 41))
@@ -328,7 +328,7 @@ class Ui_Form(object):
         self.label_5.raise_()
         self.kastaLabel.raise_()
         self.assistantLabel.raise_()
-        self.addCommandButton_2.raise_()
+        self.openAppButton.raise_()
         self.exitButton.raise_()
         self.logoutButton.raise_()
 
@@ -361,7 +361,7 @@ class Ui_Form(object):
         self.myNotesButton.setText("")
         self.label_5.setText("")
         self.assistantLabel.setText("")
-        self.addCommandButton_2.setText("")
+        self.openAppButton.setText("")
         self.exitButton.setText("")
         self.logoutButton.setText("")
     # retranslateUi

@@ -617,7 +617,7 @@ border-radius: 10px;
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="addCommandButton_2">
+   <widget class="QPushButton" name="openAppButton">
     <property name="geometry">
      <rect>
       <x>110</x>
@@ -746,7 +746,7 @@ background-color: black;
    <zorder>label_5</zorder>
    <zorder>kastaLabel</zorder>
    <zorder>assistantLabel</zorder>
-   <zorder>addCommandButton_2</zorder>
+   <zorder>openAppButton</zorder>
    <zorder>exitButton</zorder>
    <zorder>logoutButton</zorder>
   </widget>
