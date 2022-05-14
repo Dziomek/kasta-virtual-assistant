@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'register_pagejhAUhD.ui'
+## Form generated from reading UI file 'register_pagenDzOGZ.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -123,24 +123,36 @@ class Ui_Form(object):
         self.errorLabel.setAlignment(Qt.AlignCenter)
         self.backButton = QPushButton(self.widget)
         self.backButton.setObjectName(u"backButton")
-        self.backButton.setGeometry(QRect(560, 640, 51, 41))
+        self.backButton.setGeometry(QRect(670, 40, 41, 41))
         self.backButton.setFont(font2)
         self.backButton.setStyleSheet(u"QPushButton{\n"
-"background-color:  rgb(212, 192, 169);\n"
+"background-color: #20242a;\n"
 "color: #20242a;\n"
 "border-radius: 10px;\n"
 "}\n"
 "QPushButton:hover{\n"
-"background-color: #837c73;\n"
-"}\n"
-"\n"
-"QPushButton:pressed{\n"
-"padding-left: 5px;\n"
-"padding-right: 5px;\n"
-"background-position: calc(100% - 10px)center;\n"
-"background-color: #ff662b;;\n"
+"background-color: black;\n"
 "}\n"
 "")
+        icon = QIcon()
+        icon.addFile(u"../../icons/back_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.backButton.setIcon(icon)
+        self.backButton.setIconSize(QSize(40, 40))
+        self.exitButton = QPushButton(self.widget)
+        self.exitButton.setObjectName(u"exitButton")
+        self.exitButton.setGeometry(QRect(720, 40, 41, 41))
+        self.exitButton.setStyleSheet(u"QPushButton{\n"
+"background-color: #20242a;\n"
+"color: #20242a;\n"
+"border-radius: 10px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: black;\n"
+"}")
+        icon1 = QIcon()
+        icon1.addFile(u"../../icons/x_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.exitButton.setIcon(icon1)
+        self.exitButton.setIconSize(QSize(30, 30))
         self.phoneLabel = QLineEdit(self.widget)
         self.phoneLabel.setObjectName(u"phoneLabel")
         self.phoneLabel.setGeometry(QRect(280, 570, 260, 40))
@@ -169,7 +181,8 @@ class Ui_Form(object):
         self.emailLabel.setPlaceholderText(QCoreApplication.translate("Form", u"email", None))
         self.password2Label.setPlaceholderText(QCoreApplication.translate("Form", u"Confirm Password", None))
         self.errorLabel.setText("")
-        self.backButton.setText(QCoreApplication.translate("Form", u"Back", None))
+        self.backButton.setText("")
+        self.exitButton.setText("")
         self.phoneLabel.setPlaceholderText(QCoreApplication.translate("Form", u"Phone number", None))
     # retranslateUi
 

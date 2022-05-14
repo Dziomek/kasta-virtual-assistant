@@ -25,9 +25,9 @@ class RegisterPage(QMainWindow):
 
         # Buttons event
         self.ui.registerButton.clicked.connect(self.register)
-        #self.ui.exitButton.setIcon(QIcon("icons/x_icon.png"))
+        self.ui.exitButton.setIcon(QIcon("icons/x_icon.png"))
         self.ui.backButton.setIcon(QIcon("icons/back_icon.png"))
-        #self.ui.exitButton.clicked.connect(self.exit)
+        self.ui.exitButton.clicked.connect(self.exit)
         self.email = ''
         self.hashedPassword = ''
         self.successfully_registered = False
