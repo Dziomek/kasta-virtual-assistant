@@ -59,13 +59,16 @@ class KastaPage(QMainWindow):
         self.command_listened = False
 
         self.ui.myNotesButton.clicked.connect(self.switch_to_notes)
-
+        self.my_notes.ui.refreshButton.clicked.connect(self.refresh)
         self.old_position = None # FIX
 
     def switch_to_notes(self):
         self.my_notes = MyNotesPage()
+        self.my_notes.ui.refreshButton.clicked.connect(self.refresh)
         connection = ConnectDatabase()
         idUsers = connection.returnIdUser(self.kasta_thread.kasta.user_email)[0][0]
+        self.my_notes.user_id = idUsers
+        print(self.my_notes.user_id)
         notes = connection.get_notes(idUsers)
         #print('number of notes:' + str(len(notes)))
         #print('user id:' + str(idUsers))
@@ -101,6 +104,11 @@ class KastaPage(QMainWindow):
                     #print('Dodano: ' + buttons[note_number].objectName())
                     note_number += 1
         self.my_notes.show()
+
+    def refresh(self):
+        self.my_notes.close()
+        self.switch_to_notes()
+        print('sieuma')
 
     def set_parameters(self):
         if not self.kasta_thread.kasta.is_action_performed:

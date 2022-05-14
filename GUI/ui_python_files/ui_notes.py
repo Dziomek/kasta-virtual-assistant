@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'notesSftMJy.ui'
+## Form generated from reading UI file 'noteskVpEFq.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -20,7 +20,7 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(1082, 851)
+        Form.resize(1082, 847)
         Form.setMinimumSize(QSize(1000, 500))
         self.widget = QWidget(Form)
         self.widget.setObjectName(u"widget")
@@ -109,6 +109,23 @@ class Ui_Form(object):
         self.addNoteButton.setIcon(icon1)
         self.addNoteButton.setIconSize(QSize(70, 70))
         self.addNoteButton.setFlat(False)
+        self.refreshButton = QPushButton(self.widget)
+        self.refreshButton.setObjectName(u"refreshButton")
+        self.refreshButton.setGeometry(QRect(90, 570, 61, 61))
+        self.refreshButton.setFont(font1)
+        self.refreshButton.setStyleSheet(u"QPushButton{\n"
+"background-color: #20242a;\n"
+"color: #20242a;\n"
+"border-radius: 10px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: black;\n"
+"}")
+        icon2 = QIcon()
+        icon2.addFile(u"../../icons/refresh.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.refreshButton.setIcon(icon2)
+        self.refreshButton.setIconSize(QSize(70, 70))
+        self.refreshButton.setFlat(False)
 
         self.retranslateUi(Form)
 
@@ -122,5 +139,6 @@ class Ui_Form(object):
         self.deleteButton.setText("")
         self.exitButton.setText("")
         self.addNoteButton.setText("")
+        self.refreshButton.setText("")
     # retranslateUi
 
