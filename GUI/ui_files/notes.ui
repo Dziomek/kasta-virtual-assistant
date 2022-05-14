@@ -13,7 +13,7 @@
   <property name="minimumSize">
    <size>
     <width>1000</width>
-    <height>800</height>
+    <height>500</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -22,16 +22,16 @@
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>20</y>
+     <x>40</x>
+     <y>70</y>
      <width>1000</width>
-     <height>800</height>
+     <height>651</height>
     </rect>
    </property>
    <property name="minimumSize">
     <size>
      <width>1000</width>
-     <height>800</height>
+     <height>500</height>
     </size>
    </property>
    <property name="styleSheet">
@@ -69,7 +69,7 @@ border-radius: 30px;</string>
       <x>0</x>
       <y>100</y>
       <width>1000</width>
-      <height>700</height>
+      <height>450</height>
      </rect>
     </property>
     <property name="widgetResizable">
@@ -81,7 +81,7 @@ border-radius: 30px;</string>
        <x>0</x>
        <y>0</y>
        <width>1000</width>
-       <height>700</height>
+       <height>450</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout">
@@ -164,32 +164,76 @@ border-radius: 10px;
    <widget class="QPushButton" name="exitButton">
     <property name="geometry">
      <rect>
-      <x>870</x>
-      <y>30</y>
-      <width>93</width>
-      <height>28</height>
+      <x>930</x>
+      <y>20</y>
+      <width>41</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
-background-color:  rgb(212, 192, 169);
+background-color: #20242a;
 color: #20242a;
 border-radius: 10px;
 }
 QPushButton:hover{
-background-color: #837c73;
-}
-
-QPushButton:pressed{
-padding-left: 5px;
-padding-right: 5px;
-background-position: calc(100% - 10px)center;
-background-color: #ff662b;;
-}
-</string>
+background-color: black;
+}</string>
     </property>
     <property name="text">
-     <string>RETURN</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../icons/x_icon.png</normaloff>../../icons/x_icon.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="addNoteButton">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>570</y>
+      <width>61</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>13</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+background-color: #20242a;
+color: #20242a;
+border-radius: 10px;
+}
+QPushButton:hover{
+background-color: black;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../icons/plus_icon.png</normaloff>../../icons/plus_icon.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>70</width>
+      <height>70</height>
+     </size>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
     </property>
    </widget>
   </widget>
