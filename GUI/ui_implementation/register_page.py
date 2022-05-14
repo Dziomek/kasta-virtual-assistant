@@ -36,7 +36,7 @@ class RegisterPage(QMainWindow):
         self.email = self.ui.emailLabel.text()
         password = self.ui.passwordLabel.text()
         password2 = self.ui.password2Label.text()
-        date = self.ui.dateEdit.text()
+        phone = self.ui.phoneLabel.text()
 
 
         # GENERATE TOKEN
@@ -46,7 +46,7 @@ class RegisterPage(QMainWindow):
 
         valid_email = False
 
-        if not (firstName and lastName and self.email and password and password2 and date):
+        if not (firstName and lastName and self.email and password and password2 and phone):
             self.ui.errorLabel.setText('Missing fields. Please try again.')
         else:
             if '@' not in self.email:
@@ -73,7 +73,7 @@ class RegisterPage(QMainWindow):
 
                                 connection = ConnectDatabase()  # tu powtarzam połączenie ponieważ ono się wcześniej zamyka i trzeba znów otworzyć więc
                                 # to do optymalizacji
-                                connection.insertRegisterData(firstName, lastName, self.email, self.hashedPassword , date, token,
+                                connection.insertRegisterData(firstName, lastName, self.email, self.hashedPassword , phone, token,
                                                               validAccount)
                                 self.ui.errorLabel.setText('Registered.')
                                 self.successfully_registered = True

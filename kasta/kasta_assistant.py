@@ -66,6 +66,7 @@ class Kasta:
         self.user_email = ''
         self.user_name = ''
         self.user_id = ''
+        self.phoneNumber = ''
 
 
     def speak(self, text):
@@ -544,7 +545,7 @@ class Kasta:
                 self.speak('I will sent your reminder to your phone number which is associated with your '
                            'account.')
                 smsservice = SMSService.smsService.SendSms()
-                user_phone_number = ''  #### wpisac swoj numer telefonu np '+48123123123'
+                user_phone_number = '+48' + self.phoneNumber
                 smsservice.send_reminder(reminder, date, user_phone_number)
 
                 self.listen()

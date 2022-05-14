@@ -254,23 +254,6 @@ paddinf-bottom: 7px;</string>
      <string>Confirm Password</string>
     </property>
    </widget>
-   <widget class="QDateEdit" name="dateEdit">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>580</y>
-      <width>261</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,0);
-border: 2px solid rgba(0,0,0,0);
-border-bottom-color: #ff662b;
-color: rgb(212, 192, 169);
-paddinf-bottom: 7px;</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="errorLabel">
     <property name="geometry">
      <rect>
@@ -325,6 +308,35 @@ background-color: #ff662b;;
     </property>
     <property name="text">
      <string>Back</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="phoneLabel">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>570</y>
+      <width>260</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,0);
+border: 2px solid rgba(0,0,0,0);
+border-bottom-color: #ff662b;
+color: rgb(212, 192, 169);
+paddinf-bottom: 7px;</string>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Normal</enum>
+    </property>
+    <property name="placeholderText">
+     <string>Phone number</string>
     </property>
    </widget>
   </widget>

@@ -1,6 +1,0 @@
-{
-  "commands":{
-    "name": ["send sms", "note to sms"],
-    "action": "send_sms"
-  }
-}

@@ -46,10 +46,10 @@ class ConnectDatabase:
                 return True
 
 
-    def insertRegisterData(self, firstName, lastName, email, password, date, token, validAccount):
+    def insertRegisterData(self, firstName, lastName, email, password, phone, token, validAccount):
         if self.connection.is_connected():
-            sql_select_Query = "INSERT INTO Users(firstName, lastName, email, password, birthday, token, validAccount) " \
-                               " VALUES('"+firstName+"','" + lastName + "','" + email + "','" + password + "','" + date + "','" + token + "','" + validAccount + "') "
+            sql_select_Query = "INSERT INTO Users(firstName, lastName, email, password, phone, token, validAccount) " \
+                               " VALUES('"+firstName+"','" + lastName + "','" + email + "','" + password + "','" + phone+ "','" + token + "','" + validAccount + "') "
             cursor = self.connection.cursor()
             cursor.execute(sql_select_Query)
             self.connection.commit()

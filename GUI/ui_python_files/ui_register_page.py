@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'register_pageuMcRGl.ui'
+## Form generated from reading UI file 'register_pagejhAUhD.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -116,14 +116,6 @@ class Ui_Form(object):
 "color: rgb(212, 192, 169);\n"
 "paddinf-bottom: 7px;")
         self.password2Label.setEchoMode(QLineEdit.PasswordEchoOnEdit)
-        self.dateEdit = QDateEdit(self.widget)
-        self.dateEdit.setObjectName(u"dateEdit")
-        self.dateEdit.setGeometry(QRect(280, 580, 261, 21))
-        self.dateEdit.setStyleSheet(u"background-color: rgba(0,0,0,0);\n"
-"border: 2px solid rgba(0,0,0,0);\n"
-"border-bottom-color: #ff662b;\n"
-"color: rgb(212, 192, 169);\n"
-"paddinf-bottom: 7px;")
         self.errorLabel = QLabel(self.widget)
         self.errorLabel.setObjectName(u"errorLabel")
         self.errorLabel.setGeometry(QRect(170, 190, 491, 20))
@@ -149,6 +141,16 @@ class Ui_Form(object):
 "background-color: #ff662b;;\n"
 "}\n"
 "")
+        self.phoneLabel = QLineEdit(self.widget)
+        self.phoneLabel.setObjectName(u"phoneLabel")
+        self.phoneLabel.setGeometry(QRect(280, 570, 260, 40))
+        self.phoneLabel.setFont(font1)
+        self.phoneLabel.setStyleSheet(u"background-color: rgba(0,0,0,0);\n"
+"border: 2px solid rgba(0,0,0,0);\n"
+"border-bottom-color: #ff662b;\n"
+"color: rgb(212, 192, 169);\n"
+"paddinf-bottom: 7px;")
+        self.phoneLabel.setEchoMode(QLineEdit.Normal)
 
         self.retranslateUi(Form)
 
@@ -168,5 +170,6 @@ class Ui_Form(object):
         self.password2Label.setPlaceholderText(QCoreApplication.translate("Form", u"Confirm Password", None))
         self.errorLabel.setText("")
         self.backButton.setText(QCoreApplication.translate("Form", u"Back", None))
+        self.phoneLabel.setPlaceholderText(QCoreApplication.translate("Form", u"Phone number", None))
     # retranslateUi
 
