@@ -3,6 +3,7 @@ from PySide2.QtCore import QPoint, QSize, QRect
 from PySide2.QtGui import QIcon, Qt
 from PySide2.QtWidgets import QMainWindow, QFrame, QLabel, QPushButton
 
+from GUI.ui_implementation.create_app_page import CreateAppPage
 from GUI.ui_python_files.ui_add_application import Ui_Form
 
 
@@ -19,9 +20,17 @@ class AddApplicationPage(QMainWindow):
         self.ui.exitButton.setIcon(QIcon("icons/x_icon.png"))
         self.ui.refreshButton.setIcon(QIcon("icons/refresh.png"))
         self.ui.addAppButton.setIcon(QIcon("icons/plus_icon.png"))
-
+        self.ui.addAppButton.clicked.connect(self.build)
+        self.create_app_page = CreateAppPage()
 
         self.user_id = 0
+        self.apps = {}
+
+    def build(self):
+        self.create_app_page.user_id = self.user_id
+        print("Przekazane do create_app: " + str(self.create_app_page.user_id))
+        self.create_app_page.show()
+
 
     def add_application_widget(self, row_number, key_word, url):
         url_frame_name = "frame_url_" + str(row_number)
@@ -77,10 +86,9 @@ class AddApplicationPage(QMainWindow):
 
         return self.deleteButton
 
-
-
     def exit(self):
         self.close()
+        self.create_app_page.exit()
 
     def mousePressEvent(self, event):
         self.old_position = event.globalPos()

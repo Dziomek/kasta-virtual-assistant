@@ -62,11 +62,11 @@ class KastaPage(QMainWindow):
         self.command_listened = False
 
         self.ui.myNotesButton.clicked.connect(self.switch_to_notes)
-        self.my_notes.ui.refreshButton.clicked.connect(self.refresh_notes)
         self.old_position = None # FIX
 
     def open_app_page(self):
         self.add_app_page = AddApplicationPage()
+        self.add_app_page.create_app_page.ui.addButton.clicked.connect(self.kasta_thread.kasta.get_open_commands_from_db)
         self.add_app_page.ui.refreshButton.clicked.connect(self.refresh_commands)
         connection = ConnectDatabase()
         idUsers = connection.returnIdUser(self.kasta_thread.kasta.user_email)[0][0]
@@ -88,8 +88,13 @@ class KastaPage(QMainWindow):
             buttons.append(self.add_app_page.add_application_widget(x, key_word, url))
             buttons[x].clicked.connect(partial(connection.delete_command_with_id, command_id))
             buttons[x].clicked.connect(self.kasta_thread.kasta.get_open_commands_from_db)
+            #buttons[x].clicked.connect(self.pass_apps)
             buttons[x].clicked.connect(self.open_app_page)
         self.add_app_page.show()
+
+    '''def pass_apps(self):
+        self.kasta_thread.kasta.apps = self.add_app_page.apps
+        '''
 
     def switch_to_notes(self):
         self.my_notes = MyNotesPage()
