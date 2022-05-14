@@ -81,6 +81,7 @@ class CreateGui:
             self.kasta_page.kasta_thread.kasta.user_id = data[2]
             self.kasta_page.ui.userEmailLabel.setText(data[0])
             self.kasta_page.ui.userNameLabel.setText(data[1])
+            self.kasta_page.kasta_thread.kasta.get_open_commands_from_db()
             print(self.kasta_page.kasta_thread.kasta.user_email, self.kasta_page.kasta_thread.kasta.user_name)
             self.main_page.login_page.close()
             self.kasta_page.show()

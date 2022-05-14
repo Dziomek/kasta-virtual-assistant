@@ -24,3 +24,8 @@ def make_json():
                  load_json('kasta/googlesearch/googlesearch_data.json'), load_json('kasta/remindMe/reminder_data.json')]
 
     return json_list
+
+def load_apps():
+    json_data = load_json('kasta/openApp/apps.json')
+    json_data = json_data['apps']
+    return json_data

@@ -11,7 +11,7 @@ import pyaudio
 import pyttsx3
 from kasta.wiki.wikipedia_search import WikiSearch
 import json
-from .json_loader import make_json
+from .json_loader import make_json, load_apps
 import kasta.greetings.greetings
 import kasta.date.date
 import kasta.acknowledgement.acknowledgment
@@ -67,7 +67,20 @@ class Kasta:
         self.user_name = ''
         self.user_id = ''
         self.phoneNumber = ''
+        self.apps = {}
+        self.apps_db = {}
+        print(self.apps)
+        print(self.apps_db)
 
+    def get_open_commands_from_db(self):
+        connection = ConnectDatabase()
+        self.apps = load_apps()
+        self.apps_db = connection.get_commands(self.user_id)
+        for command in self.apps_db:
+            self.apps[command[0]] = command[1]
+
+        print(self.apps)
+        print(self.apps_db)
 
     def speak(self, text):
         self.is_speaking = True
