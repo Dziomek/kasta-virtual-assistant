@@ -261,7 +261,7 @@ background-color: black;
       <x>110</x>
       <y>20</y>
       <width>261</width>
-      <height>21</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -617,7 +617,7 @@ border-radius: 10px;
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="addCommandButton_2">
+   <widget class="QPushButton" name="openAppButton">
     <property name="geometry">
      <rect>
       <x>110</x>
@@ -647,16 +647,82 @@ background-color: black;
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../../icons/plus_icon.png</normaloff>../../icons/plus_icon.png</iconset>
+      <normaloff>../../icons/website.png</normaloff>../../icons/website.png</iconset>
     </property>
     <property name="iconSize">
      <size>
-      <width>90</width>
-      <height>90</height>
+      <width>100</width>
+      <height>100</height>
      </size>
     </property>
     <property name="flat">
      <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="exitButton">
+    <property name="geometry">
+     <rect>
+      <x>970</x>
+      <y>20</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+background-color: #20242a;
+color: #20242a;
+border-radius: 10px;
+}
+QPushButton:hover{
+background-color: black;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../icons/x_icon.png</normaloff>../../icons/x_icon.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="logoutButton">
+    <property name="geometry">
+     <rect>
+      <x>920</x>
+      <y>20</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+background-color: #20242a;
+color: #20242a;
+border-radius: 10px;
+}
+QPushButton:hover{
+background-color: black;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../icons/logout.png</normaloff>../../icons/logout.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>42</width>
+      <height>42</height>
+     </size>
     </property>
    </widget>
    <zorder>label</zorder>
@@ -680,7 +746,9 @@ background-color: black;
    <zorder>label_5</zorder>
    <zorder>kastaLabel</zorder>
    <zorder>assistantLabel</zorder>
-   <zorder>addCommandButton_2</zorder>
+   <zorder>openAppButton</zorder>
+   <zorder>exitButton</zorder>
+   <zorder>logoutButton</zorder>
   </widget>
  </widget>
  <resources>

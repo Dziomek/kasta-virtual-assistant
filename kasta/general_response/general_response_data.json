@@ -1,7 +1,7 @@
 {
   "commands":
     {
-      "name": ["who are you", "your name", "who am i", "are you a robot", "how are you", "i am fine", "i am good"],
+      "name": ["about"],
       "action": "general_response"
     }
 }

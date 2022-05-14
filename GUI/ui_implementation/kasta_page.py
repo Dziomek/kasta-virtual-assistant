@@ -5,6 +5,7 @@ from PySide2.QtGui import QIcon
 from PySide2.QtWidgets import *
 from functools import partial
 from DataBase.Connection import ConnectDatabase
+from GUI.ui_implementation.add_application_page import AddApplicationPage
 from GUI.ui_implementation.faq import FAQPage
 from GUI.ui_implementation.notes_page import MyNotesPage
 from GUI.ui_python_files.ui_kasta_page import Ui_Form
@@ -26,6 +27,7 @@ class KastaPage(QMainWindow):
         self.ui.startButton.clicked.connect(self.set_type_button_disabled)
         self.ui.startButton.clicked.connect(self.set_listen_button_disabled)
         self.my_notes = MyNotesPage()
+        self.add_app_page = AddApplicationPage()
 
 
         self.ui.endButton.clicked.connect(self.kasta_thread.stop)
@@ -37,6 +39,9 @@ class KastaPage(QMainWindow):
         self.ui.enterCommandButton.clicked.connect(self.take_typed_command)
         self.ui.enterCommandButton.clicked.connect(self.kasta_thread.kasta.do_typed_command)
 
+        self.ui.exitButton.clicked.connect(self.exit)
+        self.ui.openAppButton.clicked.connect(self.open_app_page)
+
         # self.t1.start()
 
         self.ui.label_3.setPixmap("icons/kaastavector.png")
@@ -45,7 +50,9 @@ class KastaPage(QMainWindow):
         self.ui.keyboardLabel.setIcon(QIcon("icons/keyboardicon.png"))
         self.ui.speakerIcon.setIcon(QIcon("icons/speaker.png"))
         self.ui.assistantLabel.setIcon(QIcon("icons/assistant_icon.png"))
-        self.ui.addCommandButton_2.setIcon(QIcon("icons/plus_icon.png"))
+        self.ui.openAppButton.setIcon(QIcon("icons/website.png"))
+        self.ui.exitButton.setIcon(QIcon("icons/x_icon.png"))
+        self.ui.logoutButton.setIcon(QIcon("icons/logout.png"))
 
         ## REMOVE TITLE BAR
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
@@ -55,13 +62,41 @@ class KastaPage(QMainWindow):
         self.command_listened = False
 
         self.ui.myNotesButton.clicked.connect(self.switch_to_notes)
-
+        self.my_notes.ui.refreshButton.clicked.connect(self.refresh_notes)
         self.old_position = None # FIX
+
+    def open_app_page(self):
+        self.add_app_page = AddApplicationPage()
+        self.add_app_page.ui.refreshButton.clicked.connect(self.refresh_commands)
+        connection = ConnectDatabase()
+        idUsers = connection.returnIdUser(self.kasta_thread.kasta.user_email)[0][0]
+        self.add_app_page.user_id = idUsers
+        print(self.add_app_page.user_id)
+        commands = connection.get_commands(idUsers)
+
+        #print(commands)
+        print(len(commands))
+        buttons = []
+        for x in range(len(commands)):
+            key_word = commands[x][0]
+            url = commands[x][1]
+            command_id = connection.get_id_command(key_word)[0][0]
+            print('keyword: ' + key_word)
+            print('url: ' + url)
+            print('command id: ' + str(command_id))
+
+            buttons.append(self.add_app_page.add_application_widget(x, key_word, url))
+            buttons[x].clicked.connect(partial(connection.delete_command_with_id, command_id))
+            buttons[x].clicked.connect(self.open_app_page)
+        self.add_app_page.show()
 
     def switch_to_notes(self):
         self.my_notes = MyNotesPage()
+        self.my_notes.ui.refreshButton.clicked.connect(self.refresh_notes)
         connection = ConnectDatabase()
         idUsers = connection.returnIdUser(self.kasta_thread.kasta.user_email)[0][0]
+        self.my_notes.user_id = idUsers
+        print(self.my_notes.user_id)
         notes = connection.get_notes(idUsers)
         #print('number of notes:' + str(len(notes)))
         #print('user id:' + str(idUsers))
@@ -97,6 +132,14 @@ class KastaPage(QMainWindow):
                     #print('Dodano: ' + buttons[note_number].objectName())
                     note_number += 1
         self.my_notes.show()
+
+    def refresh_notes(self):
+        self.my_notes.close()
+        self.switch_to_notes()
+
+    def refresh_commands(self):
+        self.add_app_page.close()
+        self.open_app_page()
 
     def set_parameters(self):
         if not self.kasta_thread.kasta.is_action_performed:
@@ -154,3 +197,11 @@ class KastaPage(QMainWindow):
         self.move(self.x() + delta.x(), self.y() + delta.y())
         self.old_position = event.globalPos()
 
+
+    #TODO:
+    def exit(self):
+        self.kasta_thread.terminate()
+        self.close()
+
+    def logout(self):
+        pass

@@ -145,4 +145,36 @@ class ConnectDatabase:
             self.connection.commit()
             #print('note ' + str(note_id) + ' deleted')
 
+    def get_valid_account(self, user_email):
+        if self.connection.is_connected():
+            sql_select_Query = "SELECT validAccount from Users WHERE email = '" + user_email + "'"
+            # print(sql_select_Query)
+            cursor = self.connection.cursor()
+            cursor.execute(sql_select_Query)
+            #print(cursor.fetchall()[0][0])
+            return cursor.fetchall()
 
+    def get_commands(self, idUsers):
+        if self.connection.is_connected():
+            sql_select_Query = "SELECT keyWord, url from Commands WHERE idUsers = '" + str(idUsers) + "'"
+            #print(sql_select_Query)
+            cursor = self.connection.cursor()
+            cursor.execute(sql_select_Query)
+            return cursor.fetchall()
+
+    def get_id_command(self, key_word):
+        if self.connection.is_connected():
+            sql_select_Query = "SELECT idCommands from Commands WHERE keyWord = '" + key_word + "'"
+            # print(sql_select_Query)
+            cursor = self.connection.cursor()
+            cursor.execute(sql_select_Query)
+            return cursor.fetchall()
+
+    def delete_command_with_id(self, command_id):
+        if self.connection.is_connected():
+            sql_select_Query = "DELETE from Commands WHERE idCommands = '" + str(command_id) + "'"
+            #print(sql_select_Query)
+            cursor = self.connection.cursor()
+            cursor.execute(sql_select_Query)
+            self.connection.commit()
+            print('command ' + str(command_id) + ' deleted')

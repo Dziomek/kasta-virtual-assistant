@@ -39,7 +39,7 @@ border-radius: 30px;</string>
      <string notr="true">QPushButton{
 background-color: #20242a;
 color: #20242a;
-border-radius: 50px;
+border-radius: 10px;
 }
 QPushButton:hover{
 background-color: black;

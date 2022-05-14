@@ -167,7 +167,7 @@ QProgressBar::chunk{
         <string notr="true">color: #837c73</string>
        </property>
        <property name="text">
-        <string>&lt;strong&gt;Created&lt;/strong&gt; Jakub Niećko Dominik Ziomek</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Created by&lt;/span&gt; Jakub Niećko &amp;amp; Dominik Ziomek&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

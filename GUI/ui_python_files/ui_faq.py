@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'faqMyzCHz.ui'
+## Form generated from reading UI file 'faqGZxEvp.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -32,7 +32,7 @@ class Ui_Form(object):
         self.exitButton.setStyleSheet(u"QPushButton{\n"
 "background-color: #20242a;\n"
 "color: #20242a;\n"
-"border-radius: 50px;\n"
+"border-radius: 10px;\n"
 "}\n"
 "QPushButton:hover{\n"
 "background-color: black;\n"

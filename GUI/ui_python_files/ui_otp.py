@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'otpGVCIBo.ui'
+## Form generated from reading UI file 'otpdwOztV.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -16,7 +16,7 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
 from PySide2.QtWidgets import *
 
 
-class Ui_Otp(object):
+class Ui_Form(object):
     def setupUi(self, Form):
         if Form.objectName():
             Form.setObjectName(u"Form")
@@ -115,6 +115,21 @@ class Ui_Otp(object):
         self.infoLabel.setGeometry(QRect(300, 250, 301, 20))
         self.infoLabel.setStyleSheet(u"color: red;")
         self.infoLabel.setAlignment(Qt.AlignCenter)
+        self.exitButton = QPushButton(self.widget)
+        self.exitButton.setObjectName(u"exitButton")
+        self.exitButton.setGeometry(QRect(620, 60, 41, 41))
+        self.exitButton.setStyleSheet(u"QPushButton{\n"
+"background-color: #20242a;\n"
+"color: #20242a;\n"
+"border-radius: 10px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: black;\n"
+"}")
+        icon = QIcon()
+        icon.addFile(u"../../icons/x_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.exitButton.setIcon(icon)
+        self.exitButton.setIconSize(QSize(30, 30))
 
         self.retranslateUi(Form)
 
@@ -131,5 +146,6 @@ class Ui_Otp(object):
         self.label_4.setText(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-size:8pt;\">Check your email, there is a unique code, enter it below</span></p></body></html>", None))
         self.sendAgainButton.setText(QCoreApplication.translate("Form", u"Did you get the code? Click here to send again.", None))
         self.infoLabel.setText(QCoreApplication.translate("Form", u"<html><head/><body><p><br/></p></body></html>", None))
+        self.exitButton.setText("")
     # retranslateUi
 

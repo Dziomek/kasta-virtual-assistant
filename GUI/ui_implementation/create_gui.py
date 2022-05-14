@@ -2,7 +2,9 @@ import time
 
 from PySide2.QtCore import QThread
 
+from DataBase.Connection import ConnectDatabase
 from GUI.ui_implementation.faq import FAQPage
+from GUI.ui_implementation.forotpassword_page import ForgotPasswordPage
 from GUI.ui_implementation.kasta_page import KastaPage
 from GUI.ui_implementation.login_page import LoginPage
 from GUI.ui_implementation.notes_page import MyNotesPage
@@ -23,8 +25,11 @@ class CreateGui:
         self.confirmation_page = ConfirmationPage()
         self.faq_page = FAQPage()
         self.my_notes_page = MyNotesPage()
+        self.forgotpassword_page = ForgotPasswordPage()
         self.main_page.login_page.ui.registerButton.clicked.connect(self.login_to_register)
         self.main_page.login_page.ui.loginButton.clicked.connect(self.login_to_kasta_or_otp)
+        self.main_page.login_page.ui.forgotPasswordButton.clicked.connect(self.login_to_forgotpassword)
+        self.forgotpassword_page.ui.backToLoginButton.clicked.connect(self.forgotpassword_to_login)
         #self.main_page.login_page.ui.loginButton.clicked.connect(self.login_to_otp)
         self.register_page.ui.backButton.clicked.connect(self.register_to_login)
         self.register_page.ui.registerButton.clicked.connect(self.register_to_otp)
@@ -66,7 +71,11 @@ class CreateGui:
 
     def login_to_kasta_or_otp(self):
         data = self.main_page.login_page.login()
-        if self.main_page.login_page.logged_in and self.main_page.login_page.validAccount == 'True':
+        connection = ConnectDatabase()
+        validAccount = connection.get_valid_account(self.main_page.login_page.email)
+        if len(validAccount) != 0:
+            validAccount = validAccount[0][0]
+        if self.main_page.login_page.logged_in and validAccount == 'True':
             self.kasta_page.kasta_thread.kasta.user_email = data[0]
             self.kasta_page.kasta_thread.kasta.user_name = data[1]
             self.kasta_page.kasta_thread.kasta.user_id = data[2]
@@ -76,7 +85,11 @@ class CreateGui:
             self.main_page.login_page.close()
             self.kasta_page.show()
 
-        elif self.main_page.login_page.logged_in and self.main_page.login_page.validAccount == 'False':
+        elif self.main_page.login_page.logged_in and validAccount == 'False':
+            self.otp_page = OtpPage()
+            self.otp_page.ui.loginButton.clicked.connect(self.otp_page.confirm_account)
+            self.otp_page.ui.loginButton.clicked.connect(self.otp_to_login)
+            print('Email: ' + self.main_page.login_page.email)
             self.otp_page.email_in_otp = self.main_page.login_page.email  # PRZEKAZANIE MAILA
             self.main_page.login_page.close()
             self.otp_page.show()
@@ -124,6 +137,12 @@ class CreateGui:
     def kasta_to_notes(self):
         self.my_notes_page.show()
 
+    def login_to_forgotpassword(self):
+        self.forgotpassword_page.show()
+
+    def forgotpassword_to_login(self):
+        self.forgotpassword_page.close()
+        self.main_page.login_page.show()
 
 
 

@@ -1,6 +1,6 @@
 {
   "commands":{
-    "name": ["help me","i do not know what to do"],
+    "name": ["help"],
     "action": "help"
   }
 }

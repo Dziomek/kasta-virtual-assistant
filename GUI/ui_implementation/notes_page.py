@@ -4,6 +4,7 @@ from PySide2.QtGui import Qt, QIcon
 from PySide2.QtWidgets import QMainWindow, QFrame, QLabel, QPushButton
 
 from DataBase.Connection import ConnectDatabase
+from GUI.ui_implementation.add_note_page import AddNotePage
 from GUI.ui_python_files.ui_notes import Ui_Form
 
 
@@ -18,6 +19,15 @@ class MyNotesPage(QMainWindow):
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         ###############
         self.ui.exitButton.clicked.connect(self.exit_page)
+        self.ui.exitButton.setIcon(QIcon("icons/x_icon.png"))
+        self.ui.addNoteButton.setIcon(QIcon("icons/plus_icon.png"))
+
+        self.add_note_page = AddNotePage()
+        self.ui.addNoteButton.clicked.connect(self.build)
+
+        self.user_id = 0
+
+
 
     def create_new_widget(self, row_number, column_number, note_text, idNotes):
         new_frame_name = "frame_" + str(idNotes)
@@ -50,6 +60,7 @@ class MyNotesPage(QMainWindow):
         #self.deleteButton.setIcon(icon)
         self.deleteButton.setIcon(QIcon("icons/x_icon.png"))
         self.deleteButton.setIconSize(QSize(32, 32))
+        self.ui.refreshButton.setIcon(QIcon("icons/refresh.png"))
 
 
         self.ui.gridLayout.addWidget(self.frame, row_number, column_number, 1, 1, Qt.AlignLeft | Qt.AlignTop)
@@ -62,9 +73,17 @@ class MyNotesPage(QMainWindow):
 
     def exit_page(self):
         self.close()
+        self.add_note_page.close()
 
     def delete_note(self, idNotes, connection):
         connection.delete_note_with_id(idNotes)
+
+    def build(self):
+        self.add_note_page = AddNotePage()
+        self.add_note_page.user_id = self.user_id
+        print("Przekazane do add_note: " + str(self.add_note_page.user_id))
+        self.add_note_page.show()
+
 
     def mousePressEvent(self, event):
         self.old_position = event.globalPos()
