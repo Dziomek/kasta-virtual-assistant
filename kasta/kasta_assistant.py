@@ -459,6 +459,54 @@ class Kasta:
         self.listen()
         self.is_action_performed = False
 
+    def send_note_via_phone(self):
+        playsound('kasta/sound2.wav')
+        self.speak("I will read your all notes topics. Chose one of them.")
+        connection = ConnectDatabase()
+        idUsers = connection.returnIdUser(self.user_email)
+        UserId = idUsers[0][0]
+
+        topics = connection.returnNotesTopics(UserId)
+        print(topics)
+        topics_list = []
+
+        for topic in topics:
+            print(topic[0])
+            self.speak(topic[0])
+            topics_list.append(topic[0])
+
+        while True:
+            user_choose = self.listen2()
+            for topic in topics_list:
+                if topic in user_choose:
+                    self.stop_listening()
+                    print('topic', topic)
+                    print(user_choose)
+
+                    self.speak(f"Is {user_choose} correct ?")
+
+                    response = self.listen2()
+                    print(response)
+                    self.stop_listening()
+
+                    if "yes" in response:
+                        user_choose = user_choose.strip()
+                        self.response = connection.returnNote(user_choose, UserId)
+                        if self.response is not None:
+                            description = self.response[0][0]
+                            topic = user_choose
+
+                            smsservice = SMSService.smsService.SendSms()
+                            user_phone_number = '+48' + self.phoneNumber
+                            smsservice.send_note(topic, description, user_phone_number)
+
+                    elif "no" in response:
+                        self.speak('Choose a topic'), print('Choose a topic')
+                        break
+            break
+        self.listen()
+        self.is_action_performed = False
+
     def email_note_action(self):
         playsound('kasta/sound2.wav')
         self.speak("I will read your all notes topics. Chose one of them.")
