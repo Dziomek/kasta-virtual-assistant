@@ -177,4 +177,4 @@ class ConnectDatabase:
             cursor = self.connection.cursor()
             cursor.execute(sql_select_Query)
             self.connection.commit()
-            print('command ' + str(command_id) + ' deleted')
+            #print('command ' + str(command_id) + ' deleted')

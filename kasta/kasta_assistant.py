@@ -68,19 +68,19 @@ class Kasta:
         self.user_id = ''
         self.phoneNumber = ''
         self.apps = {}
-        self.apps_db = {}
+
         print(self.apps)
-        print(self.apps_db)
+
 
     def get_open_commands_from_db(self):
         connection = ConnectDatabase()
         self.apps = load_apps()
-        self.apps_db = connection.get_commands(self.user_id)
-        for command in self.apps_db:
+        apps_db = connection.get_commands(self.user_id)
+        for command in apps_db:
             self.apps[command[0]] = command[1]
 
-        print(self.apps)
-        print(self.apps_db)
+        #print(self.apps)
+
 
     def speak(self, text):
         self.is_speaking = True
@@ -199,7 +199,7 @@ class Kasta:
             case "general_response":
                 self.general_response_action()
             case "open_app":
-                self.open_app_action(key_word)
+                self.open_app_action(self.text.split('open', 2)[1].strip(), self.apps)
             case "tell_jokes":
                 self.tell_jokes_action()
             case "tell_news":
@@ -310,12 +310,12 @@ class Kasta:
         print(self.response), self.speak(self.response)
         self.is_action_performed = False
 
-    def open_app_action(self, key_word):
+    def open_app_action(self, key_word, apps_list):
         playsound('kasta/sound2.wav')
-        p = multiprocessing.Process(target=OpenApp.open_application, args=(key_word,))
+        p = multiprocessing.Process(target=OpenApp.open_application, args=(key_word, apps_list, ))
         p.start()
         p.join()
-        self.response = f"Opening {key_word.split(' ', 2)[1]}"
+        self.response = f"Opening application"
         self.is_action_performed = False
 
     def tell_jokes_action(self):

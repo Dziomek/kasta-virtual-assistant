@@ -81,12 +81,13 @@ class KastaPage(QMainWindow):
             key_word = commands[x][0]
             url = commands[x][1]
             command_id = connection.get_id_command(key_word)[0][0]
-            print('keyword: ' + key_word)
-            print('url: ' + url)
-            print('command id: ' + str(command_id))
+            #print('keyword: ' + key_word)
+            #print('url: ' + url)
+            #print('command id: ' + str(command_id))
 
             buttons.append(self.add_app_page.add_application_widget(x, key_word, url))
             buttons[x].clicked.connect(partial(connection.delete_command_with_id, command_id))
+            buttons[x].clicked.connect(self.kasta_thread.kasta.get_open_commands_from_db)
             buttons[x].clicked.connect(self.open_app_page)
         self.add_app_page.show()
 

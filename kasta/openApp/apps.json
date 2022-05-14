@@ -1,5 +1,5 @@
 {
-  "apps": {"google":  "google.com",
-      "youtube": "youtube.com", "spotify": "spotify.com",
-      "wikipedia": "wikipedia.com", "github": "github.com"}
+  "apps": {"google":  "https://www.google.com/",
+      "youtube": "https://www.youtube.com/", "spotify": "https://www.spotify.com/pl/",
+      "wikipedia": "https://pl.wikipedia.org/wiki/Wikipedia", "github": "https://github.com/"}
 }
