@@ -1,3 +1,5 @@
+import os
+import sys
 import threading
 from PySide2 import QtCore
 from PySide2.QtCore import QThread, QPoint, QTimer
@@ -212,8 +214,13 @@ class KastaPage(QMainWindow):
 
     #TODO:
     def exit(self):
-        self.kasta_thread.terminate()
-        self.close()
+        if not self.kasta_thread.kasta.is_speaking and not self.kasta_thread.kasta.is_action_performed:
+            #self.kasta_thread.kasta.terminate_kasta()
+            self.close()
+            exit(0)
+
+        #self.kasta_thread.terminate()
+        #self.close()
 
     def logout(self):
         pass
