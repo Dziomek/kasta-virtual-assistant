@@ -25,11 +25,12 @@ class CreateAppPage(QMainWindow):
     def add_app_to_database(self):
         if self.ui.keywordTextEdit.text() and self.ui.urlTextEdit.text():
             connection = ConnectDatabase()
-            key_words = ['google', 'youtube', 'spotify', 'wikipedia', 'github']
+            key_words = ['google', 'youtube', 'spotify', 'wikipedia', 'github', 'twitter',
+                         'linkedin', 'facebook', 'instagram', 'allegro', 'olx']
             from_db = connection.get_key_word(self.user_id)
             for key_word in from_db:
                 key_words.append(key_word[0])
-            print(key_words)
+            #print(key_words)
             if self.ui.keywordTextEdit.text() not in key_words:
                 connection.insert_app(self.ui.keywordTextEdit.text(), self.ui.urlTextEdit.text(), self.user_id)
                 print(f'Added successfully')

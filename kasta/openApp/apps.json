@@ -1,5 +1,9 @@
 {
   "apps": {"google":  "https://www.google.com/",
       "youtube": "https://www.youtube.com/", "spotify": "https://www.spotify.com/pl/",
-      "wikipedia": "https://pl.wikipedia.org/wiki/Wikipedia", "github": "https://github.com/"}
+      "wikipedia": "https://pl.wikipedia.org/wiki/Wikipedia", "github": "https://github.com/",
+      "twitter":  "https://twitter.com/home?lang=pl", "linkedin":  "https://pl.linkedin.com/",
+      "facebook": "https://www.facebook.com/", "instagram": "https://www.instagram.com/",
+      "allegro": "https://allegro.pl/", "olx": "https://www.olx.pl/"
+  }
 }
