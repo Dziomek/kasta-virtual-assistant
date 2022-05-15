@@ -162,6 +162,14 @@ class ConnectDatabase:
             cursor.execute(sql_select_Query)
             return cursor.fetchall()
 
+    def get_key_word(self, idUsers):
+        if self.connection.is_connected():
+            sql_select_Query = "SELECT keyWord from Commands2 WHERE idUsers = '" + str(idUsers) + "'"
+            #print(sql_select_Query)
+            cursor = self.connection.cursor()
+            cursor.execute(sql_select_Query)
+            return cursor.fetchall()
+
     def get_id_command(self, key_word):
         if self.connection.is_connected():
             sql_select_Query = "SELECT idCommands from Commands2 WHERE keyWord = '" + key_word + "'"
