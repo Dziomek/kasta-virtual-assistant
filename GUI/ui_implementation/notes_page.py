@@ -1,6 +1,6 @@
 from PySide2 import QtCore
 from PySide2.QtCore import QSize, QPoint, QRect
-from PySide2.QtGui import Qt, QIcon
+from PySide2.QtGui import Qt, QIcon, QFont
 from PySide2.QtWidgets import QMainWindow, QFrame, QLabel, QPushButton
 
 from DataBase.Connection import ConnectDatabase
@@ -21,13 +21,26 @@ class MyNotesPage(QMainWindow):
         self.ui.exitButton.clicked.connect(self.exit_page)
         self.ui.exitButton.setIcon(QIcon("icons/x_icon.png"))
         self.ui.addNoteButton.setIcon(QIcon("icons/plus_icon.png"))
+        self.ui.refreshButton.setIcon(QIcon("icons/refresh.png"))
 
         self.add_note_page = AddNotePage()
         self.ui.addNoteButton.clicked.connect(self.build)
 
         self.user_id = 0
 
+    def create_no_notes_frame(self):
+        font = QFont()
+        font.setFamily(u"Segoe UI")
+        font.setPointSize(34)
 
+        self.label_4 = QLabel(self.ui.scrollAreaWidgetContents)
+        self.label_4.setObjectName(u"label_4")
+        self.label_4.setFont(font)
+        self.label_4.setStyleSheet(u"color: white;")
+        self.label_4.setText("You haven't created any note yet.")
+        self.label_4.setAlignment(Qt.AlignCenter)
+
+        self.ui.gridLayout.addWidget(self.label_4, 0, 0, 1, 1, Qt.AlignVCenter)
 
     def create_new_widget(self, row_number, column_number, note_text, idNotes):
         new_frame_name = "frame_" + str(idNotes)

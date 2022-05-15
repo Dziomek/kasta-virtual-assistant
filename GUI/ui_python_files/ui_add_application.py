@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'add_applicationrUTMcX.ui'
+## Form generated from reading UI file 'add_applicationKyQZlJ.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -59,45 +59,6 @@ class Ui_Form(object):
         self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 911, 221))
         self.gridLayout = QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.frame = QFrame(self.scrollAreaWidgetContents)
-        self.frame.setObjectName(u"frame")
-        self.frame.setEnabled(True)
-        self.frame.setMinimumSize(QSize(460, 100))
-        self.frame.setStyleSheet(u"background-color: #20242a;\n"
-"font: 10pt \"Arial\";\n"
-"color: white;")
-        self.frame.setFrameShape(QFrame.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Raised)
-        self.label = QLabel(self.frame)
-        self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(30, 10, 71, 16))
-        self.label.setStyleSheet(u"color: rgb(212, 192, 169);")
-        self.label_2 = QLabel(self.frame)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(310, 10, 111, 16))
-        self.label_2.setStyleSheet(u"color: rgb(212, 192, 169);")
-        self.deleteButton = QPushButton(self.frame)
-        self.deleteButton.setObjectName(u"deleteButton")
-        self.deleteButton.setGeometry(QRect(780, 10, 51, 41))
-        self.deleteButton.setStyleSheet(u"QPushButton{\n"
-"background-color: #20242a;\n"
-"color: #20242a;\n"
-"border-radius: 10px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"background-color: black;\n"
-"}")
-        self.deleteButton.setIcon(icon)
-        self.deleteButton.setIconSize(QSize(30, 30))
-        self.keyWordLabel = QLabel(self.frame)
-        self.keyWordLabel.setObjectName(u"keyWordLabel")
-        self.keyWordLabel.setGeometry(QRect(30, 50, 261, 31))
-        self.urlLabel = QLabel(self.frame)
-        self.urlLabel.setObjectName(u"urlLabel")
-        self.urlLabel.setGeometry(QRect(310, 50, 561, 31))
-
-        self.gridLayout.addWidget(self.frame, 0, 0, 1, 1, Qt.AlignTop)
-
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.refreshButton = QPushButton(self.widget)
         self.refreshButton.setObjectName(u"refreshButton")
@@ -163,11 +124,6 @@ class Ui_Form(object):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
         self.label_3.setText(QCoreApplication.translate("Form", u"<html><head/><body><p>Applications to open</p></body></html>", None))
         self.exitButton.setText("")
-        self.label.setText(QCoreApplication.translate("Form", u"key word", None))
-        self.label_2.setText(QCoreApplication.translate("Form", u"application url", None))
-        self.deleteButton.setText("")
-        self.keyWordLabel.setText(QCoreApplication.translate("Form", u"xdxdxdxdxddx", None))
-        self.urlLabel.setText(QCoreApplication.translate("Form", u"xdxdxdxdxddx", None))
         self.refreshButton.setText("")
         self.addAppButton.setText("")
         self.label_4.setText(QCoreApplication.translate("Form", u"SYNTAX:", None))

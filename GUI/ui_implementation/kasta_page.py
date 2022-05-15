@@ -75,21 +75,24 @@ class KastaPage(QMainWindow):
         commands = connection.get_commands(idUsers)
 
         #print(commands)
-        print(len(commands))
-        buttons = []
-        for x in range(len(commands)):
-            key_word = commands[x][0]
-            url = commands[x][1]
-            command_id = connection.get_id_command(key_word)[0][0]
-            #print('keyword: ' + key_word)
-            #print('url: ' + url)
-            #print('command id: ' + str(command_id))
+        #print(len(commands))
+        if len(commands) > 0:
+            buttons = []
+            for x in range(len(commands)):
+                key_word = commands[x][0]
+                url = commands[x][1]
+                command_id = connection.get_id_command(key_word)[0][0]
+                #print('keyword: ' + key_word)
+                #print('url: ' + url)
+                #print('command id: ' + str(command_id))
 
-            buttons.append(self.add_app_page.add_application_widget(x, key_word, url))
-            buttons[x].clicked.connect(partial(connection.delete_command_with_id, command_id))
-            buttons[x].clicked.connect(self.kasta_thread.kasta.get_open_commands_from_db)
-            #buttons[x].clicked.connect(self.pass_apps)
-            buttons[x].clicked.connect(self.open_app_page)
+                buttons.append(self.add_app_page.add_application_widget(x, key_word, url))
+                buttons[x].clicked.connect(partial(connection.delete_command_with_id, command_id))
+                buttons[x].clicked.connect(self.kasta_thread.kasta.get_open_commands_from_db)
+                #buttons[x].clicked.connect(self.pass_apps)
+                buttons[x].clicked.connect(self.open_app_page)
+        else:
+            self.add_app_page.create_no_app_label()
         self.add_app_page.show()
 
     '''def pass_apps(self):
@@ -106,37 +109,40 @@ class KastaPage(QMainWindow):
         notes = connection.get_notes(idUsers)
         #print('number of notes:' + str(len(notes)))
         #print('user id:' + str(idUsers))
-        if len(notes) % 2 == 0:
-            row_number = int(len(notes)/2)
+        if len(notes) > 0:
+            if len(notes) % 2 == 0:
+                row_number = int(len(notes)/2)
+            else:
+                row_number = int(len(notes)/2) + 1
+
+            #print('number of rows:' + str(row_number))
+            note_number = 0 ## current number of note
+            buttons = []
+            id_notes = []
+            for x in range(row_number):
+                for y in range(2):
+                    if note_number == len(notes):
+                        break
+                    else:
+                        note_id = connection.get_id_note(notes[note_number][0])[0][0]
+                        #print('Note id: ' + str(note_id))
+                        #print('Note number: ' + str(note_number))
+
+                        buttons.append(self.my_notes.create_new_widget(x, y, notes[note_number][0], note_id)) ## ostatni numer to id notatki
+                        buttons[note_number].clicked.connect(partial(connection.delete_note_with_id, note_id))
+                        buttons[note_number].clicked.connect(self.my_notes.close)
+
+                        buttons[note_number].clicked.connect(self.switch_to_notes)
+                        #print('Added action to ' + buttons[note_number].objectName() + ' ' + 'delete note ' + str(note_id))
+                        #print('list_len: ' + str(len(buttons)))
+                        #print('created note ' + str(note_number))
+                        #print(note_id)
+
+                        #buttons[note_number].setText(buttons[note_number].objectName())
+                        #print('Dodano: ' + buttons[note_number].objectName())
+                        note_number += 1
         else:
-            row_number = int(len(notes)/2) + 1
-
-        #print('number of rows:' + str(row_number))
-        note_number = 0 ## current number of note
-        buttons = []
-        id_notes = []
-        for x in range(row_number):
-            for y in range(2):
-                if note_number == len(notes):
-                    break
-                else:
-                    note_id = connection.get_id_note(notes[note_number][0])[0][0]
-                    #print('Note id: ' + str(note_id))
-                    #print('Note number: ' + str(note_number))
-
-                    buttons.append(self.my_notes.create_new_widget(x, y, notes[note_number][0], note_id)) ## ostatni numer to id notatki
-                    buttons[note_number].clicked.connect(partial(connection.delete_note_with_id, note_id))
-                    buttons[note_number].clicked.connect(self.my_notes.close)
-
-                    buttons[note_number].clicked.connect(self.switch_to_notes)
-                    #print('Added action to ' + buttons[note_number].objectName() + ' ' + 'delete note ' + str(note_id))
-                    #print('list_len: ' + str(len(buttons)))
-                    #print('created note ' + str(note_number))
-                    #print(note_id)
-
-                    #buttons[note_number].setText(buttons[note_number].objectName())
-                    #print('Dodano: ' + buttons[note_number].objectName())
-                    note_number += 1
+            self.my_notes.create_no_notes_frame()
         self.my_notes.show()
 
     def refresh_notes(self):

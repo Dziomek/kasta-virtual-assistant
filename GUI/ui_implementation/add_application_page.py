@@ -1,6 +1,6 @@
 from PySide2 import QtCore
 from PySide2.QtCore import QPoint, QSize, QRect
-from PySide2.QtGui import QIcon, Qt
+from PySide2.QtGui import QIcon, Qt, QFont
 from PySide2.QtWidgets import QMainWindow, QFrame, QLabel, QPushButton
 
 from GUI.ui_implementation.create_app_page import CreateAppPage
@@ -31,6 +31,18 @@ class AddApplicationPage(QMainWindow):
         print("Przekazane do create_app: " + str(self.create_app_page.user_id))
         self.create_app_page.show()
 
+    def create_no_app_label(self):
+        self.label_7 = QLabel(self.ui.scrollAreaWidgetContents)
+        self.label_7.setObjectName(u"label_7")
+        font1 = QFont()
+        font1.setFamily(u"Segoe UI")
+        font1.setPointSize(26)
+        self.label_7.setFont(font1)
+        self.label_7.setStyleSheet(u"color: white;")
+        self.label_7.setAlignment(Qt.AlignCenter)
+        self.label_7.setText("You haven't created any app association yet.")
+
+        self.ui.gridLayout.addWidget(self.label_7, 0, 0, 1, 1, Qt.AlignVCenter)
 
     def add_application_widget(self, row_number, key_word, url):
         url_frame_name = "frame_url_" + str(row_number)

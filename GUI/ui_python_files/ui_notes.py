@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'noteskVpEFq.ui'
+## Form generated from reading UI file 'notesYSGcLx.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -46,35 +46,6 @@ class Ui_Form(object):
         self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1000, 450))
         self.gridLayout = QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.frame = QFrame(self.scrollAreaWidgetContents)
-        self.frame.setObjectName(u"frame")
-        self.frame.setMinimumSize(QSize(460, 200))
-        self.frame.setStyleSheet(u"background-color: #20242a;\n"
-"font: 10pt \"Arial\";\n"
-"color: white;")
-        self.frame.setFrameShape(QFrame.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Raised)
-        self.label = QLabel(self.frame)
-        self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(0, 49, 460, 151))
-        self.label.setStyleSheet(u"padding: 10px")
-        self.label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
-        self.label.setWordWrap(True)
-        self.deleteButton = QPushButton(self.frame)
-        self.deleteButton.setObjectName(u"deleteButton")
-        self.deleteButton.setGeometry(QRect(410, 10, 31, 28))
-        self.deleteButton.setStyleSheet(u"QPushButton{\n"
-"background-color: #20242a;\n"
-"color: #20242a;\n"
-"border-radius: 10px;\n"
-"}")
-        icon = QIcon()
-        icon.addFile(u"../../icons/x_icon.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.deleteButton.setIcon(icon)
-        self.deleteButton.setIconSize(QSize(32, 32))
-
-        self.gridLayout.addWidget(self.frame, 0, 0, 1, 1, Qt.AlignLeft|Qt.AlignTop)
-
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.exitButton = QPushButton(self.widget)
         self.exitButton.setObjectName(u"exitButton")
@@ -87,6 +58,8 @@ class Ui_Form(object):
 "QPushButton:hover{\n"
 "background-color: black;\n"
 "}")
+        icon = QIcon()
+        icon.addFile(u"../../icons/x_icon.png", QSize(), QIcon.Normal, QIcon.Off)
         self.exitButton.setIcon(icon)
         self.exitButton.setIconSize(QSize(30, 30))
         self.addNoteButton = QPushButton(self.widget)
@@ -135,8 +108,6 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
         self.label_3.setText(QCoreApplication.translate("Form", u"<html><head/><body><p>Notes</p><p><br/></p></body></html>", None))
-        self.label.setText(QCoreApplication.translate("Form", u"xddxdxdx", None))
-        self.deleteButton.setText("")
         self.exitButton.setText("")
         self.addNoteButton.setText("")
         self.refreshButton.setText("")

@@ -84,27 +84,7 @@ border-radius: 30px;</string>
        <height>450</height>
       </rect>
      </property>
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0" alignment="Qt::AlignVCenter">
-       <widget class="QLabel" name="label_4">
-        <property name="font">
-         <font>
-          <family>Segoe UI</family>
-          <pointsize>34</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: white;</string>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;You haven't created any notes yet. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <layout class="QGridLayout" name="gridLayout"/>
     </widget>
    </widget>
    <widget class="QPushButton" name="exitButton">
