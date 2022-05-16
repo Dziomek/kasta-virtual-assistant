@@ -43,7 +43,6 @@ class Kasta:
         ################ LISTENING/SPEAKING PARAMETERS ##############
 
         self.engine = pyttsx3.init()
-        # self.engine.connect('finished-utterance', self.stop_listening)
         self.voices = self.engine.getProperty('voices')
         self.engine.setProperty('voice', self.voices[1].id)
         self.model = Model("model")
@@ -103,24 +102,20 @@ class Kasta:
         print('Speaking:' + str(self.is_speaking))
 
     def listen(self):
-        '''if self.appFirstRun:
-            self.greet_user()'''
-        self.appFirstRun = False
         if not self.is_listening and not self.is_action_performed and not self.is_speaking:
+            if self.appFirstRun:
+                self.greet_user()
+            self.appFirstRun = False
             print('listening...')
             self.text = ""
             self.stream.start_stream()
             self.is_listening = True
-
             while True:
                 data = self.stream.read(4000, exception_on_overflow=False)
                 if len(data) == 0:
                     break
                 if self.rec.AcceptWaveform(data):
-                    self.text = self.rec.Result()[13:-1]  # od 12 po to, żeby wypisać samą komendę (bez 'text' itp)
-                    self.text = self.text.replace('"', '')
-                    self.text = self.text.replace(self.text[-1], '')
-
+                    self.text = self.rec.Result()[13:-1].replace('"', '').strip()
                     self.find_action_in_json()
 
     def listen2(self):
@@ -235,6 +230,7 @@ class Kasta:
 
     def greet_user(self):
         """Greets the user according to the time"""
+        self.text = ""
         playsound('kasta/sound3.wav')
         hour = datetime.now().hour
         if (hour >= 6) and (hour < 12):
