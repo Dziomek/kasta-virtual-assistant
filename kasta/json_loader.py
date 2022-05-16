@@ -8,7 +8,8 @@ def load_json(path):
 
 
 def make_json():
-    json_list = [load_json('kasta/date/date_data.json'), load_json('kasta/openApp/openApp_data.json'),
+    json_list = [load_json('kasta/openApp/openApp_data.json'),
+                 load_json('kasta/googlesearch/googlesearch_data.json'), load_json('kasta/date/date_data.json'),
                  load_json('kasta/notification/notification_data.json'), load_json('kasta/wiki/wikipedia_data.json'),
                  load_json('kasta/jokes/jokes_data.json'), load_json('kasta/news/news_data.json'),
                  load_json('kasta/youtube/youtube_data.json'), load_json('kasta/wolfram/wolfram_data.json'),
@@ -21,7 +22,7 @@ def make_json():
                  load_json('kasta/note/note_type_data.json'),
                  load_json('kasta/note/note_data.json'), load_json('kasta/read_note/read_note_data.json'),
                  load_json('kasta/send_note_via_email/email_note_data.json'), load_json('kasta/help/help_data.json'),
-                 load_json('kasta/googlesearch/googlesearch_data.json'), load_json('kasta/remindMe/reminder_data.json')]
+                 load_json('kasta/remindMe/reminder_data.json')]
 
     return json_list
 

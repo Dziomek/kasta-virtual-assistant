@@ -29,7 +29,7 @@ import SMSService.smsService
 import kasta.remindMe.reminder
 from .weather.weatherApp import Weather
 import kasta.headsortails.tossCoin
-import kasta.googlesearch.googlesearch
+from kasta.googlesearch.googlesearch import search_google
 from .youtube.youtube_playing import YoutubeService
 from datetime import datetime
 from playsound import playsound
@@ -575,8 +575,10 @@ class Kasta:
 
     def search_google_action(self):
         playsound('kasta/sound2.wav')
-        search = self.text.split(" ", 3)[3]
-        response = kasta.googlesearch.googlesearch.search_google(search)
+        search = self.text.split("search", 2)[1].strip()
+        p = multiprocessing.Process(target=search_google, args=(search,))
+        p.start()
+        p.join()
         self.response = f"Searching {search} in Google"
         self.is_action_performed = False
 
