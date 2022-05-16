@@ -10,7 +10,7 @@ class Calculate:
         res = client.query(text)
         try:
             answer = next(res.results).text
-            return "The answer is ", answer
+            return f"The answer is {answer}"
         except:
             return "Oh i missed that, try again"
 
