@@ -1,6 +1,5 @@
 {
-  "commands":
-    {
+  "commands": {
       "name": ["remind"],
       "action": "remind_me"
     }

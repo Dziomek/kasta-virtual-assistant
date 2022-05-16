@@ -1,7 +1,6 @@
 {
-  "commands":
-    {
-      "name": ["about"],
+  "commands": {
+      "name": ["about", "kasta"],
       "action": "general_response"
     }
 }

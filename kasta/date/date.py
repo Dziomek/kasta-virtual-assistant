@@ -11,43 +11,53 @@ months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
           'August', 'September', 'October', 'November', 'December']
 
 ordinal = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th',
- '11th', '12th', '13th', '14th', '15th', '16th', '17th', '18th', '19th',
- '20th', '21st', '22nd', '23rd', '24th', '25th', '26th', '27th', '28th',
- '29th', '30th', '31st']
+           '11th', '12th', '13th', '14th', '15th', '16th', '17th', '18th', '19th',
+           '20th', '21st', '22nd', '23rd', '24th', '25th', '26th', '27th', '28th',
+           '29th', '30th', '31st']
+
 
 def whatDay():
-    return f'Today is {weekNow}, {months[monthNow-1]} the {ordinal[dayNow-1]}.'
+    return f'Today is {weekNow}, {months[monthNow - 1]} the {ordinal[dayNow - 1]}.'
+
 
 def whatMonth():
-    return f"It is {months[monthNow-1]}."
+    return f"It is {months[monthNow - 1]}."
+
 
 def fullDate():
     return f'In the calendar i can see that today is {now.strftime("%Y")}, month {now.strftime("%B")}, day {now.strftime("%d")}.'
 
+
 def clockTime():
     return f'It is {dateNow.strftime("%H %M")}.'
+
 
 def weekDay():
     return f'Today is a {weekNow}'
 
+
 def dayOfTheYear():
     return f'The day of the year is {now.strftime("%j")}'
+
 
 class Date:
 
     @staticmethod
-    def say_time(text):
-        if 'clock time' in text:
-            return clockTime()
-        elif 'what time is it' in text:
-            return clockTime()
-        elif 'tell me the time' in text:
-            return clockTime()
-        elif 'what month' in text:
-            return whatMonth()
-        elif 'weekday' in text:
-            return weekDay()
-        elif 'day of the year' in text:
-            return dayOfTheYear()
-        elif 'calendar' in text:
-            return fullDate()
+    def say_time(key_word):
+        match key_word:
+            case "time":
+                return clockTime()
+            case "hour":
+                return clockTime()
+            case "month":
+                return whatMonth()
+            case "day":
+                return weekDay()
+            case "weekday":
+                return weekDay()
+            case "coto":
+                return dayOfTheYear()
+            case "date":
+                return fullDate()
+            case "calendar":
+                return fullDate()

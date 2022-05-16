@@ -1,6 +1,6 @@
 {
   "commands":{
-    "name": ["weather", "sunrise time", "sunset time", "whether"],
+    "name": ["weather", "today", "whether"],
     "action": "weather"
   }
 }

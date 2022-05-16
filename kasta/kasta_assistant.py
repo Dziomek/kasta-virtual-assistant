@@ -248,7 +248,7 @@ class Kasta:
             try:
                 for i in range(len(self.json_list)):
                     for j in range(len(self.json_list[i]['commands']['name'])):
-                        if self.json_list[i]['commands']['name'][j] in self.text:
+                        if self.json_list[i]['commands']['name'][j] == self.text.split(' ', 2)[0].strip():
                             self.decision_making_process(i, self.json_list[i]['commands']['name'][j])
                             is_done = True
 
@@ -289,7 +289,9 @@ class Kasta:
 
     def say_time_action(self):
         playsound('kasta/sound2.wav')
-        self.response = kasta.date.date.Date.say_time(self.text)
+        date = self.text.split(' ', 2)[0].strip()
+        print(date)
+        self.response = kasta.date.date.Date.say_time(date)
         print(self.response), self.speak(self.response)
         self.is_action_performed = False
 
