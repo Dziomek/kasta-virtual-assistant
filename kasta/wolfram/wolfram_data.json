@@ -1,6 +1,6 @@
 {
   "commands":{
-    "name": ["calculate", "calculator", "wolfram"],
+    "name": ["calculate for me", "make calculation", "calculator", "calculate", "wolfram"],
     "action": "calculate"
   }
 }

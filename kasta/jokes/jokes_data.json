@@ -1,6 +1,7 @@
 {
   "commands":{
-    "name": ["joke"],
+    "name": ["tell me a joke", "joke please", "tell joke", "get joke", "laugh",
+      "joke"],
     "action": "tell_jokes"
   }
 }

@@ -1,6 +1,7 @@
 {
   "commands":{
-    "name": ["news"],
+    "name": ["tell me the news", "tell me a news", "news please", "what's new",
+      "what is new", "get news", "what is happening", "what happened", "news"],
     "action": "tell_news"
   }
 }

@@ -1,6 +1,6 @@
 {
   "commands":{
-    "name": ["play", "youtube"],
+    "name": ["play", "youtube", "play on youtube"],
     "action": "play_yt"
   }
 }
