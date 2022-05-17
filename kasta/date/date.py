@@ -44,20 +44,15 @@ class Date:
 
     @staticmethod
     def say_time(key_word):
-        match key_word:
-            case "time":
-                return clockTime()
-            case "hour":
-                return clockTime()
-            case "month":
-                return whatMonth()
-            case "day":
+        if "time" or "hour" in key_word:
+            return clockTime()
+        elif "month" in key_word:
+            return whatMonth()
+        elif "day" in key_word:
+            if not "year in keyword":
                 return weekDay()
-            case "weekday":
-                return weekDay()
-            case "coto":
+            else:
                 return dayOfTheYear()
-            case "date":
-                return fullDate()
-            case "calendar":
-                return fullDate()
+        elif "date" or "calendar" in key_word:
+            return fullDate()
+

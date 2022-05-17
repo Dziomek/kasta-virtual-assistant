@@ -1,6 +1,7 @@
 {
   "commands": {
-      "name": ["about", "kasta"],
+      "name": ["who are you", "your name", "are you a robot", "how are you", "i am fine",
+      "i am good", "i'm good", "i'm fine"],
       "action": "general_response"
     }
 }

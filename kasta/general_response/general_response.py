@@ -12,22 +12,22 @@ response_robot = [
 class GeneralResponse:
 
     @staticmethod
-    def general_response(text):
-        if 'who are you' in text:
+    def general_response(key_word):
+        if 'who are you' in key_word:
             return response[random.randrange(len(response))]
-        if 'your name' in text:
+        elif 'your name' in key_word:
             return 'My name is Kasta. How Can i help you'
-        if 'who i am' in text:
+        elif 'who i am' in key_word:
             return 'You must be a human'
-        if 'are you a robot' in text:
+        elif 'are you a robot' in key_word:
             return response_robot[random.randrange(len(response))]
-        if 'how are you' in text:
+        elif 'how are you' in key_word:
             return 'I am fine, thank you. How are you?'
-        if 'i am fine' in text:
+        elif 'i am fine' in key_word:
             return 'It is good to know that you are fine.'
-        if 'i am good' in text:
+        elif 'i am good' in key_word:
             return 'It is good to know that you are doing well.'
-        if "i'm good" in text:
+        elif "i'm good" in key_word:
             return 'It is good to know that you are doing well.'
-        if "i'm fine" in text:
+        elif "i'm fine" in key_word:
             return 'It is good to know that you are fine.'

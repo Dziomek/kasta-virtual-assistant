@@ -1,6 +1,8 @@
 {
   "commands":{
-    "name": ["thanks", "cheers"],
+    "name": ["thank you", "thanks a lot", "i appreciate it", "i really appreciate it",
+      "i really appreciate this", "many thanks", "i'm so grateful", "i am so grateful",
+      "thanks", "cheers"],
     "action": "say_thank_you"
   }
 }

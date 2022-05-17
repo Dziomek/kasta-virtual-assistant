@@ -184,15 +184,15 @@ class Kasta:
             case "help":
                 self.help_action()
             case "wiki_search":
-                self.wiki_search_action()
+                self.wiki_search_action(key_word)
             case "say_hello":
                 self.say_hello_action()
             case "say_time":
-                self.say_time_action()
+                self.say_time_action(key_word)
             case "say_thank_you":
                 self.say_thank_you_action()
             case "general_response":
-                self.general_response_action()
+                self.general_response_action(key_word)
             case "open_app":
                 self.open_app_action(self.text.split('open', 2)[1].strip(), self.apps)
             case "tell_jokes":
@@ -248,10 +248,22 @@ class Kasta:
             try:
                 for i in range(len(self.json_list)):
                     for j in range(len(self.json_list[i]['commands']['name'])):
-                        if self.json_list[i]['commands']['name'][j] == self.text.split(' ', 2)[0].strip():
-                            self.decision_making_process(i, self.json_list[i]['commands']['name'][j])
-                            is_done = True
-
+                        if self.text.strip().lower().startswith(self.json_list[i]['commands']['name'][j]):
+                            print('znalazlem slowo')
+                            word_list = self.json_list[i]['commands']['name'][j].split(' ')
+                            text_word_list = self.text.split(' ')
+                            if len(word_list) > 1:
+                                print('Dlugie slowo klucz')
+                                is_done = True
+                                self.decision_making_process(i, self.json_list[i]['commands']['name'][j])
+                                break
+                            else:
+                                print('Krotkie slowo klucz')
+                                if text_word_list[0].strip().lower() == self.json_list[i]['commands']['name'][j].strip():
+                                    is_done = True
+                                    self.decision_making_process(i, self.json_list[i]['commands']['name'][j])
+                                    print('Slowo klucz rowne pierwszemu slowu. Jest git')
+                                    break
                     if is_done:
                         break
             except KeyError:
@@ -271,10 +283,10 @@ class Kasta:
         print(self.response), self.speak(self.response)
         self.is_action_performed = False
 
-    def wiki_search_action(self):
+    def wiki_search_action(self, key_word):
         playsound('kasta/sound2.wav')
         try:
-            person = WikiSearch.wiki_person(self.text)
+            person = WikiSearch.wiki_person(self.text, key_word)
             self.response = wikipedia.summary(person, sentences=2)
             print(self.response), self.speak(self.response)
         except Exception:
@@ -287,11 +299,9 @@ class Kasta:
         print(self.response), self.speak(self.response)
         self.is_action_performed = False
 
-    def say_time_action(self):
+    def say_time_action(self, key_word):
         playsound('kasta/sound2.wav')
-        date = self.text.split(' ', 2)[0].strip()
-        print(date)
-        self.response = kasta.date.date.Date.say_time(date)
+        self.response = kasta.date.date.Date.say_time(key_word)
         print(self.response), self.speak(self.response)
         self.is_action_performed = False
 
@@ -301,10 +311,10 @@ class Kasta:
         print(self.response), self.speak(self.response)
         self.is_action_performed = False
 
-    def general_response_action(self):
+    def general_response_action(self, key_word):
         playsound('kasta/sound2.wav')
         self.response = kasta.general_response.general_response.GeneralResponse.general_response(
-            self.text)
+            key_word)
         print(self.response), self.speak(self.response)
         self.is_action_performed = False
 

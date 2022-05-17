@@ -1,6 +1,8 @@
 {
   "commands":{
-    "name": ["month", "time", "hour" ,"day", "weekday", "calendar", "date", "coto"],
+    "name": ["tell me the hour", "hour please", "tell me the time", "time please",
+      "tell me the month", "month please", "tell me the day", "day please", "day of the year",
+      "month", "time", "hour" ,"day", "weekday", "calendar", "date"],
     "action": "say_time"
   }
 }
