@@ -353,12 +353,13 @@ class Kasta:
 
     def weather_action(self, key_word):
         weather = Weather()
-        if self.text != "weather" and self.text != "whether":
-            weather.city = self.text.split(' ')[1]
-            ##weather.city = weather.city.replace(weather.city[-1], '') ## usuniecie znaku /n na koncu miasta
-
+        if len(self.text.strip()) > len(key_word.strip()):
+            weather.city = self.text.split(key_word, 2)[1].strip()
+            print(weather.city)
+            print(len(weather.city))
         else:
             weather.city = ''
+            print('Empty city')
         playsound('kasta/sound2.wav')
         self.response = weather.get_weather(key_word, weather.city)
         print(self.response), self.speak(self.response)

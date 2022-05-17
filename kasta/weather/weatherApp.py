@@ -36,17 +36,10 @@ class Weather:
             "%H:%M")
         self.sunset_time = (dt.datetime.utcfromtimestamp(self.response['sys']['sunset'] + self.response['timezone'])).strftime("%H:%M")
 
-        match key_word:
-            case 'weather':
-                return f"Currently in {self.city} is {self.description}, the temperature is {self.temperature} degrees Celsius. The feel like temperature is around {self.feels_like_temperature} degrees Celsius." \
+        if 'weather' or 'whether' in key_word:
+            return f"Currently in {self.city} is {self.description}, the temperature is {self.temperature} degrees Celsius. The feel like temperature is around {self.feels_like_temperature} degrees Celsius." \
                        f" The pressure is {self.pressure} hectopascals. Humidity {self.humidity} percent. Wind {self.wind}."
-
-            case "whether":
-                return f"Currently in {self.city} is {self.description}, the temperature is {self.temperature} degrees Celsius. The feel like temperature is around {self.feels_like_temperature} degrees Celsius." \
-                       f" The pressure is {self.pressure} hectopascals. Humidity {self.humidity} percent. Wind {self.wind}."
-
-            case "sunrise time":
-                return f'For {self.city} sunrise will be at {self.sunrise_time} and Sunset at {self.sunset_time}.'
-
-            case 'sunset time':
-                return f'For {self.city} sunrise will be at {self.sunrise_time} and Sunset at {self.sunset_time}.'
+        elif 'sunrise' in key_word:
+            return f'For {self.city} sunrise will be at {self.sunrise_time} and Sunset at {self.sunset_time}.'
+        elif 'sunset' in key_word:
+            return f'For {self.city} sunrise will be at {self.sunrise_time} and Sunset at {self.sunset_time}.'

@@ -1,6 +1,6 @@
 {
   "commands":{
-    "name": ["weather", "today", "whether"],
+    "name": ["what is the weather like", "what is the weather", "what is the whether", "what's the weather", "what's the whether", "weather", "today", "whether"],
     "action": "weather"
   }
 }
