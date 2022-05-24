@@ -1,6 +1,6 @@
 {
   "commands":{
-    "name": ["send note to my email", "note to my email","send note to my email"],
+    "name": ["send note to my email", "note to my email", "send note to my email", "send note via email"],
     "action": "email_note"
   }
 }
