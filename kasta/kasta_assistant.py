@@ -226,7 +226,7 @@ class Kasta:
             case "remind_me":
                 self.remind_me_action()
             case "type_note":
-                self.type_note_action()
+                self.type_note_action(key_word)
 
     def greet_user(self):
         """Greets the user according to the time"""
@@ -637,9 +637,9 @@ class Kasta:
                 break
         self.is_action_performed = False
 
-    def type_note_action(self):
+    def type_note_action(self, key_word):
         playsound('kasta/sound2.wav')
-        type_note(self.text, self.user_id)
+        type_note(self.text, self.user_id, key_word)
         self.speak('I saved your note')
         self.is_action_performed = False
 
