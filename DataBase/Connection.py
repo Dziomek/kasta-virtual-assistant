@@ -195,3 +195,12 @@ class ConnectDatabase:
             self.connection.commit()
         else:
             print('Error while inserting note to DB')
+
+
+    def get_number(self,email):
+        if self.connection.is_connected():
+            sql_select_Query = "SELECT phone from Users WHERE email = '" + email + "'"
+            # print(sql_select_Query)
+            cursor = self.connection.cursor()
+            cursor.execute(sql_select_Query)
+            return cursor.fetchall()

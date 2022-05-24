@@ -119,9 +119,9 @@ class Kasta:
                     self.find_action_in_json()
 
     def listen2(self):
+        time.sleep(1)
         print('listening2...')
         self.stream.start_stream()
-
         while True:
             data = self.stream.read(4000, exception_on_overflow=False)
             if len(data) == 0:
@@ -410,10 +410,12 @@ class Kasta:
             title = self.listen2()
             print(title)
             self.stop_listening()
+            time.sleep(1)
             self.speak(f"Your note topis is {title}. Do you like it ?")
             response = self.listen2()
             print(response)
             self.stop_listening()
+            time.sleep(1)
 
             if "yes" in response:
                 self.speak("I will record your thoughts. Do it quick. Start one second after signal")
@@ -458,6 +460,7 @@ class Kasta:
             for topic in topics_list:
                 if topic in user_choose:
                     self.stop_listening()
+                    time.sleep(1)
                     print('topic', topic)
                     print(user_choose)
 
@@ -466,6 +469,7 @@ class Kasta:
                     response = self.listen2()
                     print(response)
                     self.stop_listening()
+                    time.sleep(1)
 
                     if "yes" in response:
                         user_choose = user_choose.strip()
@@ -502,6 +506,7 @@ class Kasta:
             for topic in topics_list:
                 if topic in user_choose:
                     self.stop_listening()
+                    time.sleep(1)
                     print('topic', topic)
                     print(user_choose)
 
@@ -510,6 +515,7 @@ class Kasta:
                     response = self.listen2()
                     print(response)
                     self.stop_listening()
+                    time.sleep(1)
 
                     if "yes" in response:
                         user_choose = user_choose.strip()
@@ -550,6 +556,7 @@ class Kasta:
             for topic in topics_list:
                 if topic in user_choose:
                     self.stop_listening()
+                    time.sleep(1)
                     print('topic', topic)
                     print(user_choose)
 
@@ -558,6 +565,7 @@ class Kasta:
                     response = self.listen2()
                     print(response)
                     self.stop_listening()
+                    time.sleep(1)
 
                     if "yes" in response:
                         user_choose = user_choose.strip()
@@ -603,21 +611,26 @@ class Kasta:
             reminder = self.listen2()
             print(reminder)
             self.stop_listening()
-
-            self.speak('please tell when it happens')
+            time.sleep(1)
+            self.speak('tell me please when it happens')
             date = self.listen2()
             print(date)
             self.stop_listening()
-
+            time.sleep(1)
             self.speak(f"Your new reminder is {reminder} is set to {date}. Is it correct?")
             response = self.listen2()
             print(response)
             self.stop_listening()
+            time.sleep(1)
             if 'yes' in response:
                 self.speak('I will sent your reminder to your phone number which is associated with your '
                            'account.')
                 smsservice = SMSService.smsService.SendSms()
+                connection = ConnectDatabase()
+                number = connection.get_number(self.user_email)
+                self.phoneNumber = str(number)
                 user_phone_number = '+48' + self.phoneNumber
+
                 smsservice.send_reminder(reminder, date, user_phone_number)
 
                 self.listen()

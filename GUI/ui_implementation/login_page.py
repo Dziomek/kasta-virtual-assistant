@@ -41,12 +41,10 @@ class LoginPage(QDialog):
         self.ui.exitButton.clicked.connect(self.exit)
 
     def login(self):
-
         # get fields
         self.email = self.ui.emailLabel.text()
         password = self.ui.passwordLabel.text()
 
-        # if że puste pola
         if not self.email or not password:
             self.ui.errorLabel.setText('Missing fields. Please try again')
         else:
@@ -63,8 +61,6 @@ class LoginPage(QDialog):
                 self.logged_in = True
                 for record in records:
                     self.validAccount = record[7]
-
-
                     return self.email, self.name, self.id
             else:
                 self.ui.errorLabel.setText("Wrong email or password. Please try again")

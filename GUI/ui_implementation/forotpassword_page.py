@@ -19,6 +19,10 @@ class ForgotPasswordPage(QMainWindow):
         self.ui.backToLoginButton.setIcon(QIcon("icons/x_icon.png"))
 
     def reset_password(self):
+        email = self.ui.emailLabel.text()
+
+
+
         pass
 
     def mousePressEvent(self, event):
@@ -28,3 +32,5 @@ class ForgotPasswordPage(QMainWindow):
         delta = QPoint(event.globalPos() - self.old_position)
         self.move(self.x() + delta.x(), self.y() + delta.y())
         self.old_position = event.globalPos()
+
+
