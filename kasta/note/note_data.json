@@ -1,6 +1,6 @@
 {
   "commands":{
-    "name": [ "make a note", "note make", "make a note for me"],
+    "name": ["make a note for me", "make a note", "note make"],
     "action": "make_note"
   }
 }

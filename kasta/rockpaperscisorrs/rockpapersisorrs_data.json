@@ -1,6 +1,6 @@
 {
   "commands":{
-    "name": ["rock paper scissors","game"],
+    "name": ["rock paper scissors", "game"],
     "action": "play_game"
   }
 }
