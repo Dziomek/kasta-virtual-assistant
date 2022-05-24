@@ -9,6 +9,8 @@ from PySide2.QtCore import QThread
 from vosk import Model, KaldiRecognizer
 import pyaudio
 import pyttsx3
+
+from GUI.ui_implementation.faq import FAQPage
 from kasta.wiki.wikipedia_search import WikiSearch
 import json
 from .json_loader import make_json, load_apps
@@ -67,7 +69,6 @@ class Kasta:
         self.user_id = ''
         self.phoneNumber = ''
         self.apps = {}
-
         print(self.apps)
 
 
@@ -222,7 +223,7 @@ class Kasta:
             case "notify":
                 self.notify_action()
             case "search_google":
-                self.search_google_action()
+                self.search_google_action(key_word)
             case "remind_me":
                 self.remind_me_action()
             case "type_note":
@@ -594,9 +595,9 @@ class Kasta:
         notify_me(self.text)
         self.is_action_performed = False
 
-    def search_google_action(self):
+    def search_google_action(self, key_word):
         playsound('kasta/sound2.wav')
-        search = self.text.split("search", 2)[1].strip()
+        search = self.text.split(key_word, 2)[1].strip()
         p = multiprocessing.Process(target=search_google, args=(search,))
         p.start()
         p.join()

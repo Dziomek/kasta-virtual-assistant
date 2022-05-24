@@ -1,6 +1,6 @@
 {
   "commands":{
-    "name": ["search"],
+    "name": ["search in google", "search google", "google search", "search"],
     "action": "search_google"
   }
 }
