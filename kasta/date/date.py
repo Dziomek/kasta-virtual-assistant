@@ -44,12 +44,12 @@ class Date:
 
     @staticmethod
     def say_time(key_word):
-        if "time" or "hour" in key_word:
+        if "time" in key_word or "hour" in key_word:
             return clockTime()
         elif "month" in key_word:
             return whatMonth()
         elif "day" in key_word:
-            if not "year in keyword":
+            if not "year" in key_word:
                 return weekDay()
             else:
                 return dayOfTheYear()

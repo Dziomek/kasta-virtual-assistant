@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'faqfdPbCf.ui'
+## Form generated from reading UI file 'faqQwGRIS.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -121,17 +121,12 @@ class Ui_Form(object):
         self.label_15.setStyleSheet(u"color: rgb(5, 109, 0);")
         self.label_17 = QLabel(self.widget)
         self.label_17.setObjectName(u"label_17")
-        self.label_17.setGeometry(QRect(30, 720, 91, 41))
+        self.label_17.setGeometry(QRect(30, 680, 91, 41))
         self.label_17.setFont(font)
         self.label_17.setStyleSheet(u"color: rgb(5, 109, 0);")
-        self.label_18 = QLabel(self.widget)
-        self.label_18.setObjectName(u"label_18")
-        self.label_18.setGeometry(QRect(30, 760, 181, 41))
-        self.label_18.setFont(font)
-        self.label_18.setStyleSheet(u"color: rgb(5, 109, 0);")
         self.label_19 = QLabel(self.widget)
         self.label_19.setObjectName(u"label_19")
-        self.label_19.setGeometry(QRect(30, 800, 111, 41))
+        self.label_19.setGeometry(QRect(30, 720, 111, 41))
         self.label_19.setFont(font)
         self.label_19.setStyleSheet(u"color: rgb(5, 109, 0);")
         self.label_20 = QLabel(self.widget)
@@ -170,11 +165,6 @@ class Ui_Form(object):
         self.label_26.setFont(font)
         self.label_26.setStyleSheet(u"color: rgb(49, 200, 255);\n"
 "")
-        self.label_27 = QLabel(self.widget)
-        self.label_27.setObjectName(u"label_27")
-        self.label_27.setGeometry(QRect(210, 760, 191, 41))
-        self.label_27.setFont(font)
-        self.label_27.setStyleSheet(u"color: rgb(38, 0, 255);")
         self.label_28 = QLabel(self.widget)
         self.label_28.setObjectName(u"label_28")
         self.label_28.setGeometry(QRect(320, 80, 411, 41))
@@ -260,13 +250,13 @@ class Ui_Form(object):
         self.label_40.setStyleSheet(u"color: rgb(38, 0, 255);")
         self.label_41 = QLabel(self.widget)
         self.label_41.setObjectName(u"label_41")
-        self.label_41.setGeometry(QRect(150, 800, 171, 41))
+        self.label_41.setGeometry(QRect(150, 720, 171, 41))
         self.label_41.setFont(font1)
         self.label_41.setStyleSheet(u"color: #837c73;\n"
 "")
         self.label_42 = QLabel(self.widget)
         self.label_42.setObjectName(u"label_42")
-        self.label_42.setGeometry(QRect(130, 720, 131, 41))
+        self.label_42.setGeometry(QRect(130, 680, 131, 41))
         self.label_42.setFont(font1)
         self.label_42.setStyleSheet(u"color: #837c73;\n"
 "")
@@ -280,6 +270,29 @@ class Ui_Form(object):
         self.label_44.setGeometry(QRect(420, 640, 351, 41))
         self.label_44.setFont(font1)
         self.label_44.setStyleSheet(u"color: #837c73;\n"
+"")
+        self.label_45 = QLabel(self.widget)
+        self.label_45.setObjectName(u"label_45")
+        self.label_45.setGeometry(QRect(140, 440, 561, 41))
+        self.label_45.setFont(font1)
+        self.label_45.setStyleSheet(u"color: #837c73;\n"
+"")
+        self.label_46 = QLabel(self.widget)
+        self.label_46.setObjectName(u"label_46")
+        self.label_46.setGeometry(QRect(90, 520, 251, 41))
+        self.label_46.setFont(font1)
+        self.label_46.setStyleSheet(u"color: #837c73;\n"
+"")
+        self.label_16 = QLabel(self.widget)
+        self.label_16.setObjectName(u"label_16")
+        self.label_16.setGeometry(QRect(30, 760, 101, 41))
+        self.label_16.setFont(font)
+        self.label_16.setStyleSheet(u"color: rgb(5, 109, 0);")
+        self.label_47 = QLabel(self.widget)
+        self.label_47.setObjectName(u"label_47")
+        self.label_47.setGeometry(QRect(150, 760, 561, 41))
+        self.label_47.setFont(font1)
+        self.label_47.setStyleSheet(u"color: #837c73;\n"
 "")
 
         self.retranslateUi(Form)
@@ -306,7 +319,6 @@ class Ui_Form(object):
         self.label_14.setText(QCoreApplication.translate("Form", u"game", None))
         self.label_15.setText(QCoreApplication.translate("Form", u"calculate", None))
         self.label_17.setText(QCoreApplication.translate("Form", u"flip coin", None))
-        self.label_18.setText(QCoreApplication.translate("Form", u"search in google", None))
         self.label_19.setText(QCoreApplication.translate("Form", u"thank you", None))
         self.label_20.setText(QCoreApplication.translate("Form", u"[application name]", None))
         self.label_21.setText(QCoreApplication.translate("Form", u"[person name]", None))
@@ -315,7 +327,6 @@ class Ui_Form(object):
         self.label_24.setText(QCoreApplication.translate("Form", u"[text of note]", None))
         self.label_25.setText(QCoreApplication.translate("Form", u"[city]", None))
         self.label_26.setText(QCoreApplication.translate("Form", u"OPTIONAL", None))
-        self.label_27.setText(QCoreApplication.translate("Form", u"[phrase in Google]", None))
         self.label_28.setText(QCoreApplication.translate("Form", u"- opening an application specified by user", None))
         self.label_29.setText(QCoreApplication.translate("Form", u"- information about subject specified by user", None))
         self.label_30.setText(QCoreApplication.translate("Form", u"- starting YouTube video", None))
@@ -327,11 +338,15 @@ class Ui_Form(object):
         self.label_36.setText(QCoreApplication.translate("Form", u"- getting random news", None))
         self.label_37.setText(QCoreApplication.translate("Form", u"- information about data", None))
         self.label_38.setText(QCoreApplication.translate("Form", u"- sends a note to user's email address", None))
-        self.label_39.setText(QCoreApplication.translate("Form", u"- searching of phrase in Google", None))
+        self.label_39.setText(QCoreApplication.translate("Form", u"- searching of a phrase in Google", None))
         self.label_40.setText(QCoreApplication.translate("Form", u"[phrase]", None))
         self.label_41.setText(QCoreApplication.translate("Form", u"- action of greetings", None))
         self.label_42.setText(QCoreApplication.translate("Form", u"- flip coin game", None))
         self.label_43.setText(QCoreApplication.translate("Form", u"[mathematical operation]", None))
         self.label_44.setText(QCoreApplication.translate("Form", u"- calculates the operation specified by user", None))
+        self.label_45.setText(QCoreApplication.translate("Form", u"- interaction with assistant that allows you to obtain your note via sms", None))
+        self.label_46.setText(QCoreApplication.translate("Form", u"- some help from assistant", None))
+        self.label_16.setText(QCoreApplication.translate("Form", u"read note", None))
+        self.label_47.setText(QCoreApplication.translate("Form", u"- interaction with assistant, it can read a note from database", None))
     # retranslateUi
 
