@@ -478,6 +478,7 @@ class Kasta:
                             self.response = self.response[0][0]
                             print(self.response)
                             self.speak(self.response), print(self.response)
+                            break
                     elif "no" in response:
                         self.speak('Choose a topic'), print('Choose a topic')
                         break
@@ -581,6 +582,7 @@ class Kasta:
                             self.response = f"Your note with topic {user_choose} and with content {self.response} was sent to your email."
                             self.speak(self.response),
                             print(self.response)
+                            break
 
                     elif "no" in response:
                         self.speak('Choose a topic'), print('Choose a topic')

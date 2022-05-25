@@ -1,6 +1,6 @@
 {
   "commands":{
-    "name": ["notetype", "note"],
+    "name": ["notetype"],
     "action": "type_note"
   }
 }

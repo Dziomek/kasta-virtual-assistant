@@ -1,6 +1,6 @@
 {
   "commands": {
-      "name": ["show on wikipedia", "wikipedia search", "who is", "who", "wikipedia"],
+      "name": ["show on wikipedia", "wikipedia search", "who is", "wikipedia"],
       "action": "wiki_search"
     }
 }
